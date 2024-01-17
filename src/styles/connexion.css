@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--bouton-hover);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+/* IMAGE DE FOND */
+.img-fond img {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*image ajuster dans son conteneur en maintenant ses proportions */
+    filter: blur(8px);
+}
+
+/* Conteneur de la card connection */
+.conteneur-connexion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    width: 30%;
+    border-radius: 10px;
+    padding: 10px 0px 20px;
+    box-shadow: 5px 5px 5px  rgba(255,255,255,0.5);
+}
+
+.conteneur-connexion h2{
+    text-align: center;
+    color: var(--text-gris-bleu);
+    font-size: 26px;
+    font-weight: 800;
+}
+
+/* PARTIE FLEX DANS LE CONTENEUR CARD CONNECTION */
+.conteneur-form{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    margin: 0 auto 15px;
+}
+
+/* conteneur des partie email et mdp */
+.email-connection, .mdp-connection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+.email-connection{
+    margin-top: 10px;
+}
+.mdp-connection{
+    margin: 10px 0;
+}
+.mdp-connection p{
+    font-size: 11px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+.mdp-connection input, .email-connection input{
+    height: 50px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 300;
+}
+.mdp-connection label, .email-connection label{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* Partie boutons  */
+.button-connection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.button-connection button{
+    border-radius: 6px ;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.8);
+    border: 1px solid black;
+    height: auto;
+    font-size: 20px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.4s ease;
+}
+.connect-btn{
+    background-color: var(--background-bleu-gris);
+    color: var(--text-jaune);
+}
+
+.inscription-btn{
+    background-color: var(--text-jaune);
+    color: var(--text-gris-bleu);
+}
+
+/* partie vous n'avez pas de compte */
+.pasDeCompte{
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+    margin: 12px 0px;
+    gap: 15px;
+}
+.BarreDroite, .BarreGauche{
+    width : 18%;
+    height: 2px;
+    background-color: black;
+}
+
+/* Ecriture agrandit lors de l'écriture dans les input */
+.mdp-connection input:focus, .email-connection input:focus{
+    font-size: 20px;
+}
+
+/* PARTIE HOVER ET FOCUS */
+.button-connection .connect-btn:hover{
+    cursor: pointer;
+    background-color: var(--text-jaune);
+    color: var(--text-gris);
+}
+.button-connection .inscription-btn:hover{
+    cursor: pointer;
+    background-color: var(--background-bleu-gris);
+    color: var(--text-jaune);
+}
+
+.button-connection .connect-btn:active{
+    transform:  translateY(3px);
+}
+.button-connection .inscription-btn:active{
+    transform:  translateY(3px);
+}
+

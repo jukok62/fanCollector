@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--bouton-hover);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+/* DIV EN FORME DE CROIX */
+/* .background-Croix{
+    width: 130vw;
+    height: 45vh;
+    background-color: var(--background-bleu-gris-90);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -0%) rotate(39deg);
+    z-index: 1;
+}
+.background-croix2{
+    width: 130vw;
+    height: 45vh;
+    background-color: var(--background-bleu-gris-90);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -0%) rotate(140deg);
+    z-index: 1;
+} */
+
+/* .background-Croix::after, .background-Croix::before{
+    content: "";
+      position: absolute;
+      width: 130vw;
+      height: 45vh;
+      background-color: var(--background-bleu-gris-90);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(102deg);
+      z-index: 1;
+      overflow-x: hidden;
+} */
+
+/* PARTIE IMAGE PNG DE FOND */
+/* .image-inscription{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -36%);
+    z-index: 2; 
+} */
+.image-inscription img{
+    /* width: 90vw;
+    height: 140vh; */
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 160%;
+    object-fit: cover;
+}
+
+/* PARTIE CONTENEUR DU FORMULAIRE */
+.formulaire-inscription{
+    background-color: rgba(0, 0, 0, 0.3);
+    width: 35%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 300px;
+    box-shadow: 0px 0px 10px 8px rgba(56, 68, 84, 0.9);
+    backdrop-filter: blur(5px);
+    color: white;
+}
+
+/* Formulaire passé en flex */
+.formulaire-inscription form{
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+.formulaire-inscription h2{
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    color: var(--text-gris-bleu);
+    background: linear-gradient(to right, rgba(56, 68, 84, 0.9), rgba(255, 255, 255, 0.9),rgba(56, 68, 84, 0.9));
+}
+/* DIV class genre */
+.formulaire-inscription .genre{
+    display: flex;
+    gap: 10px;
+    font-weight: 600;
+}
+.genre input, .genre label{
+    cursor: pointer;
+}
+
+/*  */
+.formulaire-inscription .input-inscription{
+    display: flex;
+    flex-flow: column wrap;
+    margin: 10px;
+    width: 100%;
+}
+.input-inscription label{
+    font-weight: bold;
+    font-size: 100%;
+    margin: 0 10.5%;
+}
+.input-inscription input{
+    width: 80%;
+    margin: 0px auto;
+    border-radius: 6px;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.9);
+    height: 45px;
+    background-color: #EEEEEE;
+}
+/* TAILLE D'ECRITURE DES PLACEHOLDER */
+.input-inscription input[placeholder]{
+    font-size: 10px;
+    font-weight: 100;
+}
+
+/* CONTENEUR DES DEUX BOUTONS */
+.button-inscription{
+    display: flex;
+    flex-flow: column wrap;
+    width: 80%;
+    margin: 15px 0px;
+    padding: 10px 0px;
+}
+.button-inscription button{
+    border-radius: 10px ;
+    box-shadow: 4px 4px 6px rgba(0,0,0,0.8);
+    border: 2px solid black;
+    height: auto;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.3s ease, background-color 0.4s ease;
+}
+.button-inscription .compte{
+    background-color: var(--bouton);
+    color: var(--text-gris-bleu);
+}
+.button-inscription .connection{
+    background-color: var(--background-bleu-gris);
+    color: var(--text-jaune);
+}
+
+/* DIV vous avez déjà un compte */
+.div-entre-deux{
+    margin: 20px 0px;
+    display: flex;
+    flex-flow: row nowrap;
+    font-size: 14px;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.barreDroite, .barreGauche{
+    width : 20%;
+    height: 2px;
+    background-color: black;
+}
+
+/* Ecriture agrandit lors de l'écriture dans les input */
+.input-inscription input:focus{
+    font-size: 20px;
+}
+
+.button-inscription .compte:hover{
+    cursor: pointer;
+    background-color: var(--background-bleu-gris);
+    color: var(--text-jaune);
+}
+.button-inscription .connection:hover{
+    cursor: pointer;
+    background-color: var(--text-jaune);
+    color: var(--text-gris-bleu);
+}
+
+.button-inscription .compte:active{
+    transform:  translateY(3px);
+}
+.button-inscription .connection:active{
+    transform:  translateY(3px);
+}
+
+
+
+
+

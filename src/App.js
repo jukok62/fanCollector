@@ -1,19 +1,23 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import Inscription from './views/Inscription';
+import Connexion from './views/Connexion';
+
 
 function App() {
   return (
     <>
     <BrowserRouter>
       <Routes>
-        <Route/>
+        <Route path='/inscription' element={<Inscription/>}/>
+        <Route path='/connexion'  element={<Connexion/>}/>
       </Routes>
     </BrowserRouter>
 
     <ToastContainer
         position="bottom-right"
-        autoClose={1000}
+        autoClose={3000}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
