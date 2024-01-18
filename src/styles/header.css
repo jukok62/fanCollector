@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--bouton-hover);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-100 : rgba(56, 68, 84, 1) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+ /* conteneur du header */
+.header-flex{
+    position: sticky;
+    width: 100%;
+    padding: 5px 15px 5px 5px;
+    background-color: var(--background-bleu-gris);
+    display: flex;
+    flex : 0 2 auto;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-blanc);
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 0.15rem;
+    z-index: 1000;
+    /* border-bottom: 5px solid black; */
+    opacity: 90%;
+}
+.seConnecter{
+    font-size: 17px;
+}
+.logo-link {
+    width: 100px;
+    text-decoration: none; /* Supprime la décoration du lien */
+    display: inline-block; /* Assure que le lien n'occupe que l'espace nécessaire */
+  }
+  .logo-header{
+    width: 100px;
+    margin-top: 10px;
+}
+.search-header{
+    display: flex;
+    align-items: center;
+}
+.compte-header{
+    display: flex;
+    align-items: center;
+}
+.search-header input{
+    border-radius: 6px;
+    height: 1.6rem;
+    width: 12rem;
+}
+
+.button-search-header, .button-compte-header{
+    width: 18%;
+}
+.button-panier-header{
+    width: 2.5%;
+}
+.header-flex *:not(input):hover{
+    cursor: pointer;
+    color: var(--text-jaune);
+}
+.Link{
+    text-decoration: none;
+    color: var(--text-blanc);
+}
+
+
+

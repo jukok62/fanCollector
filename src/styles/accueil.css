@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--bouton-hover);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+.img1,.img2, .img3, .img4{
+    width: 100%;
+    height: 750px;
+}
+.slider{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0px;
+}
+/* DEFINITION DE LA TAILLE CONTENEUR CATEGORIE */
+.categorie{
+    height: auto;
+    width: 95%;
+    margin: 20px auto;
+}
+.categorie h2{
+    margin: 0px 15px;
+    padding: 5px 20px;
+    font-size: 30px;
+    font-weight: 700;
+    color: black;
+}
+/* PERMET DE METTRE LES CARD LES UNES A COTE DES AUTRES */
+.conteneur-flex-card-categorie{
+    display: flex;
+    flex: 1 1 20%;
+    gap: 3%;
+    margin: 0px 10px;
+    padding : 20px;
+}
+
+/* DEFINITION DE CHAQUE CARD CATEGORIE */
+.card-categorie{
+    width: 20%;
+    height: 430px;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+/* DEFINITION DE LA PARTIE OVERLAY (superposer a la card) */
+.overlay{
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+.main-text{
+    font-size: 38px;
+    margin-bottom: 5px;
+}
+.second-text{
+    font-size: 14px;
+    text-decoration: underline;
+}
+/* DEFINITION DE LA TAILLE DES IMAGES */
+.img-voiture, .img-moto, .img-tracteur, .img-piece, .img-figurine{
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+/* DEFINITION DES P DANS LES CARD */
+.card-categorie > p{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centre le texte complètement */
+    color: var(--text-blanc) ;
+    font-size:30px ;
+    font-weight: 700;
+    transition: font-size 0.4s ease, color 0.4s ease;
+}
+/* DEFINITION DU HOVER SUR LA CARD CATEGORIE */
+.card-categorie:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+
+/* DEFINITION DU OVERLAY AU SURVOL DE LA CARD */
+}.card-categorie:hover .overlay{
+    opacity: 1;
+}
+/* DEFINITION DU P AU SURVOL DE LA CARD */
+.card-categorie:hover > p{ 
+    opacity: 0;
+}
+
+/* DEFINITION DE L'IMAGE DE FOND */
+.div-img-fond-Accueil {
+    position: relative;
+     z-index: -1; /*évite la disparition du h2 */
+}
+
+.div-img-fond-Accueil img{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+/* PARTIE A PROPOS */
+
+/* DEFINITION DU CONTENEUR A PROPOS */
+.conteneur-aPropos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 150px;
+    width: 95%;
+    height: auto;
+    margin: 80px auto;
+}
+
+/* TAILLE DES DEUX DIV  */
+.text-aPropos, .div-img-aPropos{
+    width: 40%;
+    color: var(--text-blanc);
+    text-align: center;
+}
+/* INTERIEUR DU TEXTE A PROPOS */
+.text-aPropos *{
+    margin: 20px;
+}
+.text-aPropos button{
+    border-radius: 10px;
+    padding: 0px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--text-jaune);
+    color: var(--text-blanc);
+    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition : background-Color 0.5s ease, Color 0.5s ease;
+}
+.text-aPropos button:hover{
+    background-color: var(--background);
+    color: var(--text-gris-bleu);
+    border: 1px solid var(--text-gris-bleu);
+}
+
+/* TAILLE DE L'IMAGE */
+.imgApropos{
+    width: 95%;
+    height: 500px;
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+    transition: transform 0.5s ease;
+}
+
+.imgApropos:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
