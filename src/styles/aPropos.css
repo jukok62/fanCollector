@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,300;16..144,500;16..144,700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--bouton-hover);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+/* SECTION A PROPOS DE NOUS */
+.Apropos-de-nous{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    background-color: var(--background-bleu-gris-90);
+    color: var(--text-blanc);
+    padding: 50px 0px 40px;
+}
+.Apropos-de-nous p{
+    font-size: 20px;
+    width: 70%;
+    margin: 0px auto;
+}
+.Apropos-de-nous h2{
+font-size: 26px;
+}
+
+/* Conteneur de chaque div img + text */
+.conteneur-Div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 13%;
+    margin: 70px 0px;
+}
+
+.conteneur-Div img, .conteneur-Div .text{
+    width: 35%;
+    height: 500px;
+}
+.conteneur-Div img{
+    box-shadow: 7px 7px 8px 0px rgba(33, 33, 33, 0.8);
+    border-radius: 6px;
+}
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+.text h3{
+    font-weight: 700;
+    font-size: 24px;
+    text-align: center;
+    font-family: 'montagu slab';
+    margin-bottom: 20px;
+}
+.text p{
+    text-align: justify;
+    line-height: 2.5rem;
+    font-family: 'montagu slab';
+}
+.first-quote, .last-quote{
+    font-size: 50px;
+    font-family: 'montagu slab';
+}
+.last-quote{
+   margin-left: 104%;
+}
+.first-quote{
+    display: inline-block;
+    margin-left: -5%;
+    transform:  rotateX(180deg)rotateY(180deg) ;
+}
+/* Derniere DIV ENGAGEMENT */
+.engagement{
+    width: 75%;
+    margin: 0px auto;
+}

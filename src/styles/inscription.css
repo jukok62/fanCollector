@@ -40,49 +40,7 @@ html::-webkit-scrollbar-track {
     --couleur-marron : #AD956B;
 }
 
-/* DIV EN FORME DE CROIX */
-/* .background-Croix{
-    width: 130vw;
-    height: 45vh;
-    background-color: var(--background-bleu-gris-90);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -0%) rotate(39deg);
-    z-index: 1;
-}
-.background-croix2{
-    width: 130vw;
-    height: 45vh;
-    background-color: var(--background-bleu-gris-90);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -0%) rotate(140deg);
-    z-index: 1;
-} */
 
-/* .background-Croix::after, .background-Croix::before{
-    content: "";
-      position: absolute;
-      width: 130vw;
-      height: 45vh;
-      background-color: var(--background-bleu-gris-90);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) rotate(102deg);
-      z-index: 1;
-      overflow-x: hidden;
-} */
-
-/* PARTIE IMAGE PNG DE FOND */
-/* .image-inscription{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -36%);
-    z-index: 2; 
-} */
 .image-inscription img{
     /* width: 90vw;
     height: 140vh; */
@@ -185,6 +143,7 @@ html::-webkit-scrollbar-track {
 .button-inscription .connection{
     background-color: var(--background-bleu-gris);
     color: var(--text-jaune);
+    width: 100%;
 }
 
 /* DIV vous avez déjà un compte */

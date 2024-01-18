@@ -132,6 +132,7 @@ html::-webkit-scrollbar-track {
 .inscription-btn{
     background-color: var(--text-jaune);
     color: var(--text-gris-bleu);
+    width: 100%;
 }
 
 /* partie vous n'avez pas de compte */

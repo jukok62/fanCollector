@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,300;16..144,500;16..144,700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--bouton-hover);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+.conteneur-contact{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    margin: 70px auto;
+    position: relative;
+    padding-left: 50px;
+}
+.img-contact{
+    width: 85%;
+    height: auto;
+    box-shadow: 4px 4px 10px black;
+}
+/* Partie email-telephone */
+.contact{
+    position: absolute;
+    background-color: black;
+    color: var(--text-blanc);
+    padding: 80px 15px;
+    width: 22%;
+    text-align: center;
+    box-shadow: 5px 5px 6px rgba(0,0,0,0.8);
+    top: 40%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 6px;
+}
+.contact a{
+    color: var(--text-blanc);
+}
+
+.nous-trouver{
+    width: 30%;
+    height: auto;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.nous-trouver h3{
+    font-size: 22px;
+    font-weight: 700;
+}
+.nous-trouver p{
+    line-height: 2rem;
+    font-weight: 600;
+}
+.nous-trouver iframe{
+    width: 350px;
+    height: 250px;
+}
+.icon-Google{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px auto;
+    font-weight: 700;
+    font-size: 18px;
+}
+.icon-Google a{
+    color: inherit;
+}

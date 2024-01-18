@@ -51,14 +51,25 @@ html::-webkit-scrollbar-track {
     justify-content: space-between;
     align-items: center;
     color: var(--text-blanc);
-    font-size: 110%;
+    font-size: 24px;
     font-weight: 900;
-    letter-spacing: 0.10rem;
+    letter-spacing: 0.15rem;
     z-index: 1000;
-    border-bottom: 5px solid black;
-    opacity: 70%;
+    /* border-bottom: 5px solid black; */
+    opacity: 90%;
 }
-
+.seConnecter{
+    font-size: 17px;
+}
+.logo-link {
+    width: 100px;
+    text-decoration: none; /* Supprime la décoration du lien */
+    display: inline-block; /* Assure que le lien n'occupe que l'espace nécessaire */
+  }
+  .logo-header{
+    width: 100px;
+    margin-top: 10px;
+}
 .search-header{
     display: flex;
     align-items: center;
@@ -72,18 +83,21 @@ html::-webkit-scrollbar-track {
     height: 1.6rem;
     width: 12rem;
 }
-.logo-header{
-    width: 8%;
-}
+
 .button-search-header, .button-compte-header{
     width: 18%;
 }
 .button-panier-header{
-    width: 3%;
+    width: 2.5%;
 }
 .header-flex *:not(input):hover{
     cursor: pointer;
     color: var(--text-jaune);
 }
+.Link{
+    text-decoration: none;
+    color: var(--text-blanc);
+}
+
 
 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Header from '../components/Header';
 import { toast } from 'react-toastify';
+import {Link} from 'react-router-dom'
 import '../styles/connexion.css'
 import img1 from '../Image/fond-connection.jpg'
 import connexionService from '../Services/connexionService';
@@ -55,7 +56,7 @@ const Connexion = () => {
                         <p>Vous n'avez pas de compte ?</p>
                         <div className='BarreDroite'></div>
                     </div>
-                    <button className='inscription-btn'>Créer un compte</button>
+                    <Link to={'/inscription'}><button className='inscription-btn'>Créer un compte</button></Link>
             </div>
         </div>
     

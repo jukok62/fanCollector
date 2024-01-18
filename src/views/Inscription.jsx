@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Link} from 'react-router-dom'
 import '../styles/inscription.css'
 import { toast } from 'react-toastify';
 import Header from '../components/Header';
@@ -122,7 +123,7 @@ const Inscription = () => {
                     <p>Vous avez déjà un compte ?</p>
                     <div className='barreDroite'></div>
                 </div>
-                <button className='connection'>Se connecter</button>
+                <Link to={'/connexion'}><button className='connection'>Se connecter</button></Link>
             </div>
             
         </form>
