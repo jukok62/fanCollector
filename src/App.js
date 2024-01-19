@@ -7,6 +7,8 @@ import Accueil from './views/Accueill';
 import Header from './components/Header';
 import Apropos from './views/Apropos';
 import Contact from './views/Contact';
+import Categorie from './views/Categorie';
+import Admin from './views/Admin';
 
 
 function App() {
@@ -19,6 +21,8 @@ function App() {
         <Route path='/' element={<Accueil/>}/>
         <Route path='/aPropos' element={<Apropos/>}/>
         <Route path='/contact'  element={<Contact/>}/>
+        <Route path='/categorie' element={<Categorie/>}/>
+        <Route path='/admin' element={<Admin/>}/>
       </Routes>
     </BrowserRouter>
 

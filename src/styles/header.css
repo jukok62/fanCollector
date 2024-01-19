@@ -58,6 +58,9 @@ html::-webkit-scrollbar-track {
     /* border-bottom: 5px solid black; */
     opacity: 90%;
 }
+.header-flex a{
+    color: inherit;
+}
 .seConnecter{
     font-size: 17px;
 }

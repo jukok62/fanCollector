@@ -13,7 +13,7 @@ const Header = () => {
             <p>VEHICULES</p>
             <p>FIGURINES</p>
             <p>PIECES</p>
-            <p>CATEGORIES</p>
+            <Link to={'/categorie'}><p>CATEGORIES</p></Link>
             <div className="search-header">
                 <img src={process.env.PUBLIC_URL + `/Asset/Icons/search-36px.png`} className='button-search-header' alt="icon pour éffectuer une recherche" />
                 <input type="text" placeholder='  recherche' />
