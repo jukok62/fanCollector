@@ -1,0 +1,68 @@
+.conteneur-block{
+    width: 30%;
+    border: 1px solid black;
+    height: 400px;
+    position: relative;
+    margin: 100px auto;
+}
+.coeur{
+    position: absolute;
+    top: 5%;
+    left:  5%;
+}
+.voiture{
+    position: absolute;
+    right: -20%;
+    top: -15%;
+    width: 80%;
+    height: 400px;
+}
+.nom{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+}
+.palette{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+.calendrier{
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+.volant{
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: center;
+    align-items: center;
+}
+.volant img{
+    width: 30px;
+}
+.panier{
+    position: absolute;
+    bottom: 10%;
+    right: -10%;
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    justify-content: center;
+    align-items: center;
+    background-color: #8b8b42;
+}

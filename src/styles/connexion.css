@@ -60,7 +60,7 @@ html::-webkit-scrollbar-track {
     width: 30%;
     border-radius: 10px;
     padding: 10px 0px 20px;
-    box-shadow: 5px 5px 5px  rgba(255,255,255,0.5);
+    box-shadow: 0px 0px 5px 2px  rgba(255,255,255,0.5);
 }
 
 .conteneur-connexion h2{

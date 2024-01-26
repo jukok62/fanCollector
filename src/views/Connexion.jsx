@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import axios from 'axios';
 import Header from '../components/Header';
 import { toast } from 'react-toastify';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import '../styles/connexion.css'
 import img1 from '../Image/fond-connection.jpg'
 import connexionService from '../Services/connexionService';
+import GlobalContext from '../context/GlobalContext';
 
 const Connexion = () => {
+
+    const navigate = useNavigate();
+    const { setUserId, setUser} = useContext(GlobalContext);
 
     const [connection, setConnection] = useState({
         email : "",
@@ -16,20 +21,43 @@ const Connexion = () => {
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
         setConnection({ ...connection, [name]: value });
-        console.log(connection);
     }
 
     const newConnexion = async (e) => {
         e.preventDefault();
         try {
             const response = await connexionService.Connect(connection)
+            // stock userId en récupérant l'ID au moment de la connection
+            setUserId(response.data.userSQL.User_ID)
+            // on stock le USER COMPLET dans user
+            setUser(response.data.userSQL)
+
+            // Onstock le token dans la clé token du localStorage
+            window.localStorage.setItem("token", response.data.access_token);
+            // on demande que toutes nos routes axios aient besoin d'une autorisation qui sera stocké dans Bearer            
+            axios.defaults.headers['Authorization'] = "Bearer " + response.data.access_token;
+
             console.log(response);
-            toast.success('connection réussie');
+            setTimeout(() => {
+                navigate("/monCompte")
+            }, 500); // Délai en millisecondes (500ms = 0.5 seconde)
         } catch (e) {
             console.log(e);
             toast.error('problème de connection')
         }
     }
+
+    useEffect(() => {
+        // on créer des const pour stocker l'utilisateur et l'id 
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        const storedUserId = localStorage.getItem('userId');
+
+        // Onvérifie que storedUser affiche bien le storedUserId avec de les mettre a jour
+        if (storedUser && storedUserId) {
+            setUser(storedUser);
+            setUserId(storedUserId);
+        }
+    },[])
 
     return ( <>
     

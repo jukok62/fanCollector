@@ -40,6 +40,9 @@ html::-webkit-scrollbar-track {
     --text-jaune : #E1A624;
     --couleur-marron : #AD956B;
 }
+body{
+    background-color: var(--background);
+}
 .benvenue-admin{
     width: 85%;
     margin: 50px auto 50px;
@@ -59,15 +62,110 @@ html::-webkit-scrollbar-track {
     align-items: center;
     border-bottom: 1px solid black;
 }
+.header-tableau *:not(input){
+    cursor: pointer;
+}
 .liste-produit{
+    position: relative;
     display: flex;
-   padding: 10px 20px;
-   gap: 10px;
+    align-items: center;
+    gap: 15px;
+   padding: 5px 20px;  
+   margin-left: 20px;
+}
+.liste-produit p{
+    font-weight: 700;
 }
 .search-produit{
     display: flex;
+    align-items:center;
+    gap: 10px;
     padding: 10px 20px;
+    margin-right: 20px;
+}
+.search-produit input{
+    border: 1px solid black;
+    border-radius: 6px;
 }
 .btn-ajouter{
     margin-left: 50px;
+    margin-top: 15px;
+}
+
+
+/* PARTIE TABLEAU */
+
+table{
+    width: 96%;
+    border: 2px solid black;
+    margin: 20px auto;
+    border-collapse: collapse;
+    z-index: 1;
+}
+th,td{
+    border: 2px solid rgba(0, 0, 0, 1);
+    text-align: center;
+    vertical-align: middle;
+}
+th{
+    background-color: var(--background-bleu-gris-90);
+    color: var(--text-blanc);
+}
+td{
+    background-color: white;
+}
+.colonne-img{
+    width: 20%;
+}
+.colonne-produit{
+    width: 30%;
+}
+.colonne-prixQ{
+    width: 15%;
+}
+.colonne-modSupp{
+    width: 10%;
+}
+.icon-modif, .icon-supp{
+    padding-top: 10px;
+    transition: transform 0.3s ease;
+}
+.icon-modif:hover, .icon-supp:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+.img-produit{
+    margin-top: 10px;
+    transition: transform 0.4s ease;
+}
+.img-produit:hover{
+    transform: scale(2);
+    cursor: pointer;
+}
+
+/* ICON CLASSEMENT ASC DESC */
+
+.ASC-icon{
+    margin-left: 10px;
+}
+
+/* LISTE DEROULANTE  */
+
+.liste-produit-deroulant{
+    position: absolute;
+    top: 100%;
+    left: -20px;
+    width: 300px;
+    max-height: 350px;
+    overflow-y: scroll;
+    border-radius: 6px;
+    z-index: 10;
+    background-color: var(--background-bleu-gris);
+    color: var(--text-blanc);
+}
+.liste-produit-deroulant li{
+    padding: 10px;
+}
+.liste-produit-deroulant li:hover{
+    background-color: #13335a;
 }

@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,300;16..144,500;16..144,700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--background-bleu-gris);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+.conteneur-card{
+    width: 98%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+}
+.conteneur-block{
+    width: 20%;
+    border: 1px solid black;
+    height: 400px;
+    position: relative;
+    margin: 100px auto;
+    background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(155, 225, 230,0.9) );
+    color: var(--text-blanc);
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px var(--background-bleu-gris);
+    font-size: 0.7rem;
+    transition: transform 0.4s ease;
+}
+.conteneur-block:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.coeur{
+    position: absolute;
+    top: 5%;
+    left:  5%;
+    width: 12%;
+}
+/* PARTIE IMAGE PRINCIPALE */
+.voiture{
+    position: absolute;
+    right: -20%;
+    top: -11%;
+    width: 85%;
+    height: 320px;
+    z-index: 1;
+}
+.figurine{
+    position: absolute;
+    right: -10%;
+    top: -15%;
+    width: 90%;
+    height: 330px;
+}
+.piece{
+    position: absolute;
+    right: -10%;
+    top: -15%;
+    width: 90%;
+    height: 320px;
+}
+
+/* PARTIE NOM DU PRODUIT */
+.nom{
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    font-size: 18px;
+    line-height: 2rem;
+    width: 60%;
+}
+.nomBis{
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    font-size: 18px;
+}
+
+/* PARTIE PREMIER CARRE INFORMATIF COULEUR,MATIERE,METAL */
+.palette{
+    position: absolute;
+    bottom: 5%;
+    left: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 21%;
+    height: 80px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+}
+.palette img{
+    width: 40px;
+    padding-top: 10px;
+}
+
+
+/* PARTIE CALENDRIER + ANNEE */
+.calendrier{
+    position: absolute;
+    bottom: 5%;
+    left: 25%;
+    display: flex;
+    flex-direction: column;
+    width: 21%;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 15px;
+}
+.calendrier img{
+    height: 50px;
+    padding-top: 10px;
+}
+
+
+/* PARTIE VOLANT + CASQUE + STATUETTE + € */
+.volant{
+    position: absolute;
+    bottom: 5%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    width: 21%;
+    height: 80px;
+    justify-content: center;
+    align-items: center;
+    background-color: #D9D9D9;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-left: 30px;
+}
+.volant img{
+    width: 35px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
+
+/*  PARTIE PANIER */
+.panier{
+    position: absolute;
+    bottom: 15%;
+    right: -10%;
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    border-bottom-right-radius: 0px;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--couleur-marron);
+    margin-left: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+.panier img{
+    height: 55px;
+    padding-top: 5px;
+    padding-right: 5px;
+}
+.panier:hover{
+    transform: scale(1.1);
+    background-color: #6b5a3c;
+    cursor: pointer;
+}
+
+/* PARTIE RESPONSIVE */
+@media screen and (max-width: 1500px){
+    .panier{
+        right: -18%;
+    }
+}
+@media screen and (max-width: 1350px){
+    .conteneur-card{
+        margin-top: 12%;
+    }
+    .panier img{
+        height: 45px;
+    }
+    .panier{
+        width: 80px;
+        height: 70px;
+        right: -15%;
+        bottom: 25%;
+        z-index: 2;
+    }
+    .voiture{
+        z-index: 1;
+    }
+}
+
+@media screen and (max-width: 1100px){
+    .conteneur-card{
+        margin-top: 23%;
+    }
+    .conteneur-block{
+        width: 30%;
+        margin: 25px auto;
+        font-size: 0.6rem;
+    }  
+    .nom{
+        font-size: 16px;
+        line-height: 1.6rem;
+        width: 70%;
+    } 
+    .voiture{
+        top : -18%;
+        z-index: 1;
+    }
+    .panier{
+        bottom : 20% ;
+        width: 85px;
+        right: -10%;
+    }
+}
+@media screen and (max-width: 1000px){
+    .conteneur-card{
+        margin-top: 28%;
+    }
+   
+}
+@media screen and (max-width: 900px){
+    .conteneur-card{
+        margin-top: 31%;
+    }
+    .conteneur-block{
+        width: 40%;
+    }  
+}
+@media screen and (max-width: 800px){
+    .conteneur-card{
+        margin-top: 33%;
+    }
+    .conteneur-block{
+        width: 40%;
+    }  
+}
+@media screen and (max-width: 760px){
+    
+    .conteneur-card{
+       margin-top: 0%;;
+    }  
+}
+@media screen and (max-width: 550px){
+    .conteneur-card{
+        flex-direction: column;
+    }  
+    .conteneur-block{
+        width: 70%;
+    }
+}

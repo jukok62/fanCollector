@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,300;16..144,500;16..144,700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--background-bleu-gris);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+.conteneur-detail-produit{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: 50px auto;
+}
+
+.image-prix{
+    display: flex;
+    flex-flow: row nowrap;
+    column-gap: 30px;
+    height: 450px;
+}
+
+.photo-secondaire{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 10px;
+}
+.photo-principale{
+    box-shadow: 4px 4px 10px rgba(0,0,0,1);
+}
+.prix-panier{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px 60px;
+    border: 1px solid black;
+    height: 65%;
+    margin-left: auto;
+    background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(105, 152, 156, 0.9) );
+    border-radius: 6px;
+    color: white;
+    box-shadow: 4px 4px 10px #384454 ;
+}
+.prix-panier *{
+    font-size: 18px;
+    font-weight: 700;
+}
+.prix-panier button {
+    background-color: var(--text-jaune);
+    color: var(--text-gris-bleu);
+    border-radius: 6px;
+    padding: 5px 15px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
+    transition: background-color 0.2s ease , transform 0.5s ease, color 0.5s ease, border 0.5s ease;
+}
+.prix-panier button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    /* background-color: #e49c00; */
+}
+.prix-panier button:active{
+    transform: translateY(3px);
+}
+.favoris{
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    margin: 15px auto;
+    border: 1px solid white;
+    border-radius: 6px;
+    padding: 1px 8px;
+    background-color: white;
+    color: var(--text-gris-bleu);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.favoris *{
+    font-weight: 600;
+}
+.favoris:active{
+    transform: translateY(3px);
+}
+
+.description-produit{
+    width: 95%;
+    margin: 50px auto;
+    border: 2px solid var(--background-bleu-gris);
+    padding: 10px 40px;
+    color: var(--text-gris-bleu);
+    border-radius: 6px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.9);
+}
+
+
+/* PARTIE MODALE IMAGE */
+
+.modal-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+  }
+
+  .modal-contenu {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+  }
+  .image-agrandie-container img {
+    width: 100%;
+    height: auto;
+  }
+  .bouton-fermer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
