@@ -56,13 +56,14 @@ html::-webkit-scrollbar-track {
     background-color: var(--background-bleu-gris);
     color: var(--text-blanc);
     margin-bottom : 30px;
+    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.8);
 }
 /* TAILLE DE L'IMAGE PRINCIAPLE */
 .panier-principale .imgPrincipale{
     width: 250px;
     height: 270px;
     margin: auto 15px;
-    border-radius: 6px;
+    border-radius: 10px ;
     padding: 10px 0px;
 }
 /* DESCRIPTION A COTE DE L'IMAGE */
@@ -77,6 +78,12 @@ html::-webkit-scrollbar-track {
     margin-left: 20px;
 }
 
+.description-panier{
+    font-size: 10px;
+    width: 80%;
+    margin: 10px 0px;
+}
+
 /* partie bouton + et - */
 .buttonIncrementation{
     display: flex;
@@ -85,8 +92,8 @@ html::-webkit-scrollbar-track {
     align-items: center;
     width: 20%;
     position: absolute;
-    bottom: 5%;
-    left: 2%;
+    bottom: 0%;
+    left: 0%;
     transition: transform 0.3s ease;
 }
 .buttonIncrementation img:hover{

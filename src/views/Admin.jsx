@@ -31,7 +31,8 @@ const Admin = () => {
 
     const deleteProduit = async (id) => {
         try {
-            const response = produitsServices.deleteProduit(id)
+            const response = await produitsServices.deleteProduit(id)
+            console.log(response);
         } catch (e) {
             console.log(e);
         }
@@ -42,7 +43,7 @@ const Admin = () => {
         getProduit();
     },[])
 
-    console.log(produits);
+    console.log("clg de produit" , produits);
     return ( <>
     
    <Header/>
@@ -89,7 +90,7 @@ const Admin = () => {
             <td>{prod.Produit_prix}€</td>
             <td>{prod.Produit_quantite}</td>
             <td><Link to={`/modifAdmin/${prod.ID_Produit}`}><img src={iconModifiy} width={35} alt="icon modifier" className='icon-modif' /></Link></td>
-            <td><img src={iconSupp} width={35} alt="icon supprimer" className='icon-supp' onClick={() => deleteProduit(prod.ID_Produits)}/></td>
+            <td><img src={iconSupp} width={35} alt="icon supprimer" className='icon-supp' onClick={() => deleteProduit(prod.ID_Produit)}/></td>
             </tr>
         ))}
         </tbody>

@@ -26,20 +26,38 @@ const DetailsProduitComponent = ({produit}) => {
         setImageAgrandieSrc(src);
       };
 
+      // Fonction pour ajouter au panier et créer une nouvelle ligne quantiteCommander
       const ajouterAuPanier = () => {
         // ON VA CHERCHER LE PANIER ACTUELLE DU LOCALESTORAGE
         const panierLocalStorage = localStorage.getItem(`panier_${userId}`);
         //On vérifie si la clé panier existe ou n'est pas undefined ET/OU on l'initialise a un tableau vide
         const panier = panierLocalStorage && panierLocalStorage !== 'undefined' ? JSON.parse(panierLocalStorage) : [];
-        // On ajoute le produit au panier
-        panier.push(produit)
-        // on met a jour le panier dans le LocaleStorage en le transformant en chaine de caractère
-        localStorage.setItem(`panier_${userId}`, JSON.stringify(panier));
-        // on met a jour le panier dans l'état global
-        setUserPanier(panier)
+
+        let produitExiste = false;
+
+        // Parcourir le panier pour voir si le produit existe déjà
+        const nouveauPanier = panier.map((pr) => {
+          if (pr.ID_Produit === produit.ID_Produit) {
+            pr.quantiteCommander += 1;
+            produitExiste = true;
+          }
+          return pr;
+        });
+
+        // Si le produit n'existe pas, l'ajouter au panier
+        if (!produitExiste) {
+          produit.quantiteCommander = 1;
+          nouveauPanier.push(produit);
+        }
+
+        console.log(nouveauPanier);
+        // On met à jour le panier dans le LocalStorage en le transformant en chaîne de caractères
+        localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
+        // On met à jour le panier dans l'état global
+        setUserPanier(nouveauPanier);
         
     
-        console.log(`Produit "${produit.Produit_nom}" ajouté au panier`);
+        // console.log(`Produit "${produit.Produit_nom}" ajouté au panier`);
       };
 
 

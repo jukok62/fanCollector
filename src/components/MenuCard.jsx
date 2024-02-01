@@ -38,9 +38,6 @@ const MenuCard = ({id}) => {
         }
     }
 
-console.log("clg de categorie" , categories);
-
-    console.log("clg de categorieById " , categorieById);
 
     useEffect(() => {
         getProduitByCategorie();

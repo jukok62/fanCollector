@@ -1,5 +1,5 @@
 import React ,{useEffect, useState} from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 
 import img1 from '../Image/slider/aston-slider.jpg';
 import img2 from '../Image/slider/camion-slider.jpg'
@@ -24,9 +24,21 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Header from '../components/Header';
 
 
+
 const Accueil = () => {
 
+
+  const navigate = useNavigate();
   const [isVisible, setIsVisible] = useState(false);
+  const [catVoiture, setCatVoiture] = useState(false);
+  const [catMoto, setCatMoto] = useState(false);
+  const [catTracteur, setCatTracteur] = useState(false);
+
+  const afficheCategorie = () =>{
+    setCatMoto(!catMoto);
+    setCatTracteur(!catTracteur);
+    setCatVoiture(!catVoiture);
+  }
 
   useEffect(() => {
 const handleScroll = () => {
@@ -79,7 +91,7 @@ return () => {
     <div className='categorie'>
     <h2>CATEGORIES</h2>
       <div className='conteneur-flex-card-categorie'>
-        <div className='card-categorie'>
+        <div className='card-categorie' onClick={() => navigate('/categorieAccueil/voiture')}>
           <img className='img-voiture' src={imgAccueilVoiture} alt="" />
           <p>VOITURES</p>
           <div className="overlay">
@@ -87,7 +99,7 @@ return () => {
             <p className='second-text'>découvrir</p>
           </div>
         </div>
-        <div className='card-categorie'>
+        <div className='card-categorie' onClick={() => navigate('/categorieAccueil/moto')}>
           <img className='img-voiture' src={imgAccueilMoto} alt="" />
           <p>MOTOS</p>
           <div className="overlay">
@@ -95,7 +107,7 @@ return () => {
             <p className='second-text'>découvrir</p>
           </div>
         </div>
-        <div className='card-categorie'>
+        <div className='card-categorie' onClick={() => navigate('/categorieAccueil/tracteur')}>
           <img className='img-voiture' src={imgAccueilTracteur} alt="" />
           <p>TRACTEURS</p>
           <div className="overlay">
@@ -103,7 +115,7 @@ return () => {
             <p className='second-text'>découvrir</p>
           </div>
         </div>
-        <div className='card-categorie'>
+        <div className='card-categorie' onClick={() => navigate('/categorie/Piece')}>
           <img className='img-voiture' src={imgAccueilPiece} alt="" />
           <p>MONNAIE</p>
           <div className="overlay">
@@ -111,7 +123,7 @@ return () => {
             <p className='second-text'>découvrir</p>
           </div>
         </div>
-        <div className='card-categorie'>
+        <div className='card-categorie' onClick={() => navigate('/categorie/Figurine')}>
           <img className='img-voiture' src={imgAccueilFigurine} alt="" />
           <p>FIGURINES</p>
           <div className="overlay">
@@ -123,6 +135,7 @@ return () => {
     </div>
     <div>
     </div>
+
     
     {/* PARTIE A PROPOS */}
 

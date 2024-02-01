@@ -11,7 +11,7 @@ import GlobalContext from '../context/GlobalContext';
 const Connexion = () => {
 
     const navigate = useNavigate();
-    const { setUserId, setUser} = useContext(GlobalContext);
+    const { setUserId, setUser, user} = useContext(GlobalContext);
 
     const [connection, setConnection] = useState({
         email : "",
@@ -31,6 +31,10 @@ const Connexion = () => {
             setUserId(response.data.userSQL.User_ID)
             // on stock le USER COMPLET dans user
             setUser(response.data.userSQL)
+            // on stock le user dans le LocalStorage
+            localStorage.setItem('user', JSON.stringify(response.data.userSQL));
+            // on stock le userId dans le LocalStorage
+            localStorage.setItem('userId', response.data.userSQL.User_ID);
 
             // Onstock le token dans la clé token du localStorage
             window.localStorage.setItem("token", response.data.access_token);
@@ -47,17 +51,22 @@ const Connexion = () => {
         }
     }
 
+    console.log(user);
+
     useEffect(() => {
         // on créer des const pour stocker l'utilisateur et l'id 
         const storedUser = JSON.parse(localStorage.getItem('user'));
         const storedUserId = localStorage.getItem('userId');
 
-        // Onvérifie que storedUser affiche bien le storedUserId avec de les mettre a jour
+        // Ajoutez un console.log ici pour vérifier la valeur de storedUser
+    console.log("Valeur de storedUser dans useEffect :", storedUser);
+
+        // Onvérifie que storedUser affiche bien le storedUserId avant de les mettre a jour
         if (storedUser && storedUserId) {
             setUser(storedUser);
             setUserId(storedUserId);
         }
-    },[])
+    },[setUser, setUserId])
 
     return ( <>
     

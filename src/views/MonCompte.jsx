@@ -4,36 +4,69 @@ import '../styles/monCompte.css'
 import achatService from '../Services/achatService';
 import { format } from 'date-fns';
 import GlobalContext from '../context/GlobalContext';
+import userService from '../Services/userService';
+import { toast } from 'react-toastify';
+
+import imgDeco from '../Image/icon/se-deconnecter32px1.png'
+import ChangePasswordModal from '../modal/ChangePasswordModal';
+import { useNavigate } from 'react-router-dom';
 
 const MonCompte = () => {
 
     const {user, setUser, userId, setUserId} = useContext(GlobalContext)
     const [commandes, setCommandes] = useState([]);
+    const [champsActifs, setChampsActifs] = useState(false);
+    const [boutonModifier, setBoutonModifier] = useState(false);
+    const [btnModifMdp, setBtnModifMdp] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const navigate = useNavigate();
+
+    const handleOpenModal = () => {
+        setIsModalOpen(true);
+      };
+    
+      const handleCloseModal = () => {
+        setIsModalOpen(false);
+      };
+  
+    const changeChampsEtBouton = () => {
+      setChampsActifs(!champsActifs);
+      setBoutonModifier(!boutonModifier);
+      setBtnModifMdp(!btnModifMdp)
+    };
+
+
+    // RECUPERATION DES VALUES
+    const handleChange = (e) => {
+        const {name, value} = e.currentTarget;
+        setUser({...user, [name] : value})
+    }
+
+    // ENVOIS DES DONNEES MISE A JOUR
+    const updateUser = async (e) => {
+        try {
+          const response = await userService.updateUser(user) 
+          toast.success('La modification a bien été enregistré')
+        } catch (e) {
+            console.log(e);
+            toast.error('La modification a échoué')
+        }
+    }
 
 
     const getAchat = async () => {
         try {
             const response = await achatService.getAchat(userId);
             setCommandes(response.data)
-            console.log(response.data);
         } catch (e) {
             console.log(e);
         }
     }
 
     useEffect(() => {
-        const storedUser = localStorage.getItem('user');
-        if(storedUser){
-            //  on récupère l'utilisateur stocké et on le retransforme en objet json.
-            const parsedUser = JSON.parse(storedUser)
-            // Vérifiez si parsedUser est évalué à true avant d'accéder à ses propriétés.
-            if(parsedUser){
-                setUserId(parsedUser.User_Id)
-                setUser(parsedUser)
-            }
-        }
         getAchat();
-    },[setUser, setUserId])
+    },[])
 
     const groupCommandes = () => {
         const groupedCommandes = [];
@@ -49,12 +82,20 @@ const MonCompte = () => {
                 groupedCommandes[groupedCommandes.length - 1].push(com);
             }
         });
-        console.table(groupedCommandes);
+        // console.table(groupedCommandes);
 
         return groupedCommandes;
     };
 
-   
+   // CONST DECONNECTION 
+   const deconnexion = () => {
+    localStorage.removeItem('user')
+    localStorage.removeItem('userId')
+    localStorage.removeItem(`panier${userId}`)
+    setTimeout(() => {
+        window.location.reload();
+    }, 500);
+}  
     
     return ( <>
 
@@ -63,38 +104,47 @@ const MonCompte = () => {
     <div className="nom-monCompte">
         <h3>Bienvenue</h3>
         <p>{user?.User_nom} {user?.User_prenom}</p>
+        <img src={imgDeco} alt="bouton de déconnection" onClick={deconnexion}/>
     </div>
     
     <div className="conteneur-monCompte">
 
-        <div className='left'>
+        <div className={!champsActifs ? 'left' : 'leftActif'}>
+
+            <input type="hidden" name='User_ID' value={user?.User_ID} />
 
             <label htmlFor="nom">NOM</label>
-            <input type="text" name='nom' id='nom' value={user?.User_nom} />
+            <input type="text" name='User_nom' id='nom' value={user?.User_nom} disabled={!champsActifs} onChange={handleChange}/>
 
             <label htmlFor="email">Adresse eMail</label>
-            <input type="email" name='email' id='email' value={user?.User_email}/>
+            <input type="email" name='User_email' id='email' value={user?.User_email} disabled={!champsActifs} onChange={handleChange}/>
 
             <label htmlFor="adresse">Adresse Postale</label>
-            <input type="text" name='adresse' id='adresse' value={user?.User_adresse}/>
+            <input type="text" name='User_adress' id='adresse' value={user?.User_adresse} disabled={!champsActifs} onChange={handleChange}/>
 
-            <label htmlFor="mdp">Mot de passe</label>
-            <input type="password" name='mdp' id='mdp' value={user?.User_mdp} />
+            {btnModifMdp && (
+            <button onClick={handleOpenModal}>Modifier le mot de passe</button>
+           )}
 
         </div>
 
-        <div className="right">
+        <div className={!champsActifs ? 'right' : "rightActif"}>
 
             <label htmlFor="prenom">Prénom</label>
-            <input type="text" name='prenom' id='prenom' value={user?.User_prenom}/>
+            <input type="text" name='User_prenom' id='prenom' value={user?.User_prenom} disabled={!champsActifs} onChange={handleChange}/>
 
             <label htmlFor="genre">Genre</label>
-            <input type="text" name="genre" id="genre" value={user?.User_genre}/>
+            <select name="User_genre" id="genre" value={user?.User_genre} disabled={!champsActifs} onChange={handleChange}>
+                <option value="Mr">Mr</option>
+                <option value="Mme">Mme</option>
+                <option value="autre">autre</option>
+            </select>
 
             <label htmlFor="tel">Téléphone</label>
-            <input type="tel" name='tel' id='tel' value={user?.User_telephone}/>
+            <input type="tel" name='User_tel' id='tel' value={user?.User_telephone} disabled={!champsActifs} onChange={handleChange}/>
 
-            <button className='btn-monCompte'>MODIFIER</button>
+            {!boutonModifier ? <button className='btn-monCompte' onClick={changeChampsEtBouton}>MODIFIER</button> : 
+                              <button className='btn-monCompte' onClick={() => {updateUser(); changeChampsEtBouton()}}>ENVOYER</button>}
         </div>
     </div>
 
@@ -120,8 +170,9 @@ const MonCompte = () => {
         </div>
     ))}
     </div>  
-  
+
     
+    <ChangePasswordModal isOpen={isModalOpen} onClose={handleCloseModal}/>
     
     </> );
 }

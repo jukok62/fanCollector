@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,300;16..144,500;16..144,700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--background-bleu-gris);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+/* PARTIE QUI CONTIENT TOUTE LA NAVBAR */
+
+.conteneur-navbar{
+    width: 100%;
+    height: auto;
+    border: 1px solid black;
+ 
+}
+
+/* partie avec le logo et nom du site */
+.logo-header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--background-bleu-gris-90);
+    color: var(--text-blanc);
+}
+.logo-header img {
+    width: 80px;
+}
+.logo-header p {
+    font-size: 2em;
+}
+
+/* PARTIE ACCUEIL ICON */
+
+#iconAccueil{
+    position: absolute;
+    top: 10%;
+    left: 1%;
+    width: 60px;
+}
+
+
+/* PARTIE NAVIGUATION */
+nav{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 5%;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(105, 152, 156, 0.9) );
+    opacity: 80%;
+}
+nav a {
+    color: var(--text-blanc);
+}
+

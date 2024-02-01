@@ -41,6 +41,8 @@ html::-webkit-scrollbar-track {
     --couleur-marron : #AD956B;
 }
 
+
+
 /* CONTENEUR DE L'IMAGE ET DES CATEGORIES */
 .container-menuCard{
     position: absolute;
@@ -139,6 +141,7 @@ html::-webkit-scrollbar-track {
 /* DIV ENTRE DEUX COMPONENT POUR ESPACER LES COMPONENTS */
 .Invisible{
     height: 50px;
+    z-index: 1;
 }
 
 /* PARTIE RESPONSIVE */

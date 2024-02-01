@@ -1,13 +1,16 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import '../styles/header.css'
 
 import iconAdmin from '../Image/icon/profil-de-lutilisateur.png'
+import iconCompte from '../Image/icon/user-check.png'
 import imgLogin2 from '../Image/icon/user-lock2.png'
 import imgDeconnection from '../Image/icon/se-deconnecter32px.png'
 import iconBurger from '../Image/icon/menu.png'
 import iconAccueil from '../Image/icon/accueil (1).png'
+import iconCroix from '../Image/icon/cross-circle.png'
 import GlobalContext from '../context/GlobalContext';
+
 
 
 const Header = () => {
@@ -15,6 +18,9 @@ const Header = () => {
     const {userId, user} = useContext(GlobalContext)
     const navigate = useNavigate();
     const [listeBurger, setListeBurger] = useState(false);
+    
+
+   
 
     const listeDeroulante = () => {
         setListeBurger(!listeBurger);
@@ -43,6 +49,7 @@ const Header = () => {
                     <Link>VEHICULES</Link>
                     <Link>FIGURINES</Link>
                     <Link>PIECES</Link>
+                    <img className='imgCroix' src={iconCroix} alt="fermer le menu" />
                 </div>
             )}
         </div>
@@ -63,17 +70,21 @@ const Header = () => {
             {user === null ? (
 
             <div className="compte-header">
-                <img src={imgLogin2} className='button-compte-header' alt="icon pour accéder à son compte" onClick={() => navigate('/connexion')}/>
+                <img src={imgLogin2}  alt="icon pour accéder à son compte" onClick={() => navigate('/connexion')}/>
                 <Link to={'/connexion'} className='Link'><p className='seConnecter noBurger'>Connection</p></Link>
             </div>
              ) : (<div className="compte-header">
              <img src={imgDeconnection}  className='button-compte-header' alt="icon pour accéder à son compte" onClick={deconnexion}/>
+             <img src={iconCompte}  className=' iconMonCompte' alt="icon pour accéder à son compte" onClick={() => navigate('/monCompte')}/>
              <Link to={"/monCompte"} className='Link'><p className=' noBurger seConnecter'>{user?.User_genre}.{user?.User_nom}</p></Link>
              <img src={iconAdmin} alt="icon admin" onClick={() => navigate('/admin')}/>
          </div>)
             }
             <img src={process.env.PUBLIC_URL + `/Asset/Icons/paniers.png`} className='button-panier-header' alt="icon pour accéder au panier" onClick={() => navigate('/panier')} />
         </div>
+
+        
+       
     
     </> );
 }

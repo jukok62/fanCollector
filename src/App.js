@@ -19,6 +19,11 @@ import Figurines from './views/Figurines';
 import Pieces from './views/Piece';
 import DetailsProduitsView from './views/DetailsProduitsView';
 import Panier from './views/Panier';
+import Voiture from './views/Voitures';
+import Motos from './views/Motos';
+import Tracteurs from './views/Tracteurs';
+import TestHeader from './views/TestHeader'
+
 
 
 function App() {
@@ -42,7 +47,7 @@ function App() {
       setUserPanier([]);
     }
   }, [userId]);
-
+ console.log("clg de userId dans app   :  " + userId);
   
     useEffect(() => {
       if(userId !== null ){
@@ -54,18 +59,19 @@ function App() {
       localStorage.removeItem(`panier_${userId}`);
       setUserPanier([]);
       localStorage.removeItem('userId');
-    
     }
   },[userId]);
+
+
   useEffect(() => {
-    if( user !== null){
-      localStorage.setItem('user', JSON.stringify(user) );                                                      
-  } else {
-    // Si l'utilisateur se déconnecte, effacer le panier associé et réinitialiser l'état local du panier
-    localStorage.removeItem('user')
-  }
+    if (user !== null) {
+      const panierLocalStorage = localStorage.getItem(`panier_${user.User_ID}`);
+      const panier = panierLocalStorage && panierLocalStorage !== 'undefined' ? JSON.parse(panierLocalStorage) : [];
+      setUserPanier(panier);
+    } else {
+      setUserPanier([]);
+    }
 },[user]);
-  console.log("clg de userid " , userId);
   return (<>
 
     <GlobalContext.Provider value={{userId, setUserId, user, setUser,userPanier, setUserPanier }}>
@@ -78,6 +84,9 @@ function App() {
         <Route path='/aPropos' element={<Apropos/>}/>
         <Route path='/contact'  element={<Contact/>}/>
         <Route path='/categorie' element={<Categorie/>}/>
+        <Route path='/categorieAccueil/voiture' element={<Voiture/>}/>
+        <Route path='/categorieAccueil/moto' element={<Motos/>}/>
+        <Route path='/categorieAccueil/tracteur' element={<Tracteurs/>}/>
         {user && user.User_ID && (
         <>
           <Route path='/monCompte'  element={<MonCompte/>}/>
@@ -90,12 +99,15 @@ function App() {
           <Route path='/modifAdmin/:id' element={<ModifAdmin/>}/>
           </>
         ) }
+        <Route path='/test' element={<TestHeader/>}/>
         <Route path='/card/:id'  element={<Card/>}/>
         <Route path='/categorie/Vehicule' element={<Vehicules/>}/>
         <Route path='/categorie/Figurine' element={<Figurines/>}/>
         <Route path='/categorie/Piece' element={<Pieces/>}/>
         <Route path='/detailsProduit/:id' element={<DetailsProduitsView/>}/>
         <Route path='/panier' element={<Panier/>}/>
+        
+       
       </Routes>
     </BrowserRouter>
     </GlobalContext.Provider>

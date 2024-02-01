@@ -41,6 +41,25 @@ html::-webkit-scrollbar-track {
     --couleur-marron : #AD956B;
 }
 
+/* INPUT DE RECHERCHE */
+
+.input-search{
+    display: flex;
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    gap: 10px;
+    padding: 10px;
+    background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(155, 225, 230,0.9) );
+    color: var(--text-blanc);
+    border-radius: 10px;
+    z-index: 5;
+}
+.input-search input{
+    padding-left: 10px;
+    border-radius: 4px;
+}
+
 .conteneur-card{
     width: 98%;
     display: flex;
@@ -48,13 +67,14 @@ html::-webkit-scrollbar-track {
     justify-content: center;
     align-items: center;
     margin-top: 10%;
+    position: relative;
 }
 .conteneur-block{
-    width: 20%;
+    width: 25%;
     border: 1px solid black;
     height: 400px;
     position: relative;
-    margin: 100px auto;
+    margin: 100px 50px;
     background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(155, 225, 230,0.9) );
     color: var(--text-blanc);
     border-radius: 10px;
@@ -62,6 +82,7 @@ html::-webkit-scrollbar-track {
     font-size: 0.7rem;
     transition: transform 0.4s ease;
 }
+
 .conteneur-block:hover{
     transform: scale(1.1);
     cursor: pointer;
@@ -197,6 +218,7 @@ html::-webkit-scrollbar-track {
     margin-left: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
+    z-index: 10;
 }
 .panier img{
     height: 55px;

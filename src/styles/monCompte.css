@@ -43,10 +43,22 @@ html::-webkit-scrollbar-track {
 /* PARTIE NOM PRENOM */
 
 .nom-monCompte{
+    position: relative;
     width: 70%;
     margin: 20px auto 10px;
     font-size: 22px;
     line-height: 2.5rem;
+}
+.nom-monCompte img {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    width: 40px;
+    transition: transform 0.3s ease;
+}
+.nom-monCompte img:hover{
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 
@@ -72,28 +84,68 @@ html::-webkit-scrollbar-track {
 
 /* PARTIE GAUCHE DU FORMULAIRE */
 
-.left{
+.left, .leftActif{
     display: flex;
     flex-flow: column nowrap;
     width: 35%;
     height: 100%;
 }
-.left *{
+.left *, .leftActif *{
     padding: 10px 0px;
     border-radius: 10px;
+}
+.leftActif button{
+    width: 50%;
+    align-self: center;
+    margin-top: 10%;
+    background-color: var(--text-jaune);
+    color: var(--text-gris-bleu);
+    font-weight: 700;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.8);
+    transition: transform 0.4s ease , background 0.4s ease , color 0.4s ease;
+}
+.leftActif button:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+    background: var(--background-bleu-gris);
+    color: var(--text-jaune);
+    border: 1px solid var(--text-jaune);
+}
+.leftActif button:active{
+    transform: translateY(2px);
+}
+.btn-modif-mdp{
+  width: 50%;
+  align-self: center;
+  margin-top: 15%;
+  background: var(--text-jaune);
+  color: var(--text-gris-bleu);
+  font-weight: 700;
+  box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.8);
+  transition: transform 0.4s ease , background 0.4s ease , color 0.4s ease;
+}
+.btn-modif-mdp:hover{
+    cursor:pointer;
+    transform: scale(1.1);
+    background: var(--background-bleu-gris);
+    color: var(--text-jaune);
+    border: 1px solid var(--text-jaune);
 }
 
 /* PARTIE DROITE DU FORMULAIRE */
 
-.right{
+.right, .rightActif{
     display: flex;
     flex-flow: column nowrap;
     width: 35%;
     height: 100%;
 }
-.right *{
+.right *, .rightActif *{
     padding: 10px 0px;
     border-radius: 10px;
+}
+.left input, .right input{
+    color : white;
 }
 .btn-monCompte{
     margin-top: 66px;
