@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import categorieService from '../Services/categorieService'
 import CategorieByType from '../components/CategorieComponent';
 
@@ -10,7 +10,7 @@ const Categorie = () => {
     return ( 
     <>
 
-    <Header/>
+    <Header2/>
     <CategorieByType/>
     
 

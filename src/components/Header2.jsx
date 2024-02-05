@@ -1,32 +1,102 @@
-import React from 'react';
-import {Link} from 'react-router-dom'
+import React, { useContext, useState } from 'react';
+import {Link, useNavigate} from 'react-router-dom'
 import logo from '../Image/logo.png'
-import iconBurger from '../Image/icon/menu.png'
-import iconAccueil from '../Image/icon/accueil (1).png'
+import iconBurger from '../Image/icon/navbar/menu.png'
+import iconAccueil from '../Image/icon/navbar/accueil (2).png'
+import inconPanier from '../Image/icon/navbar/shopping-bag.png'
+import iconConnection from '../Image/icon/navbar/user-lock (2).png'
+import iconConnecter from '../Image/icon/navbar/user (1).png'
+import iconFavoris from '../Image/icon/navbar/favori.png'
+import iconDeconnexion from '../Image/icon/navbar/se-deconnecter (4).png'
 import '../styles/header2.css'
+import GlobalContext from '../context/GlobalContext';
 
 const Header2 = () => {
+
+    const navigate = useNavigate();
+    const [menuBurger, setMenuBurger] = useState(false);
+    const {user, userId} = useContext(GlobalContext);
+
+    const listeDeroulante = () => {
+        setMenuBurger(!menuBurger)
+    }
+    const deconnexion = () => {
+        localStorage.removeItem('user')
+        localStorage.removeItem('userId')
+        localStorage.removeItem(`panier${userId}`)
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
+        setTimeout(() => {
+            navigate('/');
+        }, 1500); 
+    } 
+
     return ( <>
 
-            <div className="conteneur-navbar">
-            <div className='logo-header'>
-                <img id='iconAccueil' src={iconAccueil} alt="" />
-                <p>FAN C</p><img src={logo} alt="image de mon logo" /><p>LLECTOR</p>
-            </div>
-            <nav>
-                <div className='menu-burger'>
-                    <img src={iconBurger} alt="icon du menu burger" />
+<div className="conteneur-navbar">
+    <div className='logo-header' onClick={() => navigate('/')}>
+        <img id='iconAccueil' src={iconAccueil} alt="logo pour revenir a l'accueil" className='hover-icon-accueil' onClick={() => navigate('/')} />
+        <p>FAN C</p><img src={logo} alt="image de mon logo" /><p>LLECTOR</p>
+    </div>
+    <nav>
+        <div className='menu-burger'>
+            <img src={iconBurger} alt="icon du menu burger" onClick={listeDeroulante}/>
+            {menuBurger ? 
+            <ul className='menu-burger-ul'>
+                <li>Accueil</li>
+                <li>Tous nos produits</li>
+                <li>A propos de Nous</li>
+                <li>Nous contacter</li>
+            </ul> : ""}
+        </div>
+        <div className='categorie-navbar'>
+            <Link to={'/categorie/Vehicule'}>VEHICULES</Link>
+            <Link to={'/categorie/Figurine'}>FIGURINES</Link>
+            <Link to={'/categorie/Piece'}>PIECES</Link>
+            <Link to={'/categorie'}>CATEGORIES</Link>
+        </div>
+        <div className="icon-header">
+        {!user ? (
+            <Link to={'/connexion'}>
+                <div>
+                    <img src={iconConnection} alt="se connecter" className="hover-icon-connexion"/>
+                    <span className="hover-text hover-text-connexion">Connectez-vous</span>
                 </div>
-                <div className=''>
-                    <Link>VEHICULES</Link>
-                    <Link>FIGURINES</Link>
-                    <Link>PIECES</Link>
+            </Link>
+        ) : (
+            <>
+            <Link to={'/monCompte'}>
+                <div>
+                    <img src={iconConnecter} alt="se connecter" className="hover-icon-connecter"/>
+                    <span className="hover-text hover-text-connecter">{user.User_genre}.{user.User_nom}</span>
                 </div>
-                <div className="icon-header">
-                    <img src="" alt="" />
+            </Link>
+            
+                <div onClick={deconnexion}>
+                    <img src={iconDeconnexion} alt="se connecter" className="hover-icon-deconnecter"/>
+                    <span className="hover-text hover-text-deconnecter">Déconnexion</span>
                 </div>
-            </nav>
-            </div>
+            
+
+            </>
+        )}
+
+            <Link to={'#'}>
+                <div>
+                    <img src={iconFavoris} alt="partie favoris" className="hover-icon-favoris"/>
+                    <span className="hover-text hover-text-favoris">Favoris</span>
+                </div>
+            </Link>
+            <Link to={'/panier'}>
+                <div>
+                    <img src={inconPanier} alt="accéder au panier" className="hover-icon-panier" />
+                    <span className="hover-text hover-text-panier">Panier</span>
+                </div>
+            </Link>
+        </div>
+    </nav>
+</div>
     
     
     </> );

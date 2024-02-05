@@ -1,7 +1,7 @@
 import React,{useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import produitsServices from '../Services/produitsServices';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import DetailsProduitComponent from '../components/DetailsProduitsComponent'
 
 const DetailsProduitsView = () => {
@@ -25,7 +25,7 @@ const DetailsProduitsView = () => {
 
     return ( <>
     
-    <Header/>
+    <Header2/>
     <DetailsProduitComponent produit={produitById}/>
     
     

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import CardProduit from '../components/CardProduit';
 import MenuCard from '../components/MenuCard'
 import { useParams } from 'react-router-dom';
@@ -10,6 +10,7 @@ const Card = () => {
 
     const {id} = useParams();
     const [produitByCategorie, setProduitByCategorie] = useState([]);
+    const [produitsById, setProduitsById] = useState([]);
 
 
     const getProduitByCategorie = async () => {
@@ -21,21 +22,33 @@ const Card = () => {
             console.log(e);
         }
     }
+
+    // const getProduitById = async () => {
+    //     try {
+    //         const response = await produitsServices.getProduitById(id)
+    //         setProduitsById(response.data[0])
+    //         console.log(response);
+    //     } catch (e) {
+    //         console.log(e);
+    //     }
+    // }
     
 
     useEffect(() => {
         getProduitByCategorie();
+        // getProduitById();
     },[])
+    
 
     return ( <>
     
-    <Header/>
+    <Header2/>
     <div className='Page-Card'> 
         <MenuCard id={id}/>
    
         <div className='Invisible'></div>
 
-        <CardProduit produitByCategorie={produitByCategorie} id={id}/>
+        <CardProduit produitByCategorie={produitByCategorie} id={id} produitById={produitsById}/>
     </div>
     
     </> );

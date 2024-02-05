@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 import '../styles/categorie.css'
 import categorieService from '../Services/categorieService';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 
 const Voiture = () => {
     const [voitures, setVoitures] = useState([]);
@@ -21,7 +21,7 @@ const Voiture = () => {
     })
     return ( <>
 
-   <Header/>
+   <Header2/>
     
   <div className='Conteneur-Card-Categorie'>
         

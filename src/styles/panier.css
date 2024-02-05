@@ -174,13 +174,14 @@ html::-webkit-scrollbar-track {
 .recap button:active{
     transform: translateY(3px);
 }
-
-
-
-
-
+/* PARTIE INFO PAIEMENT */
 .info-supp{
     background-color: var(--background-bleu-gris);
+    color: var(--text-blanc);
+    padding: 10px;
+}
+.imgStripe{
+    width: 17vw;
 }
 
 

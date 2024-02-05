@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import axios from 'axios';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import { toast } from 'react-toastify';
 import {Link, useNavigate} from 'react-router-dom'
 import '../styles/connexion.css'
@@ -27,6 +27,7 @@ const Connexion = () => {
         e.preventDefault();
         try {
             const response = await connexionService.Connect(connection)
+            console.log(response);
             // stock userId en récupérant l'ID au moment de la connection
             setUserId(response.data.userSQL.User_ID)
             // on stock le USER COMPLET dans user
@@ -53,6 +54,10 @@ const Connexion = () => {
 
     console.log(user);
 
+    // declenché a chauqe fois que setUser et seetUserId change
+    // si userId est présent dans le localStorage même après rafraichissement, 
+    // il sera récupéré et utilisé pour initialiser l'état local de l'application, 
+    // permettant ainsi de conserver l'identité de l'utilisateur.
     useEffect(() => {
         // on créer des const pour stocker l'utilisateur et l'id 
         const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -70,7 +75,7 @@ const Connexion = () => {
 
     return ( <>
     
-    <Header/>
+    <Header2/>
     <div className='img-fond '> 
     <img src={img1} alt="Fond de connexion" />
     </div>

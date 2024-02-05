@@ -22,7 +22,7 @@ import Panier from './views/Panier';
 import Voiture from './views/Voitures';
 import Motos from './views/Motos';
 import Tracteurs from './views/Tracteurs';
-import TestHeader from './views/TestHeader'
+import StripeContainer from './stripe/StripeContainer'
 
 
 
@@ -99,15 +99,13 @@ function App() {
           <Route path='/modifAdmin/:id' element={<ModifAdmin/>}/>
           </>
         ) }
-        <Route path='/test' element={<TestHeader/>}/>
         <Route path='/card/:id'  element={<Card/>}/>
         <Route path='/categorie/Vehicule' element={<Vehicules/>}/>
         <Route path='/categorie/Figurine' element={<Figurines/>}/>
         <Route path='/categorie/Piece' element={<Pieces/>}/>
         <Route path='/detailsProduit/:id' element={<DetailsProduitsView/>}/>
         <Route path='/panier' element={<Panier/>}/>
-        
-       
+       <Route path='/stripe' element={<StripeContainer/>}/>
       </Routes>
     </BrowserRouter>
     </GlobalContext.Provider>

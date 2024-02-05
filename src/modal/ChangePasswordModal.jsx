@@ -12,7 +12,6 @@ const ChangePasswordModal = ({isOpen, onClose}) => {
     const {user} = useContext(GlobalContext)
     const navigate = useNavigate();
 
-    const [newPassword, setNewPassword] = useState('');
     const [userNewPassword, setUserNewPassword] = useState({
         currentMdp : "",
         newMdp : "",

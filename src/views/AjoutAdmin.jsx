@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import { toast } from 'react-toastify';
 import '../styles/formulaireAdmin.css'
 import imgRetour from '../Image/icon/courbe-de-la-fleche-de-retour-pointant-vers-la-gauche.png'
@@ -97,7 +97,7 @@ const AjoutAdmin = () => {
 
     return ( <>
     
-    <Header/>
+    <Header2/>
     <div className='nom-admin'>
         <h3>BIENVENUE</h3>
         <p>Julien Coquerie</p>

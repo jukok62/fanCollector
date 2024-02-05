@@ -14,16 +14,16 @@ import imgSculpture from '../Image/icon/sculpture.png'
 import imgPiece from '../Image/icon/coin.png'
 import imgEuro from '../Image/icon/euro.png'
 import GlobalContext from '../context/GlobalContext';
-import produitsServices from '../Services/produitsServices';
 
 
 
-const CardProduit = ({produitByCategorie, id}) => {
+
+const CardProduit = ({produitByCategorie}) => {
 
  
 
-    const [produitById, setProduitById] = useState([]);
-    const {setUserPanier, user} = useContext(GlobalContext)
+ 
+    const {setUserPanier, user, userId} = useContext(GlobalContext)
     const [produitFiltered, setProduitFiltered] = useState([]);
     const [searchValue, setSearchValue] = useState("");
     const navigate = useNavigate();
@@ -33,9 +33,6 @@ const CardProduit = ({produitByCategorie, id}) => {
         setSearchValue(e.currentTarget.value)
     }
 
-
-
-      
 
     useEffect(() => {
       if (searchValue != null && produitByCategorie.length > 0) {
@@ -48,7 +45,7 @@ const CardProduit = ({produitByCategorie, id}) => {
   useEffect(() => {
     setProduitFiltered(produitByCategorie)
   },[produitByCategorie])
-    
+
     
     const ajouterAuPanier = (prod) => {
         // ON VA CHERCHER LE PANIER ACTUELLE DU LOCALESTORAGE
@@ -65,6 +62,7 @@ const CardProduit = ({produitByCategorie, id}) => {
     
         console.log(`Produit "${prod.Produit_nom}" ajouté au panier`);
       };
+    
 
      
 
@@ -106,8 +104,11 @@ const CardProduit = ({produitByCategorie, id}) => {
                         <p>{prod.FK_Categorie < 11 ? prod.Collection_Nom : prod.Produit_valeur}</p>
                     </div>
                     
-                    <div className="panier">
-                        <img src={imgPanier} alt="Logo pour ajouter au panier" onClick={() => {ajouterAuPanier(prod)}}/>
+                    <div className="panier" onClick={(e) => {
+                      e.stopPropagation(); // Empêche la propagation de l'événement à la div parente
+                      navigate(`/detailsProduit/${prod.ID_Produit}`)
+                    }}>
+                        <img src={imgPanier} alt="Logo pour ajouter au panier"/>
                         <p>12.90€</p>
                     </div>
              </div>

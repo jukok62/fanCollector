@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {Link, useParams} from 'react-router-dom'
-import Header from '../components/Header';
+import {Link} from 'react-router-dom'
+import Header2 from '../components/Header2';
 import '../styles/admin.css'
 import produitsServices from '../Services/produitsServices'
 
@@ -15,11 +15,29 @@ const Admin = () => {
 
     const [listeProduit, setListeProduit] = useState(false);
     const [produits, setProduits] = useState([]);
+    const [produitFiltered, setProduitFiltered] = useState([]);
+    const [searchValue, setSearchValue] = useState("");
 
+    // handleChange pour récupérer la valeur dans l'input de recherche
+    const handleChange = (e) => {
+        setSearchValue(e.currentTarget.value)
+        console.log(searchValue);
+    }
+
+    // const pour filtrer les produits via la liste déroulante 
+    const handleProductClick = (productname)=> {
+        setSearchValue(productname)
+        setListeProduit(false)
+    }
+    // const pour la liste déroulante
     const listeDeroulante = () => {
-        setListeProduit(!listeProduit);
+        setListeProduit((prevState) => !prevState);
       };
+      
+      
+      
 
+    //   recupère tous mes produits
     const getProduit = async () => {
         try {
             const response = await produitsServices.getProduit()
@@ -29,6 +47,7 @@ const Admin = () => {
         }
     }
 
+    // permet de supprimer mes produits
     const deleteProduit = async (id) => {
         try {
             const response = await produitsServices.deleteProduit(id)
@@ -38,6 +57,20 @@ const Admin = () => {
         }
     }
 
+    // EFFET POUR LA RECHERCHE DES PRODUITS
+    useEffect(() => {
+        if (searchValue != null && produits.length > 0) {
+          let res = produits.filter(prod => prod.Produit_nom.toLowerCase().startsWith(searchValue.toLowerCase()));
+          console.log(res);
+            setProduitFiltered(res);
+        }
+    }, [searchValue, produits]);
+
+    // effet pour mettre à jour produitFiltered a chaque fois que le produit change
+    useEffect(() => {
+        setProduitFiltered(produits)
+      },[produits])
+
 
     useEffect(() => {
         getProduit();
@@ -46,7 +79,7 @@ const Admin = () => {
     console.log("clg de produit" , produits);
     return ( <>
     
-   <Header/>
+   <Header2/>
    <div className="benvenue-admin">
         <h3>Bienvenue</h3>
         <p>Julien Coquerie</p>
@@ -58,7 +91,7 @@ const Admin = () => {
             {listeProduit && (
             <ul className='liste-produit-deroulant'>
                 {produits.map((prod) => {
-                    return <li key={prod.ID_Produit}>{prod.Produit_nom}</li>
+                    return <li key={prod.ID_Produit} onClick={() => handleProductClick(prod.Produit_nom)}>{prod.Produit_nom}</li>
                 })}
             </ul>
             )}
@@ -66,7 +99,7 @@ const Admin = () => {
         </div>
         <div className="search-produit">
             <img src={iconSearch} height={30} alt="icon search"/>
-            <input type="text" placeholder='  Nom du produit' name='nom'/>
+            <input type="text" placeholder='  Nom du produit' name='nom' onChange={handleChange}/>
             <Link to={"/ajoutAdmin"}><img className='btn-ajouter' src={iconAdd} width={35} alt="icon ajouter" /></Link>
         </div>
     </div>
@@ -83,7 +116,7 @@ const Admin = () => {
             </tr>
         </thead>
         <tbody>
-        {produits.map ((prod) => (
+        {produitFiltered.map ((prod) => (
             <tr>
             <td><img src={process.env.PUBLIC_URL +`/Asset/produit/${prod.Produit_Image_Principale}`}   height={50} alt="Produit" className='img-produit'/></td>
             <td>{prod.Produit_nom}</td>

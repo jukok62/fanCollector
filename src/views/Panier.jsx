@@ -1,17 +1,37 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/panier.css'
-import Header from '../components/Header';
-import imgPrincipale from '../Image/Test-Details-Produit/alpine renault.jpg'
+import Header2 from '../components/Header2';
 import iconPoubelle from '../Image/icon/bin.png'
 import iconPlus from '../Image/icon/plus.png'
 import iconMoins from '../Image/icon/moins.png'
+import imgStripe from '../Image/icon/stripe.png'
 import GlobalContext from '../context/GlobalContext';
+import StripeContainer from '../stripe/StripeContainer'
+import { useNavigate } from 'react-router-dom';
 
 const Panier = () => {
 
-    const {userPanier, setUserPanier} = useContext(GlobalContext)
+    const navigate = useNavigate();
+
+    const {userPanier, setUserPanier, userId} = useContext(GlobalContext)
     // useState pour afficher le total de tous les paniers
     const [totalPanier, setTotalPanier] = useState(0);
+    // const pour initier la modal STRIPE
+    const [isPaymentModalOpen, setPaymentModalOpen] = useState(false);
+    // const pour ouvrir ou fermer la modal
+    const handleOpenPaymentModal = () => {
+        setPaymentModalOpen(true);
+      };
+    
+      const handleClosePaymentModal = () => {
+        setTimeout(() => {
+            setPaymentModalOpen(false);
+        }, 3500); // 2000 millisecondes (2 secondes)
+        localStorage.removeItem(`panier_${userId}`)
+        setTimeout(() => {
+            navigate('/');
+        }, 4000);
+      };
     
     // Fonction pour Incrementer le panier 
     const incrementQuantite = (id) => {
@@ -22,7 +42,7 @@ const Panier = () => {
             return panier;
         });
         setUserPanier(nouveauPanier);
-        localStorage.setItem('panier', JSON.stringify(nouveauPanier));
+        localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
     }
 
     // Fonction pour décrementer mon panier
@@ -34,13 +54,25 @@ const Panier = () => {
             return panier;
         });
         setUserPanier(nouveauPanier);
-        localStorage.setItem('panier', JSON.stringify(nouveauPanier));
+        localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
     }
     
+    // Fonction de suppression du panier
+    const deleteProduit = (productId) => {
+        // Filtrer le panier pour exclure le produit avec l'ID spécifié
+        const nouveauPanier = userPanier.filter((panier) => panier.ID_Produit !== productId);
+        
+        // Mettre à jour le panier dans le LocalStorage
+        localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
+        
+        // Mettre à jour le panier dans l'état global
+        setUserPanier(nouveauPanier);
+    }
 
     useEffect(() => {
     // au chargement de la page et a chaque fois que userPanier change je récupère le panier depuis le LocalStorage
-        const storedPanier = localStorage.getItem('panier');
+        const storedPanier = localStorage.getItem(`panier_${userId}`);
+        console.log(storedPanier)
         if (storedPanier){
             setUserPanier(JSON.parse(storedPanier))
         }
@@ -58,10 +90,12 @@ const Panier = () => {
         setTotalPanier(total);
     }, [userPanier]);
 
+    console.log(totalPanier);
+
    
     return ( <>
 
-    <Header/>
+    <Header2/>
 
     <div className="titre-panier">
             <h3>Votre Panier</h3>
@@ -84,7 +118,7 @@ const Panier = () => {
                     <p>{panier.quantiteCommander}</p>               
                     <img src={iconPlus} width={50} alt="icon pour ajouter un produit" onClick={() => incrementQuantite(panier.ID_Produit)}/>     
                 </div>
-                <img className='iconPoubelle' src={iconPoubelle} width={40} alt="" />
+                <img className='iconPoubelle' src={iconPoubelle} width={40} alt="icon pour supprimer le produit" onClick={() => deleteProduit(panier.ID_Produit)}/>
                 <p className='total-panier'>total :&nbsp; {panier.Produit_prix * panier.quantiteCommander}  €</p>
             </div>
         </div>
@@ -99,11 +133,17 @@ const Panier = () => {
                 <p>total : </p>
                 <p>{totalPanier} €</p>
             </div>
-            <button>COMMANDER</button>
+            {totalPanier === 0 ? <button>COMMANDER</button> :
+            <button onClick={handleOpenPaymentModal}>COMMANDER</button> }
+            
         </div>
 
         <div className="info-supp">
-            <p>infos supplémentaires</p>
+            <p>Paiements acceptés</p>
+            <img className='imgStripe' src={imgStripe} alt="" />
+            { isPaymentModalOpen && 
+            <StripeContainer onClose={handleClosePaymentModal} amount={totalPanier*100}/>
+            }
         </div>
     </div>
     

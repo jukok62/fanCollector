@@ -1,4 +1,4 @@
-import React ,{useEffect, useState} from 'react';
+import React  from 'react';
 import {Link, useNavigate} from 'react-router-dom'
 
 import img1 from '../Image/slider/aston-slider.jpg';
@@ -13,6 +13,7 @@ import imgAccueilPiece from '../Image/categorie-accueil/piece-accueil.jpg'
 import imgAccueilFigurine from '../Image/categorie-accueil/figurine-accueil.jpg'
 import imgApropos from '../Image/categorie-accueil/A-Propos.jpg'
 
+
 import '../styles/accueil.css'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -21,7 +22,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 
 
 
@@ -29,37 +30,12 @@ const Accueil = () => {
 
 
   const navigate = useNavigate();
-  const [isVisible, setIsVisible] = useState(false);
-  const [catVoiture, setCatVoiture] = useState(false);
-  const [catMoto, setCatMoto] = useState(false);
-  const [catTracteur, setCatTracteur] = useState(false);
-
-  const afficheCategorie = () =>{
-    setCatMoto(!catMoto);
-    setCatTracteur(!catTracteur);
-    setCatVoiture(!catVoiture);
-  }
-
-  useEffect(() => {
-const handleScroll = () => {
-  const scrollPosition = window.scrollY; // utilise la propriété scrollY de l'objet window pour récupérer la position verticale de défilement
-  const threshold = 1000;
-
-  if(scrollPosition > threshold) {
-    setIsVisible(true);
-  } else {
-    setIsVisible(false);
-  }
-};
-window.addEventListener('scroll', handleScroll);
-return () => {
-  window.removeEventListener('scroll', handleScroll);
-};
-  },[]);
+  
+ 
 
     return ( <>
    
-    <Header/>
+    <Header2/>
     <div className='slider'>
     <Swiper 
         spaceBetween={30}
@@ -83,6 +59,7 @@ return () => {
         <SwiperSlide><img className='img4' src={img4} alt="" /></SwiperSlide>
         
       </Swiper>
+      </div>
    {/* PARTIE CATEGORIE */}
 
    <div className='div-img-fond-Accueil'>
@@ -91,6 +68,7 @@ return () => {
     <div className='categorie'>
     <h2>CATEGORIES</h2>
       <div className='conteneur-flex-card-categorie'>
+        
         <div className='card-categorie' onClick={() => navigate('/categorieAccueil/voiture')}>
           <img className='img-voiture' src={imgAccueilVoiture} alt="" />
           <p>VOITURES</p>
@@ -135,6 +113,77 @@ return () => {
     </div>
     <div>
     </div>
+    {/* PARTIE SLIDER CATEGORIE RESPONSIVE */}
+    <div className="slider-responsive">
+      <Swiper 
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          navigation={true}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          
+        
+          <SwiperSlide>
+            <div className='card-categorie2' onClick={() => navigate('/categorieAccueil/voiture')}>
+              <img className='img-voiture' src={imgAccueilVoiture} alt="" />
+              <p>VOITURES</p>
+              <div className="overlay2">
+                <p className='main-text2'>VOITURES</p>
+                <p className='second-text2'>découvrir</p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='card-categorie2' onClick={() => navigate('/categorieAccueil/moto')}>
+              <img className='img-voiture' src={imgAccueilMoto} alt="" />
+              <div className="overlay2">
+                <p className='main-text2'>MOTOS</p>
+                <p className='second-text2'>découvrir</p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='card-categorie2' onClick={() => navigate('/categorieAccueil/tracteur')}>
+              <img className='img-voiture' src={imgAccueilTracteur} alt="" />
+              <p>TRACTEURS</p>
+              <div className="overlay2">
+                <p className='main-text2'>TRACTEURS</p>
+                <p className='second-text2'>découvrir</p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='card-categorie2' onClick={() => navigate('/categorie/Piece')}>
+              <img className='img-voiture' src={imgAccueilPiece} alt="" />
+              <p>MONNAIE</p>
+              <div className="overlay2">
+                <p className='main-text2'>MONNAIE</p>
+                <p className='second-text2'>découvrir</p>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className='card-categorie2' onClick={() => navigate('/categorie/Figurine')}>
+              <img className='img-voiture' src={imgAccueilFigurine} alt="" />
+              <p>FIGURINES</p>
+              <div className="overlay2">
+                <p className='main-text2'>FIGURINES</p>
+                <p className='second-text2'>découvrir</p>
+              </div>
+            </div>
+          </SwiperSlide>
+          
+        </Swiper>
+    </div>
+    
 
     
     {/* PARTIE A PROPOS */}
@@ -150,7 +199,7 @@ return () => {
         <img className='imgApropos' src={imgApropos} alt="" />
       </div>
     </div>
-    </div>
+    
     
     
     </> );

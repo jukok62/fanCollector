@@ -49,14 +49,28 @@ html::-webkit-scrollbar-track {
     font-size: 22px;
     line-height: 2.5rem;
 }
-.nom-monCompte img {
+
+/* LOGO DE DECONNEXION */
+.nom-monCompte .img-deco {
     position: absolute;
-    right: 0px;
-    top: 0px;
-    width: 40px;
+    right: 0vw;
+    top: 0vh;
+    width: 2.2vw;
     transition: transform 0.3s ease;
 }
-.nom-monCompte img:hover{
+.nom-monCompte .img-deco:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+/* LOGO DE CONNEXION */
+.nom-monCompte .img-admin {
+    position: absolute;
+    right: 5vw;
+    top: -1.5vh;
+    width: 3vw;
+    transition: transform 0.3s ease;
+}
+.nom-monCompte .img-admin:hover{
     cursor: pointer;
     transform: scale(1.2);
 }
@@ -163,7 +177,7 @@ html::-webkit-scrollbar-track {
     background-color: var(--background-bleu-gris);
     color: var(--text-jaune);
     border: 1px solid var(--text-jaune);
-   transform: scale(1.02);
+    transform: scale(1.02);
 }
 
 
@@ -178,7 +192,7 @@ html::-webkit-scrollbar-track {
 
 .mesCommande{
     width: 70%;
-    margin: 40px auto;
+    margin: 40px ;
     margin-top: 40px;
     font-weight: 900;
     font-size: 24px;
@@ -194,6 +208,8 @@ html::-webkit-scrollbar-track {
 .commande{
     width: 90%;
 }
+
+/* DIV PRIX DATE ET NUMERO DE COMMANDES */
 .enTete-commande{
     background-color: var(--background-bleu-gris);
     color: var(--text-jaune);
@@ -201,11 +217,44 @@ html::-webkit-scrollbar-track {
     line-height: 1.8rem;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    position: relative;
+}
+.numero-commande{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding-right: 10px;
 }
 .detail-commande{
     background-color: white;
     border: 1px solid black;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between ;
     align-items: center;
+    padding: 10px;
+}
+
+/* BOUTON VOIR PLUS DE COMMANDES */
+.voirPlus{
+    background-color: var(--background-bleu-gris);
+    color: var(--text-jaune);
+    padding: 5px;
+    border-radius: 6px;
+    margin: 10px 0 20px;
+    width: 200px;
+    font-size: 1vw;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
+    transition: transform 0.3s ease;
+}
+.div-voirPlus{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.voirPlus:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.voirPlus:active{
+    transform: translateY(2px);
 }

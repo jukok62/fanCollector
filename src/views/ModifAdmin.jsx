@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import produitsServices from '../Services/produitsServices';
 import { toast } from 'react-toastify';
 import { Link, useParams } from 'react-router-dom';
@@ -90,7 +90,7 @@ const ModifAdmin = () => {
     },[])
 
     return  <>
-    <Header/>
+    <Header2/>
     <div className='nom-admin'>
         <h3>BIENVENUE</h3>
         <p>Julien Coquerie</p>

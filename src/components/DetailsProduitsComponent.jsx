@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 import '../styles/detailsProduit.css'
-
+import { toast } from 'react-toastify';
 
 import iconCoeur from '../Image/icon/heart-regular-24.png'
 import iconCoeurPlein from '../Image/icon/heart-solid-24.png'
@@ -55,9 +55,8 @@ const DetailsProduitComponent = ({produit}) => {
         localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
         // On met à jour le panier dans l'état global
         setUserPanier(nouveauPanier);
+        toast.success("bien ajouté au panier")
         
-    
-        // console.log(`Produit "${produit.Produit_nom}" ajouté au panier`);
       };
 
 

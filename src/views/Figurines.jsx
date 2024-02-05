@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom'
 import categorieService from '../Services/categorieService';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 
 
 const Figurines = () => {
@@ -23,7 +23,7 @@ const Figurines = () => {
     },[])
     return ( <>
 
-    <Header/>
+    <Header2/>
     
     <div className='Conteneur-Card-Categorie'>
         

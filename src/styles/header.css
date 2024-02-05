@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
 * {
     box-sizing: border-box;
@@ -37,10 +37,10 @@ html::-webkit-scrollbar-track {
     --text-gris-bleu : #384454 ;
     --text-jaune : #E1A624;
     --couleur-marron : #AD956B;
-}
+} */
 
  /* conteneur du header */
-.header-flex{
+/* .header-flex{
     position: sticky;
     width: 100%;
     padding: 5px 15px 5px 5px;
@@ -54,7 +54,6 @@ html::-webkit-scrollbar-track {
     font-weight: 900;
     letter-spacing: 0.15rem;
     z-index: 1000;
-    /* border-bottom: 5px solid black; */
     opacity: 80%;
     column-gap: 1%;
     transition:  transform 0.3s ease;
@@ -64,13 +63,13 @@ html::-webkit-scrollbar-track {
 }
 .seConnecter{
     font-size: 100%;
-}
+} */
 .logo-link {
     width: 5%;
     text-decoration: none; /* Supprime la décoration du lien */
     display: inline-block; /* Assure que le lien n'occupe que l'espace nécessaire */
   }
-.logo-header{
+/* .logo-header{
     width: 110px;
     margin-top: 10px;
     transition: transform 0.3s ease;
@@ -117,10 +116,10 @@ html::-webkit-scrollbar-track {
     text-decoration: none;
     color: var(--text-blanc);
     width: 100%;
-}
+} */
 
 /* PARTIE INVISIBLE */
-.invisibleP{
+/* .invisibleP{
     display: none;
     color: white !important;
 }
@@ -129,13 +128,13 @@ html::-webkit-scrollbar-track {
 }
 .iconMonCompte {
     display: none;
-}
+} */
 /* Agrandi l'icon burger au survol */
-.burger-icon-header img{
+/* .burger-icon-header img{
     transition: transform 0.3s ease;
-}
+} */
 
-.burger-menu{
+/* .burger-menu{
     position: absolute;
     left: 0px;
     top: 130px;
@@ -172,7 +171,7 @@ html::-webkit-scrollbar-track {
     top: 0;
     right: 10px;
 
-}
+} */
 
 
 /* PARTIE RESPONSIVE */
@@ -189,7 +188,7 @@ html::-webkit-scrollbar-track {
 }
 
 /* PASSAGE AU MENU BURGER */
- @media screen and (max-width: 1100px) {
+ /* @media screen and (max-width: 1100px) {
     .burger-icon-header img{
         width: 100px;
         margin-top: 10px;
@@ -320,4 +319,4 @@ html::-webkit-scrollbar-track {
     .imgCroix{
         display: block;
     }
-  }
+  } */
