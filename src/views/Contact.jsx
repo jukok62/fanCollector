@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import '../styles/contact.css';
 import img from '../Image/contact/img-contact.jpg';
 import icon from '../Image/icon/maps.png';
@@ -8,7 +8,7 @@ import icon from '../Image/icon/maps.png';
 const Contact = () => {
     return ( <>
     
-    <Header/>
+    <Header2/>
     <div  className='conteneur-contact'>
         <img className='img-contact' src={img} alt="" />
         <div className='nous-trouver'>

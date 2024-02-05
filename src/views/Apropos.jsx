@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import '../styles/aPropos.css'
 import imgHistoire from '../Image/Apropos/notre-histoire.jpg'
 import imgUnivers from '../Image/Apropos/univers-miniature.jpg'
@@ -8,7 +8,7 @@ import imgLocalisation from '../Image/Apropos/localisation.jpg'
 const Apropos = () => {
     return ( <>
     
-    <Header/>
+    <Header2/>
     <div className='Apropos-de-nous'>
         <h2>À PROPOS DE NOUS</h2>
         <p>Bienvenue chez Fan Collector, votre destination exclusive pour les passionnés de miniatures de collection à Arras, dans le Pas-de-Calais !</p>

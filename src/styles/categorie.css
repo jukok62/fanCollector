@@ -68,7 +68,7 @@ html::-webkit-scrollbar-track {
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--text-blanc);
-    font-size: 38px;
+    font-size: 250%;
     font-weight: bold;
     width: 80%;
     text-align: center;
@@ -101,8 +101,9 @@ html::-webkit-scrollbar-track {
     width: 90%;
 }
 .second-text{
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: underline;
+    color: white;
 }
 .categorie-card:hover .overlay{
     opacity: 1;
@@ -110,3 +111,32 @@ html::-webkit-scrollbar-track {
 .categorie-card:hover .text-categorie{
     opacity: 0;
 }
+
+@media screen and (max-width: 500px){
+    .Conteneur-Card-Categorie{
+        flex-flow: column nowrap;
+    }
+    .categorie-card{
+        width: 80%;
+    }
+}
+@media screen and (min-width: 500px) and (max-width: 850px) {
+    .Conteneur-Card-Categorie {
+        flex-flow: row wrap;
+    }
+    .categorie-card {
+        width: 45%;
+    }
+    .categorie-card .text-categorie {
+        font-size: 200%;
+    }
+    .categorie-card:hover {
+        transform: scale(1.1);
+    }
+}
+@media screen and (min-width: 850px) and (max-width: 1024px) {
+    .categorie-card {
+        width: 28%;
+    }
+}
+

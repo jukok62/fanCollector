@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
-import Header from '../components/Header';
+import React, {useContext, useEffect, useState} from 'react';
+import axios from 'axios';
+import Header2 from '../components/Header2';
 import { toast } from 'react-toastify';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import '../styles/connexion.css'
 import img1 from '../Image/fond-connection.jpg'
 import connexionService from '../Services/connexionService';
+import GlobalContext from '../context/GlobalContext';
 
 const Connexion = () => {
+
+    const navigate = useNavigate();
+    const { setUserId, setUser, user} = useContext(GlobalContext);
 
     const [connection, setConnection] = useState({
         email : "",
@@ -16,7 +21,6 @@ const Connexion = () => {
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
         setConnection({ ...connection, [name]: value });
-        console.log(connection);
     }
 
     const newConnexion = async (e) => {
@@ -24,16 +28,54 @@ const Connexion = () => {
         try {
             const response = await connexionService.Connect(connection)
             console.log(response);
-            toast.success('connection réussie');
+            // stock userId en récupérant l'ID au moment de la connection
+            setUserId(response.data.userSQL.User_ID)
+            // on stock le USER COMPLET dans user
+            setUser(response.data.userSQL)
+            // on stock le user dans le LocalStorage
+            localStorage.setItem('user', JSON.stringify(response.data.userSQL));
+            // on stock le userId dans le LocalStorage
+            localStorage.setItem('userId', response.data.userSQL.User_ID);
+
+            // Onstock le token dans la clé token du localStorage
+            window.localStorage.setItem("token", response.data.access_token);
+            // on demande que toutes nos routes axios aient besoin d'une autorisation qui sera stocké dans Bearer            
+            axios.defaults.headers['Authorization'] = "Bearer " + response.data.access_token;
+
+            console.log(response);
+            setTimeout(() => {
+                navigate("/monCompte")
+            }, 500); // Délai en millisecondes (500ms = 0.5 seconde)
         } catch (e) {
             console.log(e);
             toast.error('problème de connection')
         }
     }
 
+    console.log(user);
+
+    // declenché a chauqe fois que setUser et seetUserId change
+    // si userId est présent dans le localStorage même après rafraichissement, 
+    // il sera récupéré et utilisé pour initialiser l'état local de l'application, 
+    // permettant ainsi de conserver l'identité de l'utilisateur.
+    useEffect(() => {
+        // on créer des const pour stocker l'utilisateur et l'id 
+        const storedUser = JSON.parse(localStorage.getItem('user'));
+        const storedUserId = localStorage.getItem('userId');
+
+        // Ajoutez un console.log ici pour vérifier la valeur de storedUser
+    console.log("Valeur de storedUser dans useEffect :", storedUser);
+
+        // Onvérifie que storedUser affiche bien le storedUserId avant de les mettre a jour
+        if (storedUser && storedUserId) {
+            setUser(storedUser);
+            setUserId(storedUserId);
+        }
+    },[setUser, setUserId])
+
     return ( <>
     
-    <Header/>
+    <Header2/>
     <div className='img-fond '> 
     <img src={img1} alt="Fond de connexion" />
     </div>

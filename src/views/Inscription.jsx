@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Link} from 'react-router-dom'
 import '../styles/inscription.css'
 import { toast } from 'react-toastify';
-import Header from '../components/Header';
+import Header2 from '../components/Header2';
 import inscriptionService from '../Services/inscriptionService';
 import img1 from '../Image/inmage-inscription.png'
 
@@ -73,7 +73,7 @@ const Inscription = () => {
 
     return ( <>
 
-<Header/>
+<Header2/>
     {/* <div className="background-Croix"></div>
     <div className="background-croix2"></div> */}
     <div className="image-inscription">

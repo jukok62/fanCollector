@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Philosopher&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,300;16..144,500;16..144,700&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inknut Antiqua', sans-serif;
+    text-decoration: none;
+    list-style: none;
+    outline: none;
+    border: none;
+    scroll-behavior: smooth;
+    user-select: none;
+}
+
+
+html::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--background-bleu-gris);
+    border-radius: 3rem;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--background-noir);
+}
+:root{
+    --background : #EEEEEE;
+    --background-bleu-gris : #384454;
+    --background-bleu-gris-70 : rgba(56, 68, 84, 0.7) ;
+    --background-bleu-gris-90 : rgba(56, 68, 84, 0.9) ;
+    --bouton : #E1A624;
+    --bouton-hover : #c32626;
+    --text-gris: #333333;
+    --text-blanc: #FFFFFF;
+    --text-gris-bleu : #384454 ;
+    --text-jaune : #E1A624;
+    --couleur-marron : #AD956B;
+}
+
+/* PARTIE QUI CONTIENT TOUTE LA NAVBAR */
+
+.conteneur-navbar{
+    position: sticky;
+    width: 100%;
+    height: auto;
+    z-index: 10000;
+}
+
+/* partie avec le logo et nom du site */
+.logo-header {
+    position: relative;
+    word-spacing: 1.2em;
+    width: 100%;
+    margin: 0;
+    font-weight: 700;
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom right, rgba(50,50,50,1), rgba(54, 97, 124,1) , rgba(105, 152, 156, 1) );
+    color: var(--text-blanc);
+    transition: content 2s ease;
+    /* opacity: 99%; */
+}
+.logo-header img {
+    width: 5.5vw;
+}
+
+/* PARTIE ACCUEIL ICON */
+
+#iconAccueil{
+    position: absolute;
+    top: 18%;
+    left: 1%;
+    width: 3.5vw;
+}
+.logo-header .hover-icon-accueil:hover{
+    content: url('../Image//icon//navbar/accueil\ \(3\).png');
+    cursor: pointer;
+
+}
+
+
+/* PARTIE NAVIGUATION */
+nav{
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 5%;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(105, 152, 156, 0.9) );
+    opacity: 80%;
+    padding: 15px;
+    width: 100%;
+}
+nav a {
+    color: var(--text-blanc);
+}
+/* Partie bouton burger */
+.menu-burger{
+    display: flex;
+    align-items: center;
+    width: 10vw;
+    position: relative;
+}
+.menu-burger img{
+    width: 3.5vw;
+    transition: transform 0.3s ease;
+}
+.menu-burger img:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+/* PARTIE UL du menu burger */
+.menu-burger-ul{
+    position: absolute;
+    top: 17vh;
+    left: -1vw;
+    color: white;
+    background: linear-gradient(to bottom right, rgba(50,50,50,1), rgba(54, 97, 124,1) , rgba(105, 152, 156, 1) );
+    padding: 15px;
+    font-size: 0.9vw;
+    width: auto;
+}
+.menu-burger-ul li{
+    color: rgba(255,255,255,0.7);
+}
+.menu-burger-ul li:hover{
+    color: rgba(255,255,255,1);
+    cursor: pointer;
+}
+
+
+/* Partie vehicules, figurines et pièces */
+.categorie-navbar{
+    display: flex;
+    column-gap: 8%;
+    width: 50vw;
+    font-size: 1.2vw;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+}
+.categorie-navbar *:hover{
+    color: var(--text-jaune);
+}
+
+/* PARTIE QUI CONTIENT LES ICONS */
+
+.icon-header{
+    display: flex;
+    column-gap: 15%;
+    align-items: center;
+    width: 15vw;
+}
+.icon-header img{
+    width: 1.7vw;
+    padding-top: 7px;
+}
+.icon-header div{
+    position: relative;
+    width: auto;
+    height: auto;
+}
+
+/* Styles au survol de l'icône de connexion */
+.icon-header .hover-icon-connexion:hover {
+    content : url('../Image/icon//navbar/user-lock\ \(3\).png');
+    cursor: pointer;
+}
+.icon-header .hover-icon-connexion:hover + .hover-text-connexion {
+    display: block;
+    width: 10vw;
+    position: absolute;
+    bottom: -45%;
+    left: -250%;
+    font-size: 0.8vw;
+    font-weight: 700;
+}
+
+/* Styles au survol de l'icône une fois connecter */
+.icon-header .hover-icon-connecter:hover {
+    content : url('../Image/icon//navbar/user\ \(2\).png');
+    cursor: pointer;
+}
+.icon-header .hover-icon-connecter:hover + .hover-text-connecter {
+    display: block;
+    width: 10vw;
+    position: absolute;
+    bottom: -45%;
+    left: -250%;
+    font-size: 0.8vw;
+    font-weight: 700;
+}
+
+/* Styles au survol de l'icône DECONNECTION */
+.icon-header .hover-icon-deconnecter:hover {
+    content : url('../Image/icon//navbar/se-deconnecter\ \(3\).png');
+    cursor: pointer;
+}
+.icon-header .hover-icon-deconnecter:hover + .hover-text-deconnecter {
+    display: block;
+    width: 10vw;
+    position: absolute;
+    bottom: -45%;
+    left: -250%;
+    font-size: 0.8vw;
+    font-weight: 700;
+}
+
+
+/* Styles au survol de l'icône de favoris */
+.icon-header .hover-icon-favoris:hover {
+    content : url('../Image//icon//navbar/favori\ \(1\).png');
+    cursor: pointer;
+}
+.icon-header .hover-icon-favoris:hover + .hover-text-favoris {
+    display: block;
+    position: absolute;
+    bottom: -45%;
+    left: -30%;
+    font-size: 0.8vw;
+    font-weight: 700;
+}
+
+
+/* Styles au survol de l'icône du panier */
+.icon-header .hover-icon-panier:hover {
+    content: url('../Image//icon//navbar/shopping-bag\ \(2\).png');
+    cursor: pointer;
+}
+.icon-header .hover-icon-panier:hover + .hover-text-panier {
+    display: block;
+    position: absolute;
+    bottom: -45%;
+    left: -30%;
+    font-size: 0.8vw;
+    font-weight: 700;
+}
+
+
+/* Styles pour le texte au survol */
+.icon-header .hover-text {
+    display: none;
+    color: var(--text-blanc); /* Couleur du texte au survol */
+    font-size: 12px; /* Taille du texte au survol */
+    text-align: center;
+    margin-top: 5px; /* Espacement entre l'icône et le texte */
+}
+

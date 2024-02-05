@@ -39,10 +39,11 @@ html::-webkit-scrollbar-track {
     --text-jaune : #E1A624;
     --couleur-marron : #AD956B;
 }
-
+/* IMAGE DU SLIDER PRINCIPALE */
 .img1,.img2, .img3, .img4{
     width: 100%;
-    height: 750px;
+    height: 100vh;
+    object-fit: cover;
 }
 .slider{
     height: 100%;
@@ -50,13 +51,18 @@ html::-webkit-scrollbar-track {
     position: absolute;
     top: 0px;
 }
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--background) !important;
+}
 /* DEFINITION DE LA TAILLE CONTENEUR CATEGORIE */
 .categorie{
     height: auto;
     width: 95%;
     margin: 20px auto;
+    margin-top: 80vh;
 }
-.categorie h2{
+.categorie > h2{
     margin: 0px 15px;
     padding: 5px 20px;
     font-size: 30px;
@@ -66,16 +72,23 @@ html::-webkit-scrollbar-track {
 /* PERMET DE METTRE LES CARD LES UNES A COTE DES AUTRES */
 .conteneur-flex-card-categorie{
     display: flex;
-    flex: 1 1 20%;
     gap: 3%;
     margin: 0px 10px;
     padding : 20px;
+    width: 100%;
+}
+/* fleche autour des catégories */
+.fleche{
+    display: none;
+    width: 5vw;
+    height: 4vh;
+    align-self: center;
 }
 
 /* DEFINITION DE CHAQUE CARD CATEGORIE */
 .card-categorie{
     width: 20%;
-    height: 430px;
+    height: 60vh;
     position: relative;
     border-radius: 6px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
@@ -83,9 +96,10 @@ html::-webkit-scrollbar-track {
     transition: transform 0.5s ease, opacity 0.3s ease;
 }
 
+
 /* DEFINITION DE LA PARTIE OVERLAY (superposer a la card) */
 .overlay{
-    position: absolute;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -100,11 +114,11 @@ html::-webkit-scrollbar-track {
   transition: opacity 0.5s ease-in-out;
 }
 .main-text{
-    font-size: 38px;
+    font-size: 2vw !important;
     margin-bottom: 5px;
 }
 .second-text{
-    font-size: 14px;
+    font-size: 1.2vw !important ;
     text-decoration: underline;
 }
 /* DEFINITION DE LA TAILLE DES IMAGES */
@@ -120,7 +134,7 @@ html::-webkit-scrollbar-track {
     left: 50%;
     transform: translate(-50%, -50%); /* Centre le texte complètement */
     color: var(--text-blanc) ;
-    font-size:30px ;
+    font-size:1.5vw ;
     font-weight: 700;
     transition: font-size 0.4s ease, color 0.4s ease;
 }
@@ -149,6 +163,7 @@ html::-webkit-scrollbar-track {
     top: 0px;
     left: 0px;
     width: 100%;
+    height: 320vh;
 }
 
 /* PARTIE A PROPOS */
@@ -158,17 +173,18 @@ html::-webkit-scrollbar-track {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 150px;
+    gap: 10vw;
     width: 95%;
     height: auto;
-    margin: 80px auto;
+    margin: 15vh auto;
 }
 
 /* TAILLE DES DEUX DIV  */
 .text-aPropos, .div-img-aPropos{
     width: 40%;
     color: var(--text-blanc);
-    text-align: center;
+    text-align: justify;
+    font-size: 1.1vw;
 }
 /* INTERIEUR DU TEXTE A PROPOS */
 .text-aPropos *{
@@ -193,7 +209,7 @@ html::-webkit-scrollbar-track {
 /* TAILLE DE L'IMAGE */
 .imgApropos{
     width: 95%;
-    height: 500px;
+    height: 80vh;
     border-radius: 6px;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
     transition: transform 0.5s ease;
@@ -202,5 +218,91 @@ html::-webkit-scrollbar-track {
 .imgApropos:hover{
     cursor: pointer;
     transform: scale(1.2);
+}
+
+/* slider categorie responsive */
+.slider-responsive{
+    display: none;
+    width: 95%;
+    margin: 0 auto;
+}
+.img5,.img6, .img7, .img8{
+    width: 100%;
+    height: 70vh;
+    object-fit: cover;
+}
+.card-categorie2{
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.overlay2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+.card-categorie2 .overlay2{
+    opacity: 1;
+}
+.main-text2{
+    font-size: 9vw !important;
+    margin-bottom: 5px;
+}
+.second-text2{
+    font-size: 6vw !important ;
+    text-decoration: underline;
+}
+
+
+@media  screen AND (max-width: 500px){
+    .conteneur-flex-card-categorie{
+        display: none;
+    }   
+    .slider-responsive{
+        display: block;
+    }
+    .img1,.img2, .img3, .img4{
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+    }
+    .categorie{
+        margin-top: 40vh;
+    }
+    .conteneur-aPropos{
+        flex-flow: column nowrap;
+        gap: 10vw;
+        width: 95%;
+        height: auto;
+        margin: 8vh auto;
+    }
+    .text-aPropos, .div-img-aPropos{
+        width: 100%;
+        font-size: 3vw;
+    }
+    .imgApropos{
+        width: 100%;
+        height: 60vh;
+    }
+    .text-aPropos{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        background-color: #384454;
+    }
 }
 
