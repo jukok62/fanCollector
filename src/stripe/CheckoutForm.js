@@ -31,6 +31,7 @@ export const CheckoutForm = ({onClose, amount}) => {
         produits : panierLocalStorage.map((produit) => ({
             produit : produit.ID_Produit,
             quantite : produit.quantiteCommander,
+            prixTotal : produit.prixTotal
         }))
     });
 

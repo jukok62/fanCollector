@@ -39,6 +39,7 @@ const DetailsProduitComponent = ({produit}) => {
         const nouveauPanier = panier.map((pr) => {
           if (pr.ID_Produit === produit.ID_Produit) {
             pr.quantiteCommander += 1;
+            pr.prixTotal = pr.Produit_prix * pr.quantiteCommander
             produitExiste = true;
           }
           return pr;
@@ -47,6 +48,7 @@ const DetailsProduitComponent = ({produit}) => {
         // Si le produit n'existe pas, l'ajouter au panier
         if (!produitExiste) {
           produit.quantiteCommander = 1;
+          produit.prixTotal = produit.Produit_prix * produit.quantiteCommander
           nouveauPanier.push(produit);
         }
 

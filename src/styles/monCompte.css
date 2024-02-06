@@ -88,7 +88,7 @@ html::-webkit-scrollbar-track {
     gap: 5%;
     background-color: var(--background-bleu-gris);
     padding: 20px 0px 30px;
-    font-size: 20px;
+    font-size: 1.5vw;
     color: white;
     border-radius: 6px;
 }
@@ -162,13 +162,13 @@ html::-webkit-scrollbar-track {
     color : white;
 }
 .btn-monCompte{
-    margin-top: 66px;
+    margin-top: 10vh;
     width: 60%;
     align-self: center;
     background-color: var(--text-jaune);
     color: var(--text-gris-bleu);
     font-weight: 700;
-    font-size: 80%;
+    font-size: 1.3vw;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
     transition: transform 0.3s ease, background-color 0.3s ease;
 }
@@ -186,13 +186,13 @@ html::-webkit-scrollbar-track {
 .contneur-principale-commandes{
     display: flex;
     flex-wrap: wrap;
-    width: 70%;
+    width: 80%;
     margin: 0px auto;
 }
 
 .mesCommande{
     width: 70%;
-    margin: 40px ;
+    margin: 40px auto ;
     margin-top: 40px;
     font-weight: 900;
     font-size: 24px;
@@ -233,6 +233,19 @@ html::-webkit-scrollbar-track {
     align-items: center;
     padding: 10px;
 }
+.detail-commande *{
+    width: 20%;
+    height: 100px;
+    text-align: center;
+}
+.detail-commande img{
+    width: 13%;
+    transition: transform 0.4s ease;
+}
+.detail-commande img:hover{
+    transform: scale(1.7);
+    cursor: pointer;
+}
 
 /* BOUTON VOIR PLUS DE COMMANDES */
 .voirPlus{
@@ -257,4 +270,271 @@ html::-webkit-scrollbar-track {
 }
 .voirPlus:active{
     transform: translateY(2px);
+}
+
+/* RESPONSIVE TELEPHONE */
+
+@media screen and (max-width: 767px){
+    .conteneur-monCompte{
+        width: 100%;
+        padding: 10px 0;
+        gap: 10%;
+    }
+    .conteneur-monCompte label{
+        font-size: 2.5vw;
+    }
+    .leftActif button{
+        font-size: 1.7vw;
+        padding: 5px;
+        margin-top: 2.5vh;
+        width: 30vw;
+    }
+    .conteneur-monCompte input{
+        font-size: 1.5vw ;
+        padding: 8px;
+    }
+    .conteneur-monCompte select{
+        font-size: 2.5vw;
+        padding: 1px;
+    }
+    .btn-monCompte{
+        margin-top: 3vh;
+        margin-bottom: 1vh;
+        font-size: 1.8vw;
+        padding: 7px;
+    }
+    .mesCommande{
+        font-size: 18px;
+    }
+    .nom-monCompte{
+        font-size: 16px;
+        line-height: 2rem;
+    }
+    .contneur-principale-commandes{
+        width: 100%;
+    }
+    .conteneur-mesCommande{
+        width: 100%;
+        margin: 0 auto 20px;
+    }
+    .commande{
+        width: 99%;
+    }
+    .enTete-commande{
+        font-size: 14px;
+        padding: 5px 10px;
+        line-height: 1.5rem;
+    }
+    .numero-commande{
+        position: relative;
+    }
+    .detail-commande{
+        padding: 10px 0px;
+    }
+    .detail-commande *:not(img){
+        width: 20%;
+        height: 100px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .detail-commande img{
+        width: 20%;
+        transition: transform 0.4s ease;
+    }
+    .detail-commande img:hover{
+        transform: scale(1);
+    }
+    .voirPlus{
+        font-size: 2vw;
+        padding: 0;
+        margin-top: 0;
+    }
+    .nom-monCompte .img-admin {
+        position: absolute;
+        right: 5vw !important;
+        top: -1vh !important;
+        width: 10vw !important;
+        transition: transform 0.3s ease;
+    }
+    .nom-monCompte .img-deco {
+        position: absolute;
+        right: -8vw !important;
+        top: 0.8vh;
+        width: 8vw !important;
+        transition: transform 0.3s ease;
+    }
+}
+
+/* RESPONSIVE TABLETTE */
+
+@media screen and  (max-width: 1023px){
+    .conteneur-monCompte{
+        width: 90%;
+    }
+    .conteneur-monCompte label{
+        font-size: 2vw;
+    }
+    .conteneur-monCompte input{
+        font-size: 1.2vw ;
+    }
+    .conteneur-monCompte select{
+        font-size: 2vw;
+        padding: 1px;
+    }
+    .btn-monCompte{
+        margin-top: 3vh;
+        margin-bottom: 1vh;
+        font-size: 1.8vw;
+        padding: 5px;
+    }
+    .mesCommande{
+        font-size: 18px;
+    }
+    .nom-monCompte{
+        font-size: 16px;
+        line-height: 2rem;
+    }
+    .contneur-principale-commandes{
+        width: 90%;
+    }
+    .conteneur-mesCommande{
+        width: 100%;
+        margin: 0 auto 20px;
+    }
+    .commande{
+        width: 99%;
+    }
+    .enTete-commande{
+        font-size: 14px;
+        padding: 5px 15px;
+        line-height: 1.5rem;
+    }
+    .detail-commande{
+        padding: 10px 0px;
+    }
+    .detail-commande *:not(img){
+        width: 20%;
+        height: 100px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .detail-commande img{
+        width: 18%;
+        transition: transform 0.4s ease;
+    }
+    .detail-commande img:hover{
+        transform: scale(1);
+    }
+    .voirPlus{
+        font-size: 2vw;
+        padding: 0;
+        margin-top: 0;
+    }
+    .leftActif button{
+        font-size: 1.6vw;
+        padding: 5px;
+        margin-top: 2.5vh;
+        width: 25vw;
+    }
+    .nom-monCompte .img-admin {
+        position: absolute;
+        right: 5vw;
+        top: 0vh;
+        width: 8vw;
+        transition: transform 0.3s ease;
+    }
+    .nom-monCompte .img-deco {
+        position: absolute;
+        right: -5vw;
+        top: 0.8vh;
+        width: 6vw;
+        transition: transform 0.3s ease;
+    }
+    
+}
+
+
+@media screen and  (max-width: 1279px){
+    .conteneur-monCompte{
+        width: 90%;
+    }
+    .conteneur-monCompte label{
+        font-size: 2vw;
+    }
+    .conteneur-monCompte input{
+        font-size: 1.2vw ;
+    }
+    .conteneur-monCompte select{
+        font-size: 2vw;
+        padding: 1px;
+    }
+    .btn-monCompte{
+        margin-top: 3vh;
+        margin-bottom: 1vh;
+        font-size: 1.8vw;
+        padding: 5px;
+    }
+    .mesCommande{
+        font-size: 18px;
+    }
+    .nom-monCompte{
+        font-size: 16px;
+        line-height: 2rem;
+    }
+    .contneur-principale-commandes{
+        width: 90%;
+    }
+    .conteneur-mesCommande{
+        width: 100%;
+        margin: 0 auto 20px;
+    }
+    .commande{
+        width: 99%;
+    }
+    .enTete-commande{
+        font-size: 14px;
+        padding: 5px 15px;
+        line-height: 1.5rem;
+    }
+    .detail-commande{
+        padding: 10px 0px;
+    }
+    .detail-commande *:not(img){
+        width: 20%;
+        height: 100px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .detail-commande img{
+        width: 18%;
+        transition: transform 0.4s ease;
+    }
+    .detail-commande img:hover{
+        transform: scale(1);
+    }
+    .voirPlus{
+        font-size: 2vw;
+        padding: 0;
+        margin-top: 0;
+    }
+    .leftActif button{
+        font-size: 1.6vw;
+        padding: 5px;
+        margin-top: 2.5vh;
+        width: 25vw;
+    }
+    .nom-monCompte .img-admin {
+        position: absolute;
+        right: 3vw;
+        top: 0vh;
+        width: 6vw;
+        transition: transform 0.3s ease;
+    }
+    .nom-monCompte .img-deco {
+        position: absolute;
+        right: -5vw;
+        top: 0.5vh;
+        width: 5vw;
+        transition: transform 0.3s ease;
+    }
 }
