@@ -10,13 +10,13 @@ import { toast } from 'react-toastify';
 import imgDeco from '../Image/icon/se-deconnecter32px1.png'
 import iconAdmin from '../Image/icon/user.png'
 import ChangePasswordModal from '../modal/ChangePasswordModal';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import FormulaireMonCompte from '../components/FormulaireMonCompte';
 import DetailsCommandeMonCompte from '../components/DetailsCommandeMonCompte';
 
 const MonCompte = () => {
 
-    const {user, setUser, userId, setUserId} = useContext(GlobalContext)
+    const {user, setUser, userId,} = useContext(GlobalContext)
     const [commandes, setCommandes] = useState([]);
     const [champsActifs, setChampsActifs] = useState(false);
     const [boutonModifier, setBoutonModifier] = useState(false);
@@ -32,29 +32,32 @@ const MonCompte = () => {
     const fetchMoreAchat = async () => {
         try {
             const response = await achatService.fetchAchatByUser(userId, limit, offset);
-            console.log(response.data.result);
-    
-            // Filtrer les nouvelles commandes pour ne pas inclure celles déjà présentes
-            const newCommandes = response.data.result.filter(newCom => !commandes.some(existingCom => existingCom.numero_commande === newCom.numero_commande));
-            console.log("Nouvelles commandes :", newCommandes);
+            console.log("Offset:", offset, "Limit:", limit);
+            console.log("response.data.result", response.data.result);
     
             // Mise à jour de l'état avec les nouvelles données sans supprimer les existantes
             setCommandes(prevCommandes => {
-                console.log("Avant la mise à jour :", prevCommandes);
+                const newCommandes = response.data.result.filter(newCom =>
+                    !prevCommandes.some(existingCom =>
+                        existingCom.numero_commande === newCom.numero_commande &&
+                        existingCom.FK_Produit === newCom.FK_Produit
+                    )
+                );
+    
                 const updatedCommandes = [...prevCommandes, ...newCommandes];
-                console.log("Après la mise à jour (avant suppression des doublons) :", updatedCommandes);
     
                 // Supprimer les doublons en utilisant filter
                 const uniqueCommandes = updatedCommandes.filter((commande, index, self) =>
-                    index === self.findIndex(c => c.numero_commande === commande.numero_commande)
+                    index === self.findIndex(c =>
+                        c.numero_commande === commande.numero_commande &&
+                        c.FK_Produit === commande.FK_Produit
+                    )
                 );
     
-                console.log("Après la mise à jour (après suppression des doublons) :", uniqueCommandes);
+                // Mise à jour du décalage pour la prochaine requête
+                setOffset(offset + 5);
                 return uniqueCommandes;
             });
-    
-            // Mise à jour du décalage pour la prochaine requête
-            setOffset((prevOffset) => prevOffset + limit);
         } catch (error) {
             console.error(error);
         }
@@ -112,14 +115,21 @@ const MonCompte = () => {
             const isNewCommande = !isFirstCommande && com.numero_commande !== commandes[index - 1].numero_commande;
 
             if (isFirstCommande || isNewCommande) {
-                groupedCommandes.push([{...com, currentDate}]);
-            } else {
+                groupedCommandes.push([{...com, currentDate, prixTotal: com.prixTotal}]);
+            }else {
+                if (!groupedCommandes[groupedCommandes.length - 1][0].prixTotal) {
+                    groupedCommandes[groupedCommandes.length - 1][0].prixTotal = com.prixTotal;
+                } else {
                 groupedCommandes[groupedCommandes.length - 1].push(com);
-            }
+                // Ajoutez le prix total du produit au total du groupe
+                groupedCommandes[groupedCommandes.length - 1][0].prixTotal += com.prixTotal;
+            }}
         });
 
         return groupedCommandes;
     };
+
+    console.log("commandes" , commandes);
 
    // CONST DECONNECTION 
    const deconnexion = () => {

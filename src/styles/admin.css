@@ -87,6 +87,11 @@ body{
     border: 1px solid black;
     border-radius: 6px;
 }
+.search-responsive{
+    display: none;
+    column-gap: 10px;
+}
+
 .btn-ajouter{
     margin-left: 50px;
     margin-top: 15px;
@@ -106,6 +111,7 @@ th,td{
     border: 2px solid rgba(0, 0, 0, 1);
     text-align: center;
     vertical-align: middle;
+    font-size: 1.3vw;
 }
 th{
     background-color: var(--background-bleu-gris-90);
@@ -115,16 +121,16 @@ td{
     background-color: white;
 }
 .colonne-img{
-    width: 20%;
-}
-.colonne-produit{
-    width: 30%;
-}
-.colonne-prixQ{
     width: 15%;
 }
+.colonne-produit{
+    width: 15%;
+}
+.colonne-prixQ{
+    width: 5%;
+}
 .colonne-modSupp{
-    width: 10%;
+    width: 5%;
 }
 .icon-modif, .icon-supp{
     padding-top: 10px;
@@ -137,6 +143,8 @@ td{
 .img-produit{
     margin-top: 10px;
     transition: transform 0.4s ease;
+    width: 5vw;
+    height: 10vh;
 }
 .img-produit:hover{
     transform: scale(2);
@@ -168,4 +176,62 @@ td{
 }
 .liste-produit-deroulant li:hover{
     background-color: #13335a;
+}
+
+/* RESPONSIVE TELEPHONE */
+
+@media screen and (max-width: 767px) {
+    .conteneur-tableau-admin{
+        width: 100%;
+        margin: 50px auto 100px;
+        border: 1px solid black;
+    }
+    table{
+        width: 98%;
+    }
+    th,td{
+        font-size: 2.5vw;
+    }
+    .liste-produit{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+       padding: 5px 10px;  
+       margin-left: 0px;
+    }
+    .liste-produit p{
+        font-weight: 500;
+        font-size: 3vw;
+    }
+    .icon-supp, .icon-modif{
+        width: 4vw;
+    }
+    .img-produit{
+        
+        width: 5vw;
+        height: 5vh;
+    }
+    th,td{
+        font-size: 2.5vw;
+        padding: 2px;
+    }
+    .search-responsive{
+        display: flex;
+        margin-top: 10px;
+    }
+    .icon-search{
+        display: none;
+    }
+    .search-produit{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 40%;
+    }
+    
+    .search-produit input{
+        width: 150px;
+        height: 30px;
+    }
 }
