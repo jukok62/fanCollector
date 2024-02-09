@@ -25,7 +25,7 @@ const Apropos = () => {
             <h3>Un Univers de Miniatures Exceptionnelles</h3>
             <p><span className='first-quote'>"</span> <br />Que vous soyez passionné de voitures miniatures, de soldats de plomb, de motos miniatures, de tracteurs miniatures, de figurines ou de pièces de monnaie, notre boutique offre une sélection soigneusement choisie pour répondre à tous les goûts et intérêts. Chaque miniature que nous proposons est choisie pour sa qualité exceptionnelle, son histoire unique et son pouvoir d'évoquer des souvenirs et des émotions.<br /><span className='last-quote'>"</span></p>
         </div>
-        <img src={imgUnivers} alt=" image d'illustartion" />
+        <img src={imgUnivers} alt=" image d'illustration" />
     </div>
     <div className='conteneur-Div'>
         <img src={imgLocalisation} alt="e de la ville d'arras" />

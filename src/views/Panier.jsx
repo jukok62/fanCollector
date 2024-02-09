@@ -36,7 +36,7 @@ const Panier = () => {
         }, 3500); // 3500 millisecondes (3.5 secondes)
         localStorage.removeItem(`panier_${userId}`)
         setTimeout(() => {
-            navigate('/');
+            navigate('/monCompte');
         }, 4000);
       };
     

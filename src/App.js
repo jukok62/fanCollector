@@ -24,6 +24,7 @@ import Motos from './views/Motos';
 import Tracteurs from './views/Tracteurs';
 import StripeContainer from './stripe/StripeContainer'
 import TousLesProduits from './views/TousLesProduits';
+import Favoris from './views/Favoris';
 
 
 
@@ -107,6 +108,7 @@ function App() {
         <Route path='/categorie/Piece' element={<Pieces/>}/>
         <Route path='/detailsProduit/:id' element={<DetailsProduitsView/>}/>
         <Route path='/panier' element={<Panier/>}/>
+        <Route path='/favoris' element={<Favoris/>}/>
        <Route path='/stripe' element={<StripeContainer/>}/>
       </Routes>
     </BrowserRouter>

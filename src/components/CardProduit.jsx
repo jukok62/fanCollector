@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/card.css'
 import { useNavigate} from 'react-router-dom';
+import { ajouterAuPanier } from './AjoutPanierUtilisateur';
+import { ajoutFavoris } from './AjoutFavoris';
 
 
 import imgCoeur from '../Image/icon/coeur-rempli.png'
+import imgPanier from '../Image/icon/paniers (2).png'
+import imgCoeurVide from '../Image/icon/coeur-vide.png'
 import imgPalette from '../Image/icon/palette.png'
 import imgCalendrier from '../Image/icon/calendrier.png'
 import imgVolant from '../Image/icon/volant.png'
-import imgPanier from '../Image/icon/paniers (2).png'
 import imgCasque from '../Image/icon/helmet.png'
 import imgPoids from '../Image/icon/weight.png'
 import imgSculpture from '../Image/icon/sculpture.png'
@@ -20,18 +23,36 @@ import GlobalContext from '../context/GlobalContext';
 
 const CardProduit = ({produitByCategorie}) => {
 
- 
 
- 
-    const {setUserPanier, user, userId} = useContext(GlobalContext)
+    const {setUserPanier , user, userId } = useContext(GlobalContext)
     const [produitFiltered, setProduitFiltered] = useState([]);
     const [searchValue, setSearchValue] = useState("");
+    const [userFavoris, setUserFavoris] = useState([]);
+    const newFavoris = JSON.parse(localStorage.getItem(`favoris_${userId}`))
     const navigate = useNavigate();
-  
+    console.log("newFavoris" , newFavoris);
 
+    // Recupère la valeur de l'input de recherche
       const handleChange = (e) => {
         setSearchValue(e.currentTarget.value)
     }
+
+     // fonction pour vérifier si le produit est dans les favoris
+     const isProductInFavoris = (prod) => {
+      if (prod && newFavoris) {
+          return newFavoris.some((fav) => fav.ID_Produit === prod.ID_Produit);
+      }
+      return false;
+  };
+
+  // Fonction pour supprimer de la page favoris
+  const deleteFavoris = (id) => {
+    // Filtrer les favoris pour exclure le produit avec l'ID spécifié
+    const nouveauFavoris = newFavoris.filter((fav) => fav.ID_Produit !== id);
+    // Mettre à jour les favoris dans le LocalStorage
+    localStorage.setItem(`favoris_${userId}`, JSON.stringify(nouveauFavoris));
+}
+
 
 
     useEffect(() => {
@@ -45,23 +66,6 @@ const CardProduit = ({produitByCategorie}) => {
   useEffect(() => {
     setProduitFiltered(produitByCategorie)
   },[produitByCategorie])
-
-    
-    const ajouterAuPanier = (prod) => {
-        // ON VA CHERCHER LE PANIER ACTUELLE DU LOCALESTORAGE
-        const panierLocalStorage = localStorage.getItem(`panier_${user.User_ID}`);
-        //On vérifie si la clé panier existe ou n'est pas undefined ET/OU on l'initialise a un tableau vide
-        const panier = panierLocalStorage && panierLocalStorage !== 'undefined' ? JSON.parse(panierLocalStorage) : [];
-        // On ajoute le produit au panier
-        panier.push(prod)
-        // on met a jour le panier dans le LocaleStorage en le transformant en chaine de caractère
-        localStorage.setItem(`panier_${user.User_ID}`, JSON.stringify(panier));
-        // on met a jour le panier dans l'état global
-        setUserPanier(panier)
-        
-    
-        console.log(`Produit "${prod.Produit_nom}" ajouté au panier`);
-      };
     
 
      
@@ -79,7 +83,9 @@ const CardProduit = ({produitByCategorie}) => {
         
             {produitFiltered.map((prod) => (
                  <div className="conteneur-block" key={prod.ID_Produit} onClick={() => navigate(`/detailsProduit/${prod.ID_Produit}`)}>
-                    <img className='coeur' src={imgCoeur} alt="" />
+                    <img className='coeur' src={isProductInFavoris(prod) ? imgCoeur : imgCoeurVide } alt=""  onClick={(e) => {
+                       e.stopPropagation(); isProductInFavoris() ? deleteFavoris(prod.ID_Produit) : ajoutFavoris(userId, prod, setUserFavoris);}
+                    }/>
                     <img  className={prod.FK_Categorie  < 8 ? 'voiture' :prod.FK_Categorie < 11 ? 'figurine':
                       'piece'} src={process.env.PUBLIC_URL + `/Asset/produit/${prod.Produit_Image_PNG.replace(/^.*[\\\/]/, '')}`} alt='' />
 
@@ -106,7 +112,8 @@ const CardProduit = ({produitByCategorie}) => {
                     
                     <div className="panier" onClick={(e) => {
                       e.stopPropagation(); // Empêche la propagation de l'événement à la div parente
-                      navigate(`/detailsProduit/${prod.ID_Produit}`)
+                      navigate(`/detailsProduit/${prod.ID_Produit}`) ;
+                      ajouterAuPanier(userId, prod, setUserPanier);
                     }}>
                         <img src={imgPanier} alt="Logo pour ajouter au panier"/>
                         <p>12.90€</p>

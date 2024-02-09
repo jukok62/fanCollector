@@ -88,7 +88,7 @@ const Header2 = () => {
             </>
         )}
 
-            <Link to={'#'}>
+            <Link to={'/favoris'}>
                 <div>
                     <img src={iconFavoris} alt="partie favoris" className="hover-icon-favoris"/>
                     <span className="hover-text hover-text-favoris">Favoris</span>

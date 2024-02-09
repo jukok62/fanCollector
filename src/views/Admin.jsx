@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom'
 import Header2 from '../components/Header2';
 import '../styles/admin.css'
 import produitsServices from '../Services/produitsServices'

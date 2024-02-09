@@ -27,11 +27,15 @@ const SwipperAccueil = () => {
         slidesPerView={2} 
         spaceBetween={30} 
         slidesPerGroup={1} 
-        loopFillGroupWithBlank={true} 
         pagination={{
             "clickable": true
         }} 
+        autoplay={{
+            delay: 3000, // Intervalle en millisecondes entre les diapositives
+            disableOnInteraction: false, // Désactiver l'autoplay lors de l'interaction de l'utilisateur
+          }}
         navigation={true}
+        modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper">
         <SwiperSlide>
             <div className='card-categorie3' onClick={() => navigate('/categorieAccueil/voiture')}>

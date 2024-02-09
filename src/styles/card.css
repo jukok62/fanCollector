@@ -65,9 +65,9 @@ html::-webkit-scrollbar-track {
     width: 98%;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    margin-top: 14%;
+    margin-top: 16%;
     column-gap: 10px;
     position: relative;
 }
@@ -137,6 +137,9 @@ html::-webkit-scrollbar-track {
     font-size: 1vw;
     line-height: 2rem;
     width: 60%;
+}
+.nom:hover{
+    text-decoration: underline;
 }
 .nomBis{
     position: absolute;
@@ -249,6 +252,9 @@ html::-webkit-scrollbar-track {
         width: 24%;
         font-size: 0.9vw;
     }   
+    .conteneur-card{
+        justify-content: space-evenly;
+    }
 }
 
 @media screen and (max-width : 1024px)  {
@@ -259,6 +265,7 @@ html::-webkit-scrollbar-track {
     } 
     .conteneur-card{
         margin-top: 16%;
+        justify-content: space-between;
     }
     .voiture{
         right: -20%;

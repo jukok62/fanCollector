@@ -21,7 +21,6 @@ const MenuCard = ({id}) => {
     const getProduitByCategorie = async () => {
         try {
             const response = await categorieService.getCategoriesByType(id)
-            console.log(response.data);
             setCategorieById(response.data[0])
         } catch (e) {
             console.log(e);

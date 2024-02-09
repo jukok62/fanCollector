@@ -1,3 +1,5 @@
+import {toast} from 'react-toastify'
+
 export const ajouterAuPanier = (userId, produit, setUserPanier) => {
   // ON VA CHERCHER LE PANIER ACTUEL DU LOCALESTORAGE
   const panierLocalStorage = localStorage.getItem(`panier_${userId}`);
@@ -8,7 +10,7 @@ export const ajouterAuPanier = (userId, produit, setUserPanier) => {
 
   // Parcourir le panier pour voir si le produit existe déjà
   const nouveauPanier = panier.map((pr) => {
-      if (pr.ID_Produit === produit.ID_Produit) {
+      if (pr && pr.ID_Produit === produit.ID_Produit) {
           pr.quantiteCommander += 1;
           pr.prixTotal = pr.Produit_prix * pr.quantiteCommander;
           produitExiste = true;
@@ -27,4 +29,5 @@ export const ajouterAuPanier = (userId, produit, setUserPanier) => {
   localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
   // On met à jour le panier dans l'état global
   setUserPanier(nouveauPanier);
+  toast.success(`${produit.Produit_nom} bien ajouté au panier`)
 };
