@@ -22,21 +22,10 @@ const Card = () => {
             console.log(e);
         }
     }
-
-    // const getProduitById = async () => {
-    //     try {
-    //         const response = await produitsServices.getProduitById(id)
-    //         setProduitsById(response.data[0])
-    //         console.log(response);
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // }
     
 
     useEffect(() => {
         getProduitByCategorie();
-        // getProduitById();
     },[])
     
 

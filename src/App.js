@@ -23,6 +23,7 @@ import Voiture from './views/Voitures';
 import Motos from './views/Motos';
 import Tracteurs from './views/Tracteurs';
 import StripeContainer from './stripe/StripeContainer'
+import TousLesProduits from './views/TousLesProduits';
 
 
 
@@ -83,6 +84,7 @@ function App() {
         <Route path='/connexion'  element={<Connexion/>}/>
         <Route path='/aPropos' element={<Apropos/>}/>
         <Route path='/contact'  element={<Contact/>}/>
+        <Route path='/produits' element={<TousLesProduits/>}/>
         <Route path='/categorie' element={<Categorie/>}/>
         <Route path='/categorieAccueil/voiture' element={<Voiture/>}/>
         <Route path='/categorieAccueil/moto' element={<Motos/>}/>

@@ -163,7 +163,7 @@ html::-webkit-scrollbar-track {
     top: 0px;
     left: 0px;
     width: 100%;
-    height: 320vh;
+    height: 300vh;
 }
 
 /* PARTIE A PROPOS */
@@ -226,11 +226,17 @@ html::-webkit-scrollbar-track {
     width: 95%;
     margin: 0 auto;
 }
+.slider-responsive2{
+    display: none;
+    width: 95%;
+    margin: 0 auto;
+}
 .img5,.img6, .img7, .img8{
     width: 100%;
     height: 70vh;
     object-fit: cover;
 }
+/* PARTIE PREMIER SWIPER RESPONSIVE TELEPHONNE */
 .card-categorie2{
     width: 100%;
     height: 60vh;
@@ -267,13 +273,101 @@ html::-webkit-scrollbar-track {
     text-decoration: underline;
 }
 
+/* PARTIE DEUXIEME SWIPER RESPONSIVE TABLETTE */
+.card-categorie3{
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    border-radius: 6px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 1);
+    opacity: 1;
+    transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.overlay3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+.card-categorie3 .overlay3{
+    opacity: 1;
+}
+.main-text3{
+    font-size: 6vw !important;
+    margin-bottom: 5px;
+}
+.second-text3{
+    font-size: 4vw !important ;
+    text-decoration: underline;
+}
 
+/* RESPONSIVE PETIT ECRAN */
+@media  screen AND (max-width: 1024px){
+    .conteneur-flex-card-categorie{
+        display: none;
+    }  
+    .slider-responsive2{
+        display: block;
+    }
+    .img1,.img2, .img3, .img4{
+        width: 100%;
+        height: 50vh;
+        object-fit: cover;
+    }
+    .categorie{
+        margin-top: 42vh;
+    }
+    .conteneur-aPropos{
+        flex-flow: column nowrap;
+        gap: 10vw;
+        width: 95%;
+        height: auto;
+        margin: 8vh auto;
+    }
+    .text-aPropos, .div-img-aPropos{
+        width: 100%;
+        font-size: 2.5vw;
+    }
+    .imgApropos{
+        width: 100%;
+        height: 60vh;
+    }
+    .text-aPropos{
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        background-color: #384454;
+        box-shadow: 0px 0px 6px 5px rgba(0,0,0,1);
+        border-radius: 6px;
+    }
+    .div-img-fond-Accueil img{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 150%;
+        height: 180vh;
+    }
+}
+
+/* RESPONSIVE TELEPHONE */
 @media  screen AND (max-width: 500px){
     .conteneur-flex-card-categorie{
         display: none;
     }   
     .slider-responsive{
         display: block;
+    }
+    .slider-responsive2{
+        display: none;
     }
     .img1,.img2, .img3, .img4{
         width: 100%;
@@ -303,6 +397,13 @@ html::-webkit-scrollbar-track {
         flex-flow: column nowrap;
         align-items: center;
         background-color: #384454;
+    }
+    .div-img-fond-Accueil img{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 150%;
+        height: 180vh;
     }
 }
 

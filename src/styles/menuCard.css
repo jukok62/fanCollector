@@ -46,10 +46,10 @@ html::-webkit-scrollbar-track {
 /* CONTENEUR DE L'IMAGE ET DES CATEGORIES */
 .container-menuCard{
     position: absolute;
-    top: 10vh;
+    top: 7vh;
     left: 0;
     width: 100%;
-    height: 400px;
+    height: 52vh;
     overflow: hidden;
 }
 
@@ -86,14 +86,14 @@ html::-webkit-scrollbar-track {
     font-weight: 900;
     letter-spacing: 0.1rem;
     word-spacing: 0.5rem;
-    font-size: 180%;
+    font-size: 1.8vw;
     text-decoration: underline;
     text-align: center;
 }
 
 .menuCard div p{
     width: 16%;
-    font-size: 20px;
+    font-size: 1vw;
     font-weight: 700;
     text-align: center;
     color: rgb(236, 236, 236);
@@ -144,46 +144,68 @@ html::-webkit-scrollbar-track {
     z-index: 1;
 }
 
-/* PARTIE RESPONSIVE */
+/* PARTIE RESPONSIVE PETIT ECRAN */
 
-@media screen and (max-width: 1800px){
+@media screen and (max-width : 1280px) {
+    .container-menuCard{
+        top: -1vh;
+        height: 43vh;
+    }
     .menuCard div p{
-        width: 20%;
-        font-size: 18px;
+        font-size: 1.1vw;
     }
 }
-@media screen and (max-width: 1590px){
-    .menuCard div p{
-        width: 20%;
-        font-size: 18px;
+@media screen and (max-width : 1024px) {
+    .container-menuCard{
+        top: -2vh;
+        height: 26vh;
     }
-    
+    .menuCard div p{
+        font-size: 1.2vw;
+    }
+}
+@media screen and (max-width : 1024px) and (max-height : 600px) {
+    .container-menuCard{
+        top: -5vh;
+        height: 55vh;
+    }
+    .menuCard div p{
+        font-size: 1.2vw;
+    }
 }
 
-@media screen and (max-width: 1100px){
-    .menuCard div p{
-        width: 25%;
-        font-size: 16px;
-    }
+/* RESPONSIVE TELEPHONE */
+@media screen and (max-width : 768px) {
     .container-menuCard{
-        height: 420px;
-    }
-}
-@media screen and (max-width: 900px){
-    .container-menuCard{
-        height: 430px;
+        top: -3vh;
+        height: 28vh;
     }
     .menuCard div p{
-        width: 30%;
-        font-size: 16px;
+        font-size: 1.4vw;
+        width: 20%;
     }
 }
-@media screen and (max-width: 760px){
-    .container-menuCard {
-        display: none;
+@media screen and (max-width : 450px) {
+    .container-menuCard{
+        top: -6vh;
+        height: 31vh;
     }
-    .burger-icon{
-        display: block;
+    .menuCard div p{
+        font-size: 1.8vw;
+        width: 33%;
+    }
+}
+@media screen and (max-width : 375px) and (max-height: 700px) {
+    .container-menuCard{
+        top: -8.5vh;
+        height: 41vh;
+    }
+    .menuCard div p{
+        font-size: 1.8vw;
+        width: 33%;
+    }
+    .menuCard h2{
+        font-size: 2.5vw;
     }
 }
 

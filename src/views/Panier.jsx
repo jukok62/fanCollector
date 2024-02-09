@@ -1,17 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import '../styles/panier.css'
+import { toast } from 'react-toastify';
 import Header2 from '../components/Header2';
+import { useNavigate } from 'react-router-dom';
+import GlobalContext from '../context/GlobalContext';
+import StripeContainer from '../stripe/StripeContainer'
+
+
 import iconPoubelle from '../Image/icon/bin.png'
 import iconPlus from '../Image/icon/plus.png'
 import iconMoins from '../Image/icon/moins.png'
 import imgStripe from '../Image/icon/stripe.png'
-import GlobalContext from '../context/GlobalContext';
-import StripeContainer from '../stripe/StripeContainer'
-import { useNavigate } from 'react-router-dom';
+
+
+
 
 const Panier = () => {
 
     const navigate = useNavigate();
+    const {user} = useContext(GlobalContext)
 
     const {userPanier, setUserPanier, userId} = useContext(GlobalContext)
     // useState pour afficher le total de tous les paniers
@@ -26,7 +33,7 @@ const Panier = () => {
       const handleClosePaymentModal = () => {
         setTimeout(() => {
             setPaymentModalOpen(false);
-        }, 3500); // 2000 millisecondes (2 secondes)
+        }, 3500); // 3500 millisecondes (3.5 secondes)
         localStorage.removeItem(`panier_${userId}`)
         setTimeout(() => {
             navigate('/');
@@ -68,6 +75,7 @@ const Panier = () => {
         // Mettre à jour le panier dans l'état global
         setUserPanier(nouveauPanier);
     }
+    
 
     useEffect(() => {
     // au chargement de la page et a chaque fois que userPanier change je récupère le panier depuis le LocalStorage
@@ -77,6 +85,8 @@ const Panier = () => {
             setUserPanier(JSON.parse(storedPanier))
         }
     },[setUserPanier])
+
+
 
     // USEEFFECT pour mettre a jour le panier pour le total complet des produits
     useEffect(() => {
@@ -90,8 +100,24 @@ const Panier = () => {
         setTotalPanier(total);
     }, [userPanier]);
 
-    console.log(totalPanier);
+    // FONCTION POUR INDIQUER AUX CLIENTS DE REMPLIR LE PANIER OU SECONNECTER
+    const Attention = () => {
+        toast.error('veuillez vous connecter et/ou remplir le panier')
+    }
 
+    // Fonction pour dynamiquement dire a l'utilisateur le nombre d'objet au panier
+    const nombreProduitAuPanier = () => {
+        // Utilisez la méthode reduce pour obtenir la somme des quantités commandées
+        const totalQuantite = userPanier.reduce((acc, panier) => acc + panier.quantiteCommander, 0);
+        if(totalQuantite === 0 || totalQuantite === null){
+            return 0
+        } else{
+            return totalQuantite;
+        }
+    }        
+    
+
+console.log("userPanier", userPanier);
    
     return ( <>
 
@@ -99,7 +125,7 @@ const Panier = () => {
 
     <div className="titre-panier">
             <h3>Votre Panier</h3>
-            <p>Vous avez 1 produit dans votre panier</p>
+            <p>Vous avez {nombreProduitAuPanier()} produit dans votre panier</p>
         </div>
     
     <div className="conteneur-panier">
@@ -111,12 +137,12 @@ const Panier = () => {
             <img className='imgPrincipale' src={`/Asset/produit/${panier.Produit_Image_Principale}`} alt="" />
 
             <div className="info-panier">
-                <p>{panier.Produit_nom}</p>
-                <p>Prix unitaire : &nbsp; {panier.Produit_prix}€</p>
+                <p id='nom-produit'>{panier.Produit_nom}</p>
+                <p id='prix-unitaire'>Prix unitaire : &nbsp; {panier.Produit_prix}€</p>
                 <div className='buttonIncrementation'>
-                    <img src={iconMoins} width={40} alt="icon pour retirer un produit" onClick={() => decrementQuantite(panier.ID_Produit)}/>
+                    <img id='iconDecrement' src={iconMoins} width={40} alt="icon pour retirer un produit" onClick={() => decrementQuantite(panier.ID_Produit)}/>
                     <p>{panier.quantiteCommander}</p>               
-                    <img src={iconPlus} width={50} alt="icon pour ajouter un produit" onClick={() => incrementQuantite(panier.ID_Produit)}/>     
+                    <img id='iconIncrement' src={iconPlus} width={50} alt="icon pour ajouter un produit" onClick={() => incrementQuantite(panier.ID_Produit)}/>     
                 </div>
                 <img className='iconPoubelle' src={iconPoubelle} width={40} alt="icon pour supprimer le produit" onClick={() => deleteProduit(panier.ID_Produit)}/>
                 <p className='total-panier'>total :&nbsp; {panier.Produit_prix * panier.quantiteCommander}  €</p>
@@ -133,7 +159,7 @@ const Panier = () => {
                 <p>total : </p>
                 <p>{totalPanier} €</p>
             </div>
-            {totalPanier === 0 ? <button>COMMANDER</button> :
+            {totalPanier === 0 || user == null ? <button onClick={Attention}>COMMANDER</button> :
             <button onClick={handleOpenPaymentModal}>COMMANDER</button> }
             
         </div>

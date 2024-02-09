@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { URL } from './config';
+
 const getProduit = () => {
     return axios.get(`http://${URL}:8080/produit`)
 }

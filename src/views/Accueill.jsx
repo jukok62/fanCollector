@@ -23,6 +23,9 @@ import 'swiper/css/navigation';
 
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import Header2 from '../components/Header2';
+import Footer from '../components/Footer';
+import SwipperAccueil from '../components/Accueil/SwipperAccueil';
+import SwiperAccueil2 from '../components/Accueil/SwiperAccueil2';
 
 
 
@@ -51,8 +54,6 @@ const Accueil = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-         
-       
         <SwiperSlide><img className='img1' src={img1} alt="" /></SwiperSlide>
         <SwiperSlide><img className='img2' src={img2} alt="" /></SwiperSlide>
         <SwiperSlide><img className='img3' src={img3} alt="" /></SwiperSlide>
@@ -114,76 +115,8 @@ const Accueil = () => {
     <div>
     </div>
     {/* PARTIE SLIDER CATEGORIE RESPONSIVE */}
-    <div className="slider-responsive">
-      <Swiper 
-          spaceBetween={30}
-          centeredSlides={true}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
-          pagination={{
-            clickable: true,
-          }}
-          navigation={true}
-          modules={[Autoplay, Pagination, Navigation]}
-          className="mySwiper"
-        >
-          
-        
-          <SwiperSlide>
-            <div className='card-categorie2' onClick={() => navigate('/categorieAccueil/voiture')}>
-              <img className='img-voiture' src={imgAccueilVoiture} alt="" />
-              <p>VOITURES</p>
-              <div className="overlay2">
-                <p className='main-text2'>VOITURES</p>
-                <p className='second-text2'>découvrir</p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='card-categorie2' onClick={() => navigate('/categorieAccueil/moto')}>
-              <img className='img-voiture' src={imgAccueilMoto} alt="" />
-              <div className="overlay2">
-                <p className='main-text2'>MOTOS</p>
-                <p className='second-text2'>découvrir</p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='card-categorie2' onClick={() => navigate('/categorieAccueil/tracteur')}>
-              <img className='img-voiture' src={imgAccueilTracteur} alt="" />
-              <p>TRACTEURS</p>
-              <div className="overlay2">
-                <p className='main-text2'>TRACTEURS</p>
-                <p className='second-text2'>découvrir</p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='card-categorie2' onClick={() => navigate('/categorie/Piece')}>
-              <img className='img-voiture' src={imgAccueilPiece} alt="" />
-              <p>MONNAIE</p>
-              <div className="overlay2">
-                <p className='main-text2'>MONNAIE</p>
-                <p className='second-text2'>découvrir</p>
-              </div>
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className='card-categorie2' onClick={() => navigate('/categorie/Figurine')}>
-              <img className='img-voiture' src={imgAccueilFigurine} alt="" />
-              <p>FIGURINES</p>
-              <div className="overlay2">
-                <p className='main-text2'>FIGURINES</p>
-                <p className='second-text2'>découvrir</p>
-              </div>
-            </div>
-          </SwiperSlide>
-          
-        </Swiper>
-    </div>
-    
+    <SwipperAccueil/>
+    <SwiperAccueil2/>
 
     
     {/* PARTIE A PROPOS */}
@@ -201,7 +134,7 @@ const Accueil = () => {
     </div>
     
     
-    
+    <Footer/>
     </> );
 }
  

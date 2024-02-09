@@ -48,6 +48,10 @@ const Admin = () => {
         try {
             const response = await produitsServices.deleteProduit(id)
             console.log(response);
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
         } catch (e) {
             console.log(e);
         }

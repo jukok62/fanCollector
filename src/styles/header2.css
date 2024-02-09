@@ -94,7 +94,7 @@ nav{
     justify-content: space-between;
     background: linear-gradient(to bottom right, rgba(50,50,50,0.9), rgba(54, 97, 124,0.9) , rgba(105, 152, 156, 0.9) );
     opacity: 80%;
-    padding: 15px;
+    padding: 10px;
     width: 100%;
 }
 nav a {
@@ -118,7 +118,7 @@ nav a {
 /* PARTIE UL du menu burger */
 .menu-burger-ul{
     position: absolute;
-    top: 17vh;
+    top: 8vh;
     left: -1vw;
     color: white;
     background: linear-gradient(to bottom right, rgba(50,50,50,1), rgba(54, 97, 124,1) , rgba(105, 152, 156, 1) );
@@ -133,7 +133,16 @@ nav a {
     color: rgba(255,255,255,1);
     cursor: pointer;
 }
-
+#icon-supp-burger{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 1.5vw;
+}
+/* PARTIE du menu burger qui apparait en format mobile */
+.responsive-header{
+    display: none;
+}
 
 /* Partie vehicules, figurines et pièces */
 .categorie-navbar{
@@ -251,5 +260,97 @@ nav a {
     font-size: 12px; /* Taille du texte au survol */
     text-align: center;
     margin-top: 5px; /* Espacement entre l'icône et le texte */
+}
+
+/* RESPONSIVE POUR PETIT ECRAN */
+@media screen and (max-width : 1280px) {
+    .menu-burger-ul{
+        position: absolute;
+        top: 7vh;
+        left: -1.5vw;
+        color: white;
+        background: linear-gradient(to bottom right, rgba(50,50,50,1), rgba(54, 97, 124,1) , rgba(105, 152, 156, 1) );
+        padding: 15px 30px;
+        font-size: 1.3vw;
+        width: 20vw;
+    }
+}
+
+@media screen and (max-width : 1024px) {
+    .menu-burger-ul{
+        top: 3.5vh;
+        left: -2vw;
+        padding: 15px 30px;
+        font-size: 1.3vw;
+        width: 25vw;
+    }
+}
+
+/* RESPONSIVE PETITE TABLETTE */
+@media screen and (max-width : 768px) {
+    .menu-burger-ul{
+        top: 4.5vh;
+        left: -2.5vw;
+        padding: 15px 20px;
+        font-size: 1.5vw;
+        width: 22vw;
+    }
+    .categorie-navbar{
+        font-size: 1.5vw;
+    }
+    .menu-burger img{
+        width: 5vw;
+    }
+    .icon-header img{
+        width: 2.1vw;
+        padding-top: 7px;
+    }
+}
+
+/* RESPONSIVE TELEPHONE */
+@media screen and (max-width : 450px) {
+    .menu-burger-ul{
+        top: 4.5vh;
+        left: -4vw;
+        padding: 20px 10px;
+        font-size: 3vw;
+        width: 102vw;
+        text-align: center;
+    }
+    .menu-burger img{
+        width: 7vw;
+    }
+    .icon-header img{
+        width: 4vw;
+        padding-top: 7px;
+    }
+    .icon-header{
+        width: 100%;
+    }
+    .responsive-header{
+        display: block;
+    }
+    .responsive-header2{
+        display: none;
+    }
+    .menu-burger-ul li{
+        color: rgba(255,255,255,1);
+    }
+    .logo-header {
+        font-size: 3vw;
+    }
+    .logo-header img {
+        width: 8vw;
+    }
+    
+    #iconAccueil{
+        position: absolute;
+        top: 18%;
+        left: 1%;
+        width: 5vw;
+    }
+    #icon-supp-burger{
+        width: 3.5vw;
+    }
 }
 
