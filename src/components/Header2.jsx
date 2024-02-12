@@ -7,6 +7,7 @@ import inconPanier from '../Image/icon/navbar/shopping-bag.png'
 import iconConnection from '../Image/icon/navbar/user-lock (2).png'
 import iconConnecter from '../Image/icon/navbar/user (1).png'
 import iconFavoris from '../Image/icon/navbar/favori.png'
+import iconSupp from '../Image/icon/cross-circle.png'
 import iconDeconnexion from '../Image/icon/navbar/se-deconnecter (4).png'
 import '../styles/header2.css'
 import GlobalContext from '../context/GlobalContext';
@@ -44,17 +45,22 @@ const Header2 = () => {
             <img src={iconBurger} alt="icon du menu burger" onClick={listeDeroulante}/>
             {menuBurger ? 
             <ul className='menu-burger-ul'>
-                <li>Accueil</li>
-                <li>Tous nos produits</li>
-                <li>A propos de Nous</li>
-                <li>Nous contacter</li>
+                <img id='icon-supp-burger' src={iconSupp} alt="icon de fermeture" onClick={listeDeroulante}/>
+                <Link to={'/'}><li>Accueil</li></Link>
+                <Link to={'/categorie/Vehicule'} className='responsive-header'><li>Véhicules</li></Link>
+                <Link to={'/categorie/Figurine'} className='responsive-header'><li>Figurines</li></Link>
+                <Link to={'/categorie/Piece'} className='responsive-header'><li>Pièces</li></Link>
+                <Link to={'/categorie'} className='responsive-header'><li>Toutes catégories</li></Link>
+                <Link to={'/produits'}><li>Tous nos produits</li></Link>
+                <Link to={'/aPropos'}><li>A propos de Nous</li></Link>
+                <Link to={'/contact'}><li>Nous contacter</li></Link>
             </ul> : ""}
         </div>
         <div className='categorie-navbar'>
-            <Link to={'/categorie/Vehicule'}>VEHICULES</Link>
-            <Link to={'/categorie/Figurine'}>FIGURINES</Link>
-            <Link to={'/categorie/Piece'}>PIECES</Link>
-            <Link to={'/categorie'}>CATEGORIES</Link>
+            <Link to={'/categorie/Vehicule'} className='responsive-header2'>VEHICULES</Link>
+            <Link to={'/categorie/Figurine'} className='responsive-header2'>FIGURINES</Link>
+            <Link to={'/categorie/Piece'} className='responsive-header2'>PIECES</Link>
+            <Link to={'/categorie'} className='responsive-header2'>CATEGORIES</Link>
         </div>
         <div className="icon-header">
         {!user ? (
@@ -69,7 +75,7 @@ const Header2 = () => {
             <Link to={'/monCompte'}>
                 <div>
                     <img src={iconConnecter} alt="se connecter" className="hover-icon-connecter"/>
-                    <span className="hover-text hover-text-connecter">{user.User_genre}.{user.User_nom}</span>
+                    <span className="hover-text hover-text-connecter">{user.User_genre === "autre" ? "M" : user.User_genre}.{user.User_nom}</span>
                 </div>
             </Link>
             
@@ -82,7 +88,7 @@ const Header2 = () => {
             </>
         )}
 
-            <Link to={'#'}>
+            <Link to={'/favoris'}>
                 <div>
                     <img src={iconFavoris} alt="partie favoris" className="hover-icon-favoris"/>
                     <span className="hover-text hover-text-favoris">Favoris</span>

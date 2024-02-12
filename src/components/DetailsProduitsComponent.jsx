@@ -1,19 +1,24 @@
 import React, {useContext, useState} from 'react';
 import '../styles/detailsProduit.css'
-import { toast } from 'react-toastify';
+import {ajouterAuPanier} from  './AjoutPanierUtilisateur'
+import { ajoutFavoris } from './AjoutFavoris';
 
 import iconCoeur from '../Image/icon/heart-regular-24.png'
 import iconCoeurPlein from '../Image/icon/heart-solid-24.png'
 import iconCroix from '../Image/icon/suppr.png'
-import GlobalContext from '../context/GlobalContext';
+import GlobalContext from '../context/GlobalContext'
+import { toast } from 'react-toastify';
 
 const DetailsProduitComponent = ({produit}) => {
 
-    const {setUserPanier, userId} = useContext(GlobalContext)
-
     const [favori, setFavori] = useState(false);
+    const [userFavoris, setUserFavoris] = useState([]);
     const [afficherImageAgrandie, setAfficherImageAgrandie] = useState(false);
     const [imageAgrandieSrc, setImageAgrandieSrc] = useState('');
+    const{userId , setUserPanier} = useContext(GlobalContext);
+    const newFavoris = JSON.parse(localStorage.getItem(`favoris_${userId}`));
+
+    console.log("userFavoris" , userFavoris);
 
     // CONST POUR LIKER LE PRODUIT
     const likeHeart = () => {
@@ -26,40 +31,23 @@ const DetailsProduitComponent = ({produit}) => {
         setImageAgrandieSrc(src);
       };
 
-      // Fonction pour ajouter au panier et créer une nouvelle ligne quantiteCommander
-      const ajouterAuPanier = () => {
-        // ON VA CHERCHER LE PANIER ACTUELLE DU LOCALESTORAGE
-        const panierLocalStorage = localStorage.getItem(`panier_${userId}`);
-        //On vérifie si la clé panier existe ou n'est pas undefined ET/OU on l'initialise a un tableau vide
-        const panier = panierLocalStorage && panierLocalStorage !== 'undefined' ? JSON.parse(panierLocalStorage) : [];
 
-        let produitExiste = false;
+      // Fonction pour supprimer de la page favoris
+      const deleteFavoris = (id) => {
+        // Filtrer les favoris pour exclure le produit avec l'ID spécifié
+        const nouveauFavoris = newFavoris.filter((fav) => fav.ID_Produit !== id);
+        // Mettre à jour les favoris dans le LocalStorage
+        localStorage.setItem(`favoris_${userId}`, JSON.stringify(nouveauFavoris));
+    }
 
-        // Parcourir le panier pour voir si le produit existe déjà
-        const nouveauPanier = panier.map((pr) => {
-          if (pr.ID_Produit === produit.ID_Produit) {
-            pr.quantiteCommander += 1;
-            pr.prixTotal = pr.Produit_prix * pr.quantiteCommander
-            produitExiste = true;
-          }
-          return pr;
-        });
+    // fonction pour vérifier si le produit est dans les favoris
+    const isProductInFavoris = () => {
+      if (newFavoris) {
+          return newFavoris.some((fav) => fav.ID_Produit === produit.ID_Produit);
+      }
+      return false;
+  };
 
-        // Si le produit n'existe pas, l'ajouter au panier
-        if (!produitExiste) {
-          produit.quantiteCommander = 1;
-          produit.prixTotal = produit.Produit_prix * produit.quantiteCommander
-          nouveauPanier.push(produit);
-        }
-
-        console.log(nouveauPanier);
-        // On met à jour le panier dans le LocalStorage en le transformant en chaîne de caractères
-        localStorage.setItem(`panier_${userId}`, JSON.stringify(nouveauPanier));
-        // On met à jour le panier dans l'état global
-        setUserPanier(nouveauPanier);
-        toast.success("bien ajouté au panier")
-        
-      };
 
 
     return ( <>
@@ -85,11 +73,11 @@ const DetailsProduitComponent = ({produit}) => {
                 <p>{produit.Produit_nom}</p>
                 <p>{produit.Produit_prix}€</p>
                 
-                <div className="favoris">
+                <div className="favoris" onClick={() => { likeHeart(); isProductInFavoris() ? deleteFavoris(produit.ID_Produit) : ajoutFavoris(userId, produit, setUserFavoris); }}>
                     <p>FAVORIS</p>
-                    <img src={favori ? iconCoeurPlein : iconCoeur} alt="icon d'un coeur pour ajouter aux favoris" onClick={likeHeart} />
+                    <img src={isProductInFavoris() ? iconCoeurPlein : iconCoeur} alt="icon d'un coeur pour ajouter aux favoris"  />
                 </div>
-                <button onClick={ajouterAuPanier}>Ajouter au Panier</button>
+                <button onClick={() => {ajouterAuPanier(userId, produit, setUserPanier)}}>Ajouter au Panier</button>
             </div>
         </div>
 

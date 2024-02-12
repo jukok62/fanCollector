@@ -51,12 +51,12 @@ html::-webkit-scrollbar-track {
     padding: 50px 0px 40px;
 }
 .Apropos-de-nous p{
-    font-size: 20px;
+    font-size: 1.2vw;
     width: 70%;
     margin: 0px auto;
 }
 .Apropos-de-nous h2{
-font-size: 26px;
+font-size: 1.5vw;
 }
 
 /* Conteneur de chaque div img + text */
@@ -70,8 +70,8 @@ font-size: 26px;
 }
 
 .conteneur-Div img, .conteneur-Div .text{
-    width: 35%;
-    height: 500px;
+    width: 35vw;
+    height: 520px;
 }
 .conteneur-Div img{
     box-shadow: 7px 7px 8px 0px rgba(33, 33, 33, 0.8);
@@ -83,19 +83,21 @@ font-size: 26px;
     justify-content: center; 
 }
 .text h3{
+    margin-top: 20px;
     font-weight: 700;
-    font-size: 24px;
+    font-size: 1.5vw;
     text-align: center;
     font-family: 'montagu slab';
     margin-bottom: 20px;
 }
 .text p{
     text-align: justify;
-    line-height: 2.5rem;
+    line-height: 2.9rem;
     font-family: 'montagu slab';
+    font-size: 1vw;
 }
 .first-quote, .last-quote{
-    font-size: 50px;
+    font-size: 3vw;
     font-family: 'montagu slab';
 }
 .last-quote{
@@ -110,4 +112,48 @@ font-size: 26px;
 .engagement{
     width: 75%;
     margin: 0px auto;
+}
+
+/* RESPONSIVE TABLETTE */
+
+@media screen and (max-width : 1024px) {
+    .conteneur-Div img, .conteneur-Div .text{
+        height: 410px;
+        width: 40vw;
+    }
+    .text p{
+        line-height: 2rem;
+        font-size: 1.3vw;
+    }
+    .text h3{
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width : 768px) {
+    .conteneur-Div img, .conteneur-Div .text{
+        height: 380px;
+    }
+}
+
+/* RESPONSIVE TELEPHONE */
+
+@media screen and (max-width : 500px) {
+    .conteneur-Div img, .conteneur-Div .text{
+        height: 300px;
+        width: 44vw;
+    }
+    .text p{
+        line-height: 1.3rem;
+        font-size: 1.7vw;
+    }
+    .text h3{
+        margin-top: 20px;
+    }
+    .Apropos-de-nous{
+        padding: 20px 0px 20px;
+    }
+    .conteneur-Div{
+        gap: 7%;
+        margin: 40px 0px;
+    }
 }

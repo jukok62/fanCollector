@@ -117,7 +117,24 @@ html::-webkit-scrollbar-track {
         flex-flow: column nowrap;
     }
     .categorie-card{
-        width: 80%;
+        width: 95%;
+        margin-top: 10px;
+    }
+    .overlay{
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 1;
+        height: 98%;
+        border-radius: 6px;
+      }
+      .categorie-card .text-categorie{
+        opacity: 0;
+    }
+    .main-text{
+        font-size: 7vw  !important;
+        font-weight: 700;
+    }
+    .second-text{
+        font-size: 5.5vw !important;
     }
 }
 @media screen and (min-width: 500px) and (max-width: 850px) {
@@ -126,17 +143,45 @@ html::-webkit-scrollbar-track {
     }
     .categorie-card {
         width: 45%;
+        margin-top: 10px;
     }
-    .categorie-card .text-categorie {
-        font-size: 200%;
+    .overlay{
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 1;
+        height: 98%;
+        border-radius: 6px;
+      }
+      .categorie-card .text-categorie{
+        opacity: 0;
     }
-    .categorie-card:hover {
-        transform: scale(1.1);
+    .main-text{
+        font-size: 4vw  !important;
+        font-weight: 700;
+    }
+    .second-text{
+        font-size: 2.8vw !important;
     }
 }
 @media screen and (min-width: 850px) and (max-width: 1024px) {
     .categorie-card {
         width: 28%;
+        margin-top: 10px;
+    }
+    .overlay{
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 1;
+        height: 98%;
+        border-radius: 6px;
+      }
+      .categorie-card .text-categorie{
+        opacity: 0;
+    }
+    .main-text{
+        font-size: 3vw  !important;
+        font-weight: 700;
+    }
+    .second-text{
+        font-size: 2vw !important;
     }
 }
 

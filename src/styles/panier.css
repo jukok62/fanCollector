@@ -56,12 +56,15 @@ html::-webkit-scrollbar-track {
     background-color: var(--background-bleu-gris);
     color: var(--text-blanc);
     margin-bottom : 30px;
+    border-radius: 6px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.8);
+    font-size: 18px;
+    height: auto;
 }
 /* TAILLE DE L'IMAGE PRINCIAPLE */
 .panier-principale .imgPrincipale{
-    width: 250px;
-    height: 270px;
+    width: 15vw;
+    height: 38vh;
     margin: auto 15px;
     border-radius: 10px ;
     padding: 10px 0px;
@@ -78,12 +81,6 @@ html::-webkit-scrollbar-track {
     margin-left: 20px;
 }
 
-.description-panier{
-    font-size: 10px;
-    width: 80%;
-    margin: 10px 0px;
-}
-
 /* partie bouton + et - */
 .buttonIncrementation{
     display: flex;
@@ -95,6 +92,12 @@ html::-webkit-scrollbar-track {
     bottom: 0%;
     left: 0%;
     transition: transform 0.3s ease;
+}
+#iconDecrement{
+    width: 2.5vw;
+}
+#iconIncrement{
+    width: 3vw;
 }
 .buttonIncrementation img:hover{
     cursor: pointer;
@@ -112,8 +115,9 @@ html::-webkit-scrollbar-track {
 .iconPoubelle{
     position: absolute;
     right: 5px;
-    top: 5px;
+    top: 10px;
     transition:  transform 0.3s ease;
+    width: 2.2vw;
 }
 .iconPoubelle:hover{
     transform: scale(1.2);
@@ -182,6 +186,278 @@ html::-webkit-scrollbar-track {
 }
 .imgStripe{
     width: 17vw;
+}
+
+/* RESPONSIVE PETIT ECRAN*/
+@media screen and (min-width : 1024px) and (max-width: 1279px) {
+    .panier-principale{
+        height: 250px;
+    }
+    .conteneur-panier{
+        width: 63%;
+        float: left;
+        margin-left: 5px;
+        padding-right: 8px;
+        margin-top: 15px;
+    }
+    .panier-principale .imgPrincipale{
+        width: 160px;
+        height: 190px;
+        margin: 0;
+        margin-left: 10px;
+        padding: 10px 0px;
+    }
+    .buttonIncrementation{
+        width: 30%;
+        position: absolute;
+        bottom: 0%;
+        left: -40%;
+    }
+    .buttonIncrementation p{
+        font-size: 30px !important;
+    }
+    #iconDecrement{
+        width: 2.5vw;
+    }
+    #iconIncrement{
+        width: 3.5vw;
+    }
+    .iconPoubelle{
+        width: 3vw;
+        right: -12.5vw;
+    }
+    .info-panier{
+        width: 50%;
+        position: relative;
+    }
+    .info-panier p{
+        font-size: 20px;
+    }
+    .total-panier{
+        right: -11vw;
+        bottom: 6%;
+    }
+    #nom-produit{
+        margin-top: 10px;
+    }
+    #prix-unitaire{
+        margin-top: 20px;
+    }
+    /* partie recap */
+    .conteneur-recap{
+        margin-right: 20px;
+        margin-top: -50px;
+        width: 30%;
+        position: relative;
+    }
+    .recap *{
+        font-size: 14px;
+    }
+    .recap button{
+        width: 60%;
+        font-size: 12px;
+    }
+    .imgStripe{
+        width: 230px;
+    }
+}
+
+/* RESPONSIVE TABLETTE */
+@media screen and (min-width : 768px) and (max-width: 1023px) {
+    .panier-principale{
+        height: 200px;
+    }
+    .conteneur-panier{
+        width: 65%;
+        float: left;
+        margin-left: 1px;
+        padding-right: 8px;
+        margin-top: 0px;
+    }
+    .panier-principale .imgPrincipale{
+        width: 120px;
+        height: 150px;
+        margin: 0;
+        margin-left: 10px;
+        padding: 10px 0px;
+    }
+    .buttonIncrementation{
+        width: 30%;
+        position: absolute;
+        bottom: 20%;
+        left: -40%;
+    }
+    .buttonIncrementation p{
+        font-size: 24px !important;
+    }
+    #iconDecrement{
+        width: 3vw;
+    }
+    #iconIncrement{
+        width: 4.3vw;
+    }
+    .iconPoubelle{
+        width: 3vw;
+        right: -12.5vw;
+    }
+    .info-panier{
+        width: 50%;
+        position: relative;
+        height: 250px;
+        margin: auto 5px;
+    }
+    .info-panier p{
+        font-size: 16px;
+    }
+    .total-panier{
+        right: -11vw;
+        bottom: 27%;
+    }
+    #nom-produit{
+        line-height: 1.8rem;
+        margin-top: 10px;
+    }
+    #prix-unitaire{
+        margin-top: 20px;
+    }
+    /* partie recap */
+    .conteneur-recap{
+        margin-right: 20px;
+        margin-top: -50px;
+        width: 30%;
+        position: relative;
+    }
+    .recap *{
+        font-size: 14px;
+    }
+    .recap button{
+        width: 60%;
+        font-size: 12px;
+    }
+    .imgStripe{
+        width: 200px;
+    }
+}
+
+
+/* RESPONSIVE TELEPHONE */
+@media screen and  (max-width: 767px) {
+    .panier-principale{
+        height: 200px;
+    }
+    .conteneur-panier{
+        width: 100%;
+        float: left;
+        margin-left: 1px;
+        padding-right: 8px;
+        margin-top: 0px;
+    }
+    .panier-principale .imgPrincipale{
+        width: 120px;
+        height: 130px;
+        margin: 0;
+        margin-left: 10px;
+        padding: 10px 0px;
+    }
+    .buttonIncrementation{
+        width: 40%;
+        position: absolute;
+        bottom: 23%;
+        left: -55%;
+    }
+    .buttonIncrementation p{
+        font-size: 24px !important;
+    }
+    #iconDecrement{
+        width: 4.5vw;
+    }
+    #iconIncrement{
+        width: 6vw;
+    }
+    .iconPoubelle{
+        width: 4vw;
+        right: -11vw;
+    }
+    .info-panier{
+        width: 50%;
+        position: relative;
+        height: 250px;
+        margin: auto 5px;
+    }
+    .info-panier p{
+        font-size: 14px;
+    }
+    .total-panier{
+        right: -9vw;
+        bottom: 28%;
+    }
+    #nom-produit{
+        line-height: 1.8rem;
+        margin-top: 10px;
+    }
+    #prix-unitaire{
+        margin-top: 20px;
+    }
+    /* partie recap */
+    .conteneur-recap{
+        margin-right: 20px;
+        margin-top: 20px;
+        width: 90%;
+        position: relative;
+    }
+    .info-supp{
+        margin-bottom: 50px;
+    }
+    .imgStripe{
+        width: 280px;
+    }
+}
+
+/* RESPONSIVE Galaxy Fold */
+@media screen and (max-width: 300px) {
+    .panier-principale{
+        height: 180px;
+    }
+    .panier-principale .imgPrincipale{
+        width: 100px;
+        height: 130px;
+    }
+    .buttonIncrementation{
+        bottom: 0%;
+    }
+    .buttonIncrementation p{
+        font-size: 22px !important;
+    }
+    .iconPoubelle{
+        width: 5vw;
+        right: 0vw;
+    }
+    .info-panier{
+        width: 60%;
+        position: relative;
+        height: 180px;
+        margin: auto 5px;
+    }
+    .info-panier p{
+        font-size: 12px;
+    }
+    .total-panier{
+        right: 0vw;
+        bottom: 0%;
+    }
+    /* partie recap */
+    .conteneur-recap{
+        margin-right: 15px;
+        margin-top: 20px;
+        width: 90%;
+        position: relative;
+    }
+    .info-supp{
+        margin-bottom: 50px;
+    }
+    .imgStripe{
+        width: 200px;
+    }
 }
 
 

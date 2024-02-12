@@ -147,7 +147,7 @@ const MonCompte = () => {
 
     <div className="nom-monCompte">
         <h3>Bienvenue</h3>
-        <p>{user?.User_nom} {user?.User_prenom}</p>
+        <p>{user.User_genre === "autre" ? "M" : user.User_genre}.{user?.User_nom} {user?.User_prenom}</p>
         <img src={imgDeco} className='img-deco' alt="bouton de déconnection" onClick={deconnexion}/>
         {user && user.User_admin ? <Link to={'/admin'}>
         <img src={iconAdmin} className='img-admin' alt="bouton de déconnection"/>

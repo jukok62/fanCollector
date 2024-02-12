@@ -30,15 +30,17 @@ const CategorieByType = () => {
         {categories.map((cat) => (
                 
                         <div className='categorie-card' key={cat.ID_Categorie}>
-                        <img className={`imgCategorie${cat.ID_Categorie}`}
-                            src={process.env.PUBLIC_URL + `/Asset/categorie/${cat.Categorie_img}.jpg`}
-                            alt={cat.Categorie_Nom}
-                        />
+                        <Link to={`/card/${cat.ID_Categorie}`}>
+                            <img className={`imgCategorie${cat.ID_Categorie}`}
+                                src={process.env.PUBLIC_URL + `/Asset/categorie/${cat.Categorie_img}.jpg`}
+                                alt={cat.Categorie_Nom}
+                            />
                             <p className={"text-categorie"}>{cat.Categorie_Nom}</p>
                             <div className="overlay">
                                 <p className='main-text'>{cat.Categorie_Nom}</p>
-                                <Link to={`/card/${cat.ID_Categorie}`}><p className='second-text'>découvrir</p></Link>
+                                <p className='second-text'>découvrir</p>
                             </div>
+                            </Link>
                     </div>
                 
             ))}

@@ -10,33 +10,23 @@ const Card = () => {
 
     const {id} = useParams();
     const [produitByCategorie, setProduitByCategorie] = useState([]);
-    const [produitsById, setProduitsById] = useState([]);
+
 
 
     const getProduitByCategorie = async () => {
         try {
             const response = await produitsServices.getProduitByCategorie(id)
             setProduitByCategorie(response.data)
-            console.log(produitByCategorie);
+            console.log("produitByCategorie" ,produitByCategorie);
         } catch (e) {
             console.log(e);
         }
     }
 
-    // const getProduitById = async () => {
-    //     try {
-    //         const response = await produitsServices.getProduitById(id)
-    //         setProduitsById(response.data[0])
-    //         console.log(response);
-    //     } catch (e) {
-    //         console.log(e);
-    //     }
-    // }
     
 
     useEffect(() => {
         getProduitByCategorie();
-        // getProduitById();
     },[])
     
 
@@ -48,7 +38,7 @@ const Card = () => {
    
         <div className='Invisible'></div>
 
-        <CardProduit produitByCategorie={produitByCategorie} id={id} produitById={produitsById}/>
+        <CardProduit produitByCategorie={produitByCategorie} id={id}/>
     </div>
     
     </> );

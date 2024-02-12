@@ -110,8 +110,57 @@ html::-webkit-scrollbar-track {
     color: var(--text-jaune);
     border: 1px solid var(--text-jaune);
 }
-.form-droite input[type = "file"], .form-gauche input[type = "file"]{
+.form-gauche input[type = "file"]{
     font-size: 24px;
 }
+
+/* PARTIE RESPONSIVE TELEPHONE */
+@media screen and (max-width: 767px){
+    .conteneur-form-admin{
+        flex-direction: column;
+        width: 99%;
+        gap: 0px;
+    }
+    
+    
+    .form-gauche *, .form-droite *:not(textarea){
+        margin: 4px;
+        width: 95%;
+    }
+    .form-droite textarea{
+        width: 100%;
+        height: 200px;
+        margin: 2vh 1vw;
+    }
+    .form-gauche input[type = "file"]{
+        font-size: 16px;
+    } 
+}
+
+ /* PARTIE RESPONSIVE TABLETTE  + petit ordi */
+ @media screen and (min-width: 768px) and (max-width: 1279px){
+    .conteneur-form-admin{
+        width: 98%;
+        border-radius: 4px;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .form-gauche *, .form-droite *:not(textarea){
+        margin: 4px;
+        width: 90%;
+    }
+    .form-droite textarea{
+        width: 95%;
+        height: 200px;
+        margin: 2vh 1vw;
+    }
+    .form-gauche input[type = "file"]{
+        font-size: 16px;
+    } 
+    .form-droite{
+        margin-top: 0;
+    }
+}
+
 
 

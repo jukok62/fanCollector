@@ -41,6 +41,7 @@ const ModifAdmin = () => {
             setUpdateProduit(response.data[0])
         } catch (e) {
             console.log(e);
+             
         }
     }
     // AFFICHAGE DES CATEGORIES
