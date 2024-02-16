@@ -2,6 +2,7 @@ import React from 'react';
 
 
 const FormulaireMonCompte = ({champsActifs, user, handleChange, btnModifMdp, handleOpenModal, boutonModifier, changeChampsEtBouton,updateUser}) => {
+    
     return ( <>
     
     <div className="conteneur-monCompte">
@@ -17,7 +18,7 @@ const FormulaireMonCompte = ({champsActifs, user, handleChange, btnModifMdp, han
             <input type="email" name='User_email' id='email' value={user?.User_email} disabled={!champsActifs} onChange={handleChange}/>
 
             <label htmlFor="adresse">Adresse Postale</label>
-            <input type="text" name='User_adress' id='adresse' value={user?.User_adresse} disabled={!champsActifs} onChange={handleChange}/>
+            <input type="text" name='User_adresse' id='adresse' value={user?.User_adresse} disabled={!champsActifs} onChange={handleChange}/>
 
             {btnModifMdp && (
             <button onClick={handleOpenModal}>Modifier le mot de passe</button>
@@ -38,7 +39,7 @@ const FormulaireMonCompte = ({champsActifs, user, handleChange, btnModifMdp, han
             </select>
 
             <label htmlFor="tel">Téléphone</label>
-            <input type="tel" name='User_tel' id='tel' value={user?.User_telephone} disabled={!champsActifs} onChange={handleChange}/>
+            <input type="tel" name='User_telephone' id='tel' value={user?.User_telephone} disabled={!champsActifs} onChange={handleChange}/>
 
             {!boutonModifier ? <button className='btn-monCompte' onClick={changeChampsEtBouton}>MODIFIER</button> : 
                               <button className='btn-monCompte' onClick={() => {updateUser(); changeChampsEtBouton()}}>ENVOYER</button>}

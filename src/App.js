@@ -7,9 +7,9 @@ import Accueil from './views/Accueill';
 import Apropos from './views/Apropos';
 import Contact from './views/Contact';
 import Categorie from './views/Categorie';
-import Admin from './views/Admin';
-import AjoutAdmin from './views/AjoutAdmin';
-import ModifAdmin from './views/ModifAdmin';
+import Admin from './views/admin/Admin';
+import AjoutAdmin from './views/admin/AjoutAdmin';
+import ModifAdmin from './views/admin/ModifAdmin';
 import Card from './views/Card';
 import MonCompte from './views/MonCompte';
 import { useState, useEffect } from 'react';
@@ -36,6 +36,7 @@ function App() {
 
   const [user, setUser] = useState(JSON.parse(window.localStorage.getItem('user')));
   const [userPanier, setUserPanier] = useState([]);
+  const [userFavoris, setUserFavoris] = useState([]);
 
   // Effet pour mettre à jour le localStorage lorsque userId change
   useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
       const panierLocalStorage = localStorage.getItem(`panier_${userId}`);
       const panier = panierLocalStorage && panierLocalStorage !== 'undefined' ? JSON.parse(panierLocalStorage) : [];
       setUserPanier(panier);
+      
     } else {
       // Si l'utilisateur est déconnecté, réinitialiser l'état local du panier
       setUserPanier([]);
@@ -76,7 +78,7 @@ function App() {
 },[user]);
   return (<>
 
-    <GlobalContext.Provider value={{userId, setUserId, user, setUser,userPanier, setUserPanier }}>
+    <GlobalContext.Provider value={{userId, setUserId, user, setUser,userPanier, setUserPanier, userFavoris, setUserFavoris }}>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<Accueil/>}/>

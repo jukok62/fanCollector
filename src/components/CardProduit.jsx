@@ -24,13 +24,13 @@ import GlobalContext from '../context/GlobalContext';
 const CardProduit = ({produitByCategorie}) => {
 
 
-    const {setUserPanier , user, userId } = useContext(GlobalContext)
+    const {setUserPanier , userId, setUserFavoris, userFavoris } = useContext(GlobalContext)
     const [produitFiltered, setProduitFiltered] = useState([]);
     const [searchValue, setSearchValue] = useState("");
-    const [userFavoris, setUserFavoris] = useState([]);
+    // const [userFavoris, setUserFavoris] = useState([]);
     const newFavoris = JSON.parse(localStorage.getItem(`favoris_${userId}`))
     const navigate = useNavigate();
-    console.log("newFavoris" , newFavoris);
+    
 
     // Recupère la valeur de l'input de recherche
       const handleChange = (e) => {
@@ -45,13 +45,30 @@ const CardProduit = ({produitByCategorie}) => {
       return false;
   };
 
+
   // Fonction pour supprimer de la page favoris
   const deleteFavoris = (id) => {
     // Filtrer les favoris pour exclure le produit avec l'ID spécifié
     const nouveauFavoris = newFavoris.filter((fav) => fav.ID_Produit !== id);
     // Mettre à jour les favoris dans le LocalStorage
     localStorage.setItem(`favoris_${userId}`, JSON.stringify(nouveauFavoris));
+    //mettre a jour les favoris dans le context Global
+    setUserFavoris(nouveauFavoris);
 }
+
+ // Fonction pour ajouter ou supprimer des favoris
+ const toggleFavori = (prod) => {
+  const isFavori = isProductInFavoris(prod);
+  if (isFavori) {
+    // Supprimer le produit des favoris
+    deleteFavoris(prod.ID_Produit)
+  } else {
+    // Ajouter le produit aux favoris
+    ajoutFavoris(userId, prod, setUserFavoris);
+  }
+};
+
+console.log(isProductInFavoris());
 
 
 
@@ -84,10 +101,10 @@ const CardProduit = ({produitByCategorie}) => {
             {produitFiltered.map((prod) => (
                  <div className="conteneur-block" key={prod.ID_Produit} onClick={() => navigate(`/detailsProduit/${prod.ID_Produit}`)}>
                     <img className='coeur' src={isProductInFavoris(prod) ? imgCoeur : imgCoeurVide } alt=""  onClick={(e) => {
-                       e.stopPropagation(); isProductInFavoris() ? deleteFavoris(prod.ID_Produit) : ajoutFavoris(userId, prod, setUserFavoris);}
+                       e.stopPropagation(); toggleFavori(prod)}
                     }/>
                     <img  className={prod.FK_Categorie  < 8 ? 'voiture' :prod.FK_Categorie < 11 ? 'figurine':
-                      'piece'} src={process.env.PUBLIC_URL + `/Asset/produit/${prod.Produit_Image_PNG.replace(/^.*[\\\/]/, '')}`} alt='' />
+                      'piece'} src={process.env.PUBLIC_URL + `/Asset/produit/${prod.Dossier_nom}/${prod.Produit_Image_PNG.replace(/^.*[\\\/]/, '')}`}  alt='' />
 
                     <div className={prod.FK_Categorie  < 8 ? 'nom' : 'nomBis'}>
                         <p>{prod.Produit_nom}</p>

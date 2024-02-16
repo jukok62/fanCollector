@@ -48,7 +48,7 @@ const TousLesProduitsComponent = ({produits}) => {
                  <div className="conteneur-block" key={prod.ID_Produit} onClick={() => navigate(`/detailsProduit/${prod.ID_Produit}`)}>
                     <img className='coeur' src={imgCoeur} alt="" />
                     <img  className={prod.FK_Categorie  < 8 ? 'voiture' :prod.FK_Categorie < 11 ? 'figurine':
-                      'piece'} src={process.env.PUBLIC_URL + `/Asset/produit/${prod.Produit_Image_PNG.replace(/^.*[\\\/]/, '')}`} alt='' />
+                      'piece'} src={process.env.PUBLIC_URL + `/Asset/produit/${prod.Dossier_nom}/${prod.Produit_Image_PNG.replace(/^.*[\\\/]/, '')}`} alt='' />
 
                     <div className={prod.FK_Categorie  < 8 ? 'nom' : 'nomBis'}>
                         <p>{prod.Produit_nom}</p>

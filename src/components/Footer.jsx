@@ -25,9 +25,9 @@ const Footer = () => {
         </div>
 
         <div className='reseau-footer'>
-            <img src={logoFacebook} alt="logo facebook" />
-            <img src={logoInsta} alt="logo instagram" />
-            <img src={logoTwitter} alt="logo twitter" />
+            <Link to={'https://www.facebook.com/fancollector62000/'}><img src={logoFacebook} alt="logo facebook" /></Link>
+            <Link to={'https://www.instagram.com/'}><img src={logoInsta} alt="logo instagram" /></Link>
+            <Link to={'https://twitter.com/twitterfrance'}><img src={logoTwitter} alt="logo twitter" /></Link>
         </div>
 
         <div className="info-footer">

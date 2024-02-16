@@ -24,6 +24,7 @@ const Header2 = () => {
     const deconnexion = () => {
         localStorage.removeItem('user')
         localStorage.removeItem('userId')
+        localStorage.removeItem('token')
         localStorage.removeItem(`panier${userId}`)
         setTimeout(() => {
             window.location.reload();
@@ -88,12 +89,17 @@ const Header2 = () => {
             </>
         )}
 
+            {user ? (
             <Link to={'/favoris'}>
                 <div>
                     <img src={iconFavoris} alt="partie favoris" className="hover-icon-favoris"/>
                     <span className="hover-text hover-text-favoris">Favoris</span>
                 </div>
-            </Link>
+            </Link> ): 
+                (<div>
+                    <img src={iconFavoris} alt="partie favoris" className="hover-icon-favoris"/>
+                    <span className="hover-text hover-text-favoris">Favoris</span>
+                </div>)}
             <Link to={'/panier'}>
                 <div>
                     <img src={inconPanier} alt="accéder au panier" className="hover-icon-panier" />

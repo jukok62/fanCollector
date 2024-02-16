@@ -8,7 +8,7 @@ import userService from '../Services/userService';
 import { toast } from 'react-toastify';
 
 import imgDeco from '../Image/icon/se-deconnecter32px1.png'
-import iconAdmin from '../Image/icon/user.png'
+import iconAdmin from '../Image/icon/gens.png'
 import ChangePasswordModal from '../modal/ChangePasswordModal';
 import { Link } from 'react-router-dom';
 import FormulaireMonCompte from '../components/FormulaireMonCompte';
@@ -32,8 +32,6 @@ const MonCompte = () => {
     const fetchMoreAchat = async () => {
         try {
             const response = await achatService.fetchAchatByUser(userId, limit, offset);
-            console.log("Offset:", offset, "Limit:", limit);
-            console.log("response.data.result", response.data.result);
     
             // Mise à jour de l'état avec les nouvelles données sans supprimer les existantes
             setCommandes(prevCommandes => {
@@ -94,6 +92,8 @@ const MonCompte = () => {
     const updateUser = async (e) => {
         try {
           const response = await userService.updateUser(user) 
+          console.log(response.config.data);
+          localStorage.setItem('user', (response.config.data))
           toast.success('La modification a bien été enregistré')
         } catch (e) {
             console.log(e);
@@ -129,12 +129,12 @@ const MonCompte = () => {
         return groupedCommandes;
     };
 
-    console.log("commandes" , commandes);
 
    // CONST DECONNECTION 
    const deconnexion = () => {
     localStorage.removeItem('user')
     localStorage.removeItem('userId')
+    localStorage.removeItem('token')
     localStorage.removeItem(`panier${userId}`)
     setTimeout(() => {
         window.location.reload();

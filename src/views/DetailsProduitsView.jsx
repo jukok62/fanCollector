@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import produitsServices from '../Services/produitsServices';
 import Header2 from '../components/Header2';
 import DetailsProduitComponent from '../components/DetailsProduitsComponent'
+import Footer from '../components/Footer'
 
 const DetailsProduitsView = () => {
 
@@ -27,6 +28,10 @@ const DetailsProduitsView = () => {
     
     <Header2/>
     <DetailsProduitComponent produit={produitById}/>
+    <div className="footer">
+      <Footer/>
+    </div>
+   
     
     
     </> );

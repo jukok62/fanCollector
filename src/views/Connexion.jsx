@@ -27,7 +27,7 @@ const Connexion = () => {
         e.preventDefault();
         try {
             const response = await connexionService.Connect(connection)
-            console.log(response);
+            console.log("response" , response);
             // stock userId en récupérant l'ID au moment de la connection
             setUserId(response.data.userSQL.User_ID)
             // on stock le USER COMPLET dans user
@@ -42,13 +42,17 @@ const Connexion = () => {
             // on demande que toutes nos routes axios aient besoin d'une autorisation qui sera stocké dans Bearer            
             axios.defaults.headers['Authorization'] = "Bearer " + response.data.access_token;
 
-            console.log(response);
             setTimeout(() => {
                 navigate("/monCompte")
             }, 500); // Délai en millisecondes (500ms = 0.5 seconde)
         } catch (e) {
-            console.log(e);
+            console.log(e.response.status);
+            // si l'utilisateur fais trop de tentative de connexion
+            if(e.response.status === 429){
+                toast.error('trop de tentative de connection, veuillez attendre 15 min')
+            } else{
             toast.error('problème de connection')
+            }
         }
     }
 
@@ -89,7 +93,7 @@ const Connexion = () => {
             <div className='mdp-connection'>
                 <label htmlFor="mdp">Mot de passe</label>
                 <input type="password" id='mdp' name='mdp' placeholder='   ********'value={connection.mdp} onChange={handleChange} required/>
-                <p>Mot de passe oublié ?</p>
+                {/* <p>Mot de passe oublié ?</p> */}
             </div>
             <div className='button-connection'>
                     <button className='connect-btn' onClick={newConnexion}>Se connecter</button>

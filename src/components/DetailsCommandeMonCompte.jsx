@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 
 const DetailsCommandeMonCompte = ({groupCommandes, fetchMoreAchat}) => {
-    console.log("clg de groupCommand",groupCommandes());
+
     return ( <>
     
 
@@ -21,7 +21,7 @@ const DetailsCommandeMonCompte = ({groupCommandes, fetchMoreAchat}) => {
                     )}
                     <Link to={`/detailsProduit/${com.FK_Produit}`}>
                     <div className='detail-commande'>
-                        <img src={process.env.PUBLIC_URL +`/Asset/produit/${com.Produit_Image_Principale}`} width={100} alt="" />
+                        <img src={process.env.PUBLIC_URL +`/Asset/produit/${com.Dossier_nom}/${com.Produit_Image_Principale}`} width={100} alt="" />
                         <p>{com.Produit_nom}</p>
                         <p>{com.Produit_prix}€</p>
                         <p>quantite : {com.quantite}</p>

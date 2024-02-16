@@ -134,7 +134,7 @@ console.log("userPanier", userPanier);
 
        
         <div className="panier-principale">
-            <img className='imgPrincipale' src={`/Asset/produit/${panier.Produit_Image_Principale}`} alt="" />
+            <img className='imgPrincipale' src={`/Asset/produit/${panier.Dossier_nom}/${panier.Produit_Image_Principale}`} alt="" />
 
             <div className="info-panier">
                 <p id='nom-produit'>{panier.Produit_nom}</p>

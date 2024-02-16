@@ -115,7 +115,7 @@ html::-webkit-scrollbar-track {
 .iconPoubelle{
     position: absolute;
     right: 5px;
-    top: 10px;
+    top:  -3vh;
     transition:  transform 0.3s ease;
     width: 2.2vw;
 }
@@ -225,6 +225,7 @@ html::-webkit-scrollbar-track {
     .iconPoubelle{
         width: 3vw;
         right: -12.5vw;
+        top: 1vh;
     }
     .info-panier{
         width: 50%;
@@ -299,6 +300,7 @@ html::-webkit-scrollbar-track {
     .iconPoubelle{
         width: 3vw;
         right: -12.5vw;
+        top: 1vh;
     }
     .info-panier{
         width: 50%;
@@ -376,7 +378,8 @@ html::-webkit-scrollbar-track {
     }
     .iconPoubelle{
         width: 4vw;
-        right: -11vw;
+        right: -14vw;
+        top: 1vh;
     }
     .info-panier{
         width: 50%;

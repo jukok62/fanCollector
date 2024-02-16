@@ -53,7 +53,7 @@ const AdminComponent = ({listeProduit, handleChange, produits, produitFiltered, 
         <tbody>
         {produitFiltered.map ((prod) => (
             <tr>
-            <td><img src={process.env.PUBLIC_URL +`/Asset/produit/${prod.Produit_Image_Principale}`}   height={50} alt="Produit" className='img-produit'/></td>
+            <td><img src={process.env.PUBLIC_URL +`/Asset/produit/${prod.Dossier_nom}/${prod.Produit_Image_Principale}`}   height={50} alt="Produit" className='img-produit'/></td>
             <td>{prod.Produit_nom}</td>
             <td>{prod.Produit_prix}€</td>
             <td>{prod.Produit_quantite}</td>

@@ -122,3 +122,43 @@ margin-top: 20px;
     color: var(--text-jaune);
     cursor: pointer;
 }
+
+/* RESPONSIVE TELEPHONE */
+
+@media screen and (max-width : 450px){
+    .nomSite-footer{
+        font-size: 3vw;
+        margin-left: 30px;
+        margin-top: 12px;
+        }
+        .nomSite-footer img{
+            width: 10vw;
+        }
+        .retrouvez-nous{
+            column-gap: 20px;
+            font-size: 2vw;
+            margin-top: 5px;
+        }
+        .barre-gauche-footer{
+            height: 2.5px;
+            width: 25vw;
+        }
+        .barre-droite-footer{
+            height: 2.5px;
+            width: 25vw;
+        }
+        .reseau-footer{
+            margin-top: 15px;
+            gap: 5vw;
+        }
+        .reseau-footer img{
+            width: 6.5vw;
+        }
+        .info-footer{
+            gap: 4vw;
+            color: var(--text-blanc);
+            font-size: 2.5vw;
+            margin-top: 8px;
+            margin-bottom: 20px;
+        }
+}

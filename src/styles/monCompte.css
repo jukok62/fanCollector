@@ -54,8 +54,8 @@ html::-webkit-scrollbar-track {
 .nom-monCompte .img-deco {
     position: absolute;
     right: 0vw;
-    top: 0vh;
-    width: 2.2vw;
+    top: 0.7vh;
+    width: 2.4vw;
     transition: transform 0.3s ease;
 }
 .nom-monCompte .img-deco:hover{
@@ -66,7 +66,7 @@ html::-webkit-scrollbar-track {
 .nom-monCompte .img-admin {
     position: absolute;
     right: 5vw;
-    top: -1.5vh;
+    top: 0vh;
     width: 3vw;
     transition: transform 0.3s ease;
 }
@@ -352,7 +352,7 @@ html::-webkit-scrollbar-track {
     .nom-monCompte .img-admin {
         position: absolute;
         right: 5vw !important;
-        top: -1vh !important;
+        top: 0vh !important;
         width: 10vw !important;
         transition: transform 0.3s ease;
     }

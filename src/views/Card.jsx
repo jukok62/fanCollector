@@ -23,6 +23,7 @@ const Card = () => {
         }
     }
 
+    console.log(produitByCategorie);
     
 
     useEffect(() => {

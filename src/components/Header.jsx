@@ -29,6 +29,7 @@ const Header = () => {
     const deconnexion = () => {
         localStorage.removeItem('user')
         localStorage.removeItem('userId')
+        localStorage.removeItem('token')
         localStorage.removeItem(`panier${userId}`)
         setTimeout(() => {
             window.location.reload();

@@ -34,7 +34,7 @@ const Favoris = () => {
         
             <div className="card-favoris" onClick={() => navigate(`/detailsProduit/${fav.ID_Produit}`)}>
                 
-                <img id='img-principale' src={`/Asset/produit/${fav.Produit_Image_Principale}`} alt="" />
+                <img id='img-principale' src={`/Asset/produit/${fav.Dossier_nom}/${fav.Produit_Image_Principale}`} alt="" />
                 <p>{fav.Produit_nom}</p>
                 <p>Prix : {fav.Produit_prix}€</p>
                 <img id='icon-supp' src={iconSupp} alt=""  onClick={(e) => {

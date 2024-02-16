@@ -11,14 +11,13 @@ import { toast } from 'react-toastify';
 
 const DetailsProduitComponent = ({produit}) => {
 
+  console.log(produit);
+
     const [favori, setFavori] = useState(false);
-    const [userFavoris, setUserFavoris] = useState([]);
     const [afficherImageAgrandie, setAfficherImageAgrandie] = useState(false);
     const [imageAgrandieSrc, setImageAgrandieSrc] = useState('');
-    const{userId , setUserPanier} = useContext(GlobalContext);
+    const{userId , setUserPanier, setUserFavoris} = useContext(GlobalContext);
     const newFavoris = JSON.parse(localStorage.getItem(`favoris_${userId}`));
-
-    console.log("userFavoris" , userFavoris);
 
     // CONST POUR LIKER LE PRODUIT
     const likeHeart = () => {
@@ -60,13 +59,13 @@ const DetailsProduitComponent = ({produit}) => {
         <div className="image-prix">
 
             <div className="photo-secondaire">
-                <img src={`/Asset/produit/${produit.Produit_Image_1}`}  width={150} alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Produit_Image_1}`)}/>
-                <img src={`/Asset/produit/${produit.Produit_Image_2}`} width={150} alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Produit_Image_2}`)}/>
-                <img src={`/Asset/produit/${produit.Produit_Image_3}`} width={150} alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Produit_Image_3}`)}/>
+                <img src={`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_1}`}  alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_1}`)}/>
+                <img src={`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_2}`}  alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_2}`)}/>
+                <img src={`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_3}`}  alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_3}`)}/>
             </div>
 
             <div className='photo-principale' >
-                <img src={`/Asset/produit/${produit.Produit_Image_Principale}`} width={600} height={440} alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Produit_Image_Principale}`)}/>
+                <img src={`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_Principale}`}  alt="" onClick={() => ImageAgrandie(`/Asset/produit/${produit.Dossier_nom}/${produit.Produit_Image_Principale}`)}/>
             </div>
 
             <div className="prix-panier">

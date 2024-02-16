@@ -5,22 +5,33 @@ import { toast } from 'react-toastify';
 import Header2 from '../components/Header2';
 import inscriptionService from '../Services/inscriptionService';
 import img1 from '../Image/inmage-inscription.png'
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Inscription = () => {
 
     const navigate = useNavigate();
+    const key = '6Lc-bnIpAAAAAObQjFI-0VjozhZwOKvTkryApQkp'
+    const [captchaIsDone, setCaptchaIsDone] = useState(false);
+    const [capcha, setCapcha] = useState("");
+    
 
-// INSCRIPTION
+    // INSCRIPTION
 
-   const [inscription, setInscription] = useState({
-    email: "",
-    nom : "",
-    prenom : "",
-    genre :"",
-    adresse : "",
-    telephone : "",
-    mdp : "",
-});
+    const [inscription, setInscription] = useState({
+        email: "",
+        nom : "",
+        prenom : "",
+        genre :"",
+        adresse : "",
+        telephone : "",
+        mdp : "",
+    });
+
+    // si changement du captcha
+    const handleCaptchaChange = (value) => {
+        setCapcha(value);
+        console.log(inscription);
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.currentTarget;
@@ -46,12 +57,12 @@ const Inscription = () => {
         return; // Arrêter la soumission du formulaire
       }
         try {
-            const response = await inscriptionService.postUser(inscription);
-            console.log(response.status); // Vérifiez si le statut de la réponse est correct
+            const response = await inscriptionService.postUser(inscription, capcha);
+            console.log(response); // Vérifiez si le statut de la réponse est correct
     
             // Vérification du statut de la réponse
-            if (response && response.status === 201) {
-                console.log(response.request.response); // Pour les réponses réussies
+            if (response && response.status === 201 ) {
+                console.log(response); // Pour les réponses réussies
                 // Gérer la réponse pour les requêtes réussies (statut 200 ou similaire)
                 toast.success('Inscription réussie');
             } else if (response && response.data.status === 400) {
@@ -71,7 +82,7 @@ const Inscription = () => {
             toast.error('Erreur lors de l\'inscription');
         }
         setTimeout(() => {
-           navigate('/connexion');
+        //    navigate('/connexion');
         }, 1000);
     }
 
@@ -111,7 +122,7 @@ const Inscription = () => {
             </div>
             <div className='input-inscription'>
                 <label htmlFor="numero">Numéro de téléphone</label>
-                <input type="text" maxLength={13} id='numero' required placeholder='Numéro de téléphone' name='telephone' value={inscription.telephone} onChange={handleChange}/>
+                <input type="text" maxLength={10} id='numero' required placeholder='Numéro de téléphone' name='telephone' value={inscription.telephone} onChange={handleChange}/>
             </div>
             <div className='input-inscription'>
                 <label htmlFor="email">Adresse email</label>
@@ -122,7 +133,11 @@ const Inscription = () => {
                 <input type="password" id='mdp' required placeholder='*************' name='mdp' value={inscription.mdp} onChange={handleChange}/>
             </div>
             <div className='button-inscription'>
-                <button className='compte' onClick={handleInscription}>Créer un compte</button>
+                <button className='compte' disabled={captchaIsDone} onClick={handleInscription}>Créer un compte</button>
+                <ReCAPTCHA 
+                sitekey={key}
+                onChange={handleCaptchaChange}
+                />
                 <div className='div-entre-deux'>
                     <div className='barreGauche'></div>
                     <p>Vous avez déjà un compte ?</p>

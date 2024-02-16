@@ -7,4 +7,6 @@ export default React.createContext({
     setUserId : (value) => {},
     userPanier : null,
     setUserPanier : value => {},
+    userFavoris : null,
+    setUserFavoris : value => {},
 })
